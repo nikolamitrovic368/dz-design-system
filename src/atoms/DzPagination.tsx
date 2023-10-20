@@ -1,17 +1,18 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { cn } from '../utils/classnames';
-import ChevronLeft from '../svgIcons/chevronLeft';
-import ChevronRight from '../svgIcons/chevronRight';
 import { usePagination, DOTS } from '../hooks/usePagination';
+
+import { ArrowLeft } from '../svgIcons/arrowLeft';
+import { ArrowRight } from '../svgIcons/arrowRight';
 
 export interface DzPaginationProps {
   prevText: string;
   nextText: string;
   currentPage: number;
   totalCount: number;
-  siblingCount: number;
   pageSize: number;
-  onPageChange: Function;
+  onPageChange?: Function;
+  renderPageNumber: (pageNumber: number) => ReactNode;
 }
 
 const styles = {
@@ -86,6 +87,12 @@ const styles = {
     cursor-pointer
     hover:text-black-100
   `,
+  disabledArrow: `    
+    opacity-50
+  `,
+  defaultCursor: `
+    !cursor-default
+  `,
 };
 
 export const DzPagination: FC<DzPaginationProps> = ({
@@ -93,40 +100,54 @@ export const DzPagination: FC<DzPaginationProps> = ({
   nextText,
   currentPage,
   totalCount,
-  siblingCount,
   pageSize,
   onPageChange,
+  renderPageNumber,
 }) => {
+  const paginationRange = usePagination(totalCount, currentPage, pageSize);
+  const isPreviousDisabled = currentPage === 1;
+  const isNextDisabled = currentPage === paginationRange.length;
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    if (!isNextDisabled) {
+      onPageChange?.(currentPage + 1);
+    }
   };
-
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    if (!isPreviousDisabled) {
+      onPageChange?.(currentPage - 1);
+    }
   };
-  const paginationRange = usePagination({
-    currentPage,
-    totalCount,
-    siblingCount,
-    pageSize,
-  });
 
   return (
     <div className={cn(styles.paginationContainer)}>
       <div className="-mt-px flex w-0 flex-1">
         <div
-          className={cn(styles.previousContainer, styles.underline)}
+          className={cn(
+            styles.previousContainer,
+            styles.underline,
+            isPreviousDisabled ? styles.defaultCursor : ''
+          )}
           onClick={onPrevious}
         >
-          <ChevronLeft className="mr-3 h-3 w-3" aria-hidden="true" />
+          <ArrowLeft
+            className={cn(
+              'mr-3 h-5 w-5',
+              isPreviousDisabled ? styles.disabledArrow : ''
+            )}
+            aria-hidden="true"
+          />
           {prevText}
         </div>
       </div>
-      <div className="hidden md:-mt-px md:flex">
+      <div className="md:-mt-px md:flex">
         {paginationRange.map(page => {
           const selected = page === currentPage;
           if (page === DOTS) {
-            return <span className={cn(styles.dots)}>...</span>;
+            return (
+              <span key={page} className={cn(styles.dots)}>
+                ...
+              </span>
+            );
           }
           return (
             <div
@@ -134,21 +155,30 @@ export const DzPagination: FC<DzPaginationProps> = ({
                 selected ? styles.selectedPage : styles.pageNumber,
                 styles.underline
               )}
-              onClick={() => onPageChange(page)}
               key={page}
             >
-              {page}
+              {renderPageNumber ? renderPageNumber(page as number) : page}
             </div>
           );
         })}
       </div>
       <div className="-mt-px flex w-0 flex-1 justify-end">
         <div
-          className={cn(styles.nextContainer, styles.underline)}
+          className={cn(
+            styles.nextContainer,
+            styles.underline,
+            isNextDisabled ? styles.defaultCursor : ''
+          )}
           onClick={onNext}
         >
           {nextText}
-          <ChevronRight className="ml-3 h-3 w-3" aria-hidden="true" />
+          <ArrowRight
+            className={cn(
+              'ml-3 h-5 w-5',
+              isNextDisabled ? styles.disabledArrow : ''
+            )}
+            aria-hidden="true"
+          />
         </div>
       </div>
     </div>

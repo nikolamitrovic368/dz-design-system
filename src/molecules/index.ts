@@ -16,3 +16,4 @@ export * from './DzTitleMolecule/DzContainerTitle';
 export * from './DzPortableText';
 export * from './DzFormModal';
 export * from './DzFormModal/DzFormModal';
+export * from './DzYearSelector/DzYearSelector';

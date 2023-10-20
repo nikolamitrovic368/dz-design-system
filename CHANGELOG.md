@@ -1,3 +1,15 @@
+# v0.0.132 (Fri Oct 20 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 477 past exhibitions landing [#182](https://github.com/Zwirner/design-system/pull/182) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.131 (Thu Oct 19 2023)
 
 #### 🐛 Bug Fix
