@@ -53,6 +53,7 @@ const styles: any = {
     z-30
     min-w-[10.3164rem]
     absolute
+    left-[15px]
   `,
   rootDesktop: `
     cursor-pointer

@@ -52,6 +52,9 @@ const styles: any = {
     items-center
     justify-end
     max-h-[1.25rem]
+    [&>li>a]:!text-md
+    [&>li>a]:!px-0
+    [&>li]:!pl-[35px]
   `,
   menuContainerMobile: `
     mr-1
@@ -70,7 +73,7 @@ const styles: any = {
     outline-transparent
   `,
   verticalPadding: `
-    py-3
+    py-[6px]
   `,
   narrow: `
     px-3

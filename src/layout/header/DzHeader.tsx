@@ -44,12 +44,9 @@ const styles: any = {
     flex
     w-full
     bg-white-100
-    p-5
+    px-4 py-[5px] md:pt-4 md:pb-3
     items-center
     z-50
-  `,
-  logo: `
-    h-5
   `,
   leftSide: `
     w-fit
@@ -103,10 +100,7 @@ export const DzHeader: FC<DzHeaderProps> = ({
       style={isMouseOver ? { zIndex: HEADER_CONTAINER_Z_INDEX + 1 } : {}}
     >
       <div className={cn(styles.leftSide)}>
-        <DzLogo
-          className={cn(styles.logo)}
-          svgProps={{ height: '20', width: '163', id: 'david-zwirner-logo' }}
-        />
+        <DzLogo />
       </div>
       {isSmall ? (
         <nav

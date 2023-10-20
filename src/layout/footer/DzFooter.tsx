@@ -2,14 +2,11 @@ import React, { FC, useMemo, useRef } from 'react';
 import { DzText } from '../../atoms';
 import { DzLink } from '../../atoms';
 import { cn } from '../../utils/classnames';
-import BoldWeChatIcon from '../../svgIcons/boldWeChat';
-import BoldTwitterIcon from '../../svgIcons/boldTwitter';
-import BoldFacebookIcon from '../../svgIcons/boldFacebook';
-import BoldInstagramIcon from '../../svgIcons/boldInstagram';
-import BoldNewsletterIcon from '../../svgIcons/boldNewsletter';
 import { BREAKPOINTS } from '../../layout/breakpoints';
 import useWindowSize from '../../hooks/useWindowSize';
 import useHover from '../../hooks/useHover';
+import { OutlineFacebook, OutlineInstagram, OutlineTwitter, OutlineWechat } from '../../svgIcons';
+import OutlineNewsletter from '../../svgIcons/outlineNewsletter';
 
 export interface FooterData {
   copies: Copies;
@@ -192,18 +189,18 @@ export const DzFooter: FC<DzFooterProps> = ({
         <div className={cn(styles.socialContainer)}>
           {twitter ? (
             <DzLink href={twitter} ref={twitterHover} openNewTab>
-              <BoldTwitterIcon fill={isTwitterHover ? '#757575' : 'black'} />
+              <OutlineTwitter fill={isTwitterHover ? '#757575' : 'black'} />
             </DzLink>
           ) : null}
 
           {facebook ? (
             <DzLink href={facebook} ref={facebookHover} openNewTab>
-              <BoldFacebookIcon fill={isFacebookHover ? '#757575' : 'black'} />
+              <OutlineFacebook fill={isFacebookHover ? '#757575' : 'black'} />
             </DzLink>
           ) : null}
           {instagram ? (
             <DzLink href={instagram} ref={instagramHover} openNewTab>
-              <BoldInstagramIcon
+              <OutlineInstagram
                 fill={isInstagramHover ? '#757575' : 'black'}
               />
             </DzLink>
@@ -211,7 +208,7 @@ export const DzFooter: FC<DzFooterProps> = ({
 
           {weChat ? (
             <DzLink href={weChat} ref={weChatHover} openNewTab>
-              <BoldWeChatIcon fill={isWeChatHover ? '#757575' : 'black'} />
+              <OutlineWechat fill={isWeChatHover ? '#757575' : 'black'} />
             </DzLink>
           ) : null}
 
@@ -220,7 +217,7 @@ export const DzFooter: FC<DzFooterProps> = ({
             onClick={() => newsletterAction()}
             ref={newsletterHover}
           >
-            <BoldNewsletterIcon
+            <OutlineNewsletter
               fill={isNewsletterHover ? '#757575' : 'black'}
             />
           </button>
