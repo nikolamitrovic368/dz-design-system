@@ -1,3 +1,15 @@
+# v0.0.133 (Fri Oct 20 2023)
+
+#### 🐛 Bug Fix
+
+- disable zoom on images < 2560 px [#191](https://github.com/Zwirner/design-system/pull/191) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.132 (Fri Oct 20 2023)
 
 #### 🐛 Bug Fix

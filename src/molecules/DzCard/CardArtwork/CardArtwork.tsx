@@ -85,8 +85,7 @@ export const CardArtwork: FC<CardArtworkProps> = ({
         imgClass={cn(
           styles.mediaImg,
           imageStyles,
-          enableZoom ? styles.mediaZoom : '',
-          'md:group-hover:scale-[1.03]'
+          enableZoom ? cn(styles.mediaZoom, 'md:group-hover:scale-[1.03]') : ''
         )}
         objectFit={MEDIA_OBJECT_FIT.CONTAIN}
         aspectRatio={MEDIA_ASPECT_RATIOS['4:3']}

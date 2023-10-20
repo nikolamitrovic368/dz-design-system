@@ -56,7 +56,9 @@ export interface DzComplexGridProps {
   linkCTA?: LinkCTA;
   defaultStart?: number;
   onClickImage?: (data: CardMediaData | CardArtworkData) => void;
-  imageStyles?: any;
+  cardStyles?: any;
+  // allows for per-card container styling via card id -> style map
+  cardStylesMap?: Record<string, string>;
   gridColumnsStyles?: any;
 }
 
@@ -128,7 +130,8 @@ export const DzComplexGrid: FC<DzComplexGridProps> = ({
   linkCTA,
   defaultStart = INITIAL_VALUE,
   onClickImage,
-  imageStyles,
+  cardStyles,
+  cardStylesMap,
   gridColumnsStyles,
 }) => {
   const { width } = useWindowSize();
@@ -271,7 +274,7 @@ export const DzComplexGrid: FC<DzComplexGridProps> = ({
                   size: [CardSizes['12col'], columnsSpanPerRow],
                 }}
                 onClickImage={data => onClickImage?.(data)}
-                imageStyles={imageStyles}
+                imageStyles={cn(cardStyles, cardStylesMap?.[cardData.id] || '')}
               />
             </DzColumn>
           );

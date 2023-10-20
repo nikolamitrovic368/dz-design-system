@@ -49,6 +49,7 @@ interface DzImageZoomModalProps {
   onClose: () => void;
   imgUrl?: string;
   alt: string;
+  isZoomEnabled?: boolean;
 }
 
 export const DzImageZoomModal = ({
@@ -56,11 +57,13 @@ export const DzImageZoomModal = ({
   onClose,
   imgUrl,
   alt,
+  isZoomEnabled = true,
 }: DzImageZoomModalProps) => {
   const isSmall = useIsSmallWindowSize();
   const onClickClose = () => onClose();
   const { width } = useWindowSize();
   const [imageDimensions, { error }] = useImageSize(imgUrl);
+
   const initialScale =
     imageDimensions && width
       ? width > imageDimensions.width
@@ -76,23 +79,33 @@ export const DzImageZoomModal = ({
 
   return isOpen && imageDimensions && !error ? (
     <div className={styles.imageZoomModalContainer}>
-      <TransformWrapper initialScale={initialScale} disablePadding>
+      <TransformWrapper
+        initialScale={initialScale}
+        disablePadding
+        disabled={!isZoomEnabled}
+        pinch={{ disabled: !isZoomEnabled }}
+        doubleClick={{ disabled: !isZoomEnabled }}
+      >
         {({ zoomIn, zoomOut }) => (
           <>
             <div className={styles.modalHeaderContainer}>
               {!isSmall && (
                 <div>
-                  <button
-                    onClick={() => zoomIn()}
-                    className={styles.plusButton}
-                  >
-                    <PlusIcon className={styles.icon} />
-                    Zoom In
-                  </button>
-                  <button onClick={() => zoomOut()}>
-                    <MinusIcon className={styles.icon} />
-                    Zoom Out
-                  </button>
+                  {isZoomEnabled && (
+                    <>
+                      <button
+                        onClick={() => zoomIn()}
+                        className={styles.plusButton}
+                      >
+                        <PlusIcon className={styles.icon} />
+                        Zoom In
+                      </button>
+                      <button onClick={() => zoomOut()}>
+                        <MinusIcon className={styles.icon} />
+                        Zoom Out
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
               <button
@@ -109,7 +122,9 @@ export const DzImageZoomModal = ({
               <img
                 src={imgUrl}
                 alt={alt}
-                className="cursor-grab active:cursor-grabbing"
+                className={
+                  isZoomEnabled ? 'cursor-grab active:cursor-grabbing' : ''
+                }
                 style={{ pointerEvents: 'auto' }}
               />
             </TransformComponent>
