@@ -17,11 +17,6 @@ const styles: any = {
     pl-[0.9375rem]
   `,
   caretIcon: `
-    px-4
-    py-4
-    flex
-    w-[2.5rem]
-    justify-center
     outline-none
     md:outline-transparent
   `,
@@ -37,7 +32,7 @@ const styles: any = {
   mobileOption: `
     pl-5
     pr-4
-    py-[0.8125rem]
+    py-[18px]
     flex
     justify-between
   `,

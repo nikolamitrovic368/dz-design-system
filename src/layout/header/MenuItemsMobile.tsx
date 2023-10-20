@@ -8,11 +8,8 @@ import React, {
 } from 'react';
 import { cn } from '../../utils/classnames';
 import MenuLogo from '../../svgIcons/menu';
-import Search from '../../svgIcons/search';
-
 import CloseLogo from '../../svgIcons/close';
 import { Popover, Transition } from '@headlessui/react';
-import { DzInputText } from '../../atoms/DzInputText';
 import { MenuItems } from './MenuItems';
 import { DzFooter, FooterData } from '../footer/DzFooter';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -49,18 +46,6 @@ const styles: any = {
     flex-col
     relative
   `,
-  search: `
-    mt-5
-    mb-2.5
-    px-5
-  `,
-  searchInput: `
-    placeholder:text-black-100
-  `,
-  searchIcon: `
-    pb-3
-    pr-5
-  `,
   other: `
     p-5
     border
@@ -80,37 +65,15 @@ const styles: any = {
   toggleIcon: `
     outline-none
     md:outline-transparent
-    flex
-    w-[2.5rem]
-    h-[1.25rem]
-    justify-center
-    items-center
-  `,
-  searchBtn: `
-    w-[2.5rem]
-    h-[2.5rem]
-    flex
-    items-center
-    justify-center
-    outline-none
   `,
 };
 
 export const MenuItemsMobile: FC<MenuItemsMobileProps> = ({
   items = [],
-  handleSearch = () => null,
   footerData,
   newsletterAction = () => null,
 }) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const handleKeyDown = useCallback(
-    (e: any) => {
-      if (e.code === 'Enter') {
-        handleSearch(e);
-      }
-    },
-    [handleSearch]
-  );
 
   const { width, height } = useWindowSize();
   const containerHeight = useMemo(() => {
@@ -168,18 +131,6 @@ export const MenuItemsMobile: FC<MenuItemsMobileProps> = ({
             }}
           >
             <div className={cn(styles.subMenu)}>
-              <DzInputText
-                onKeyDown={handleKeyDown}
-                customClassContent={cn(styles.search)}
-                customInputClass={cn(styles.searchInput)}
-                customExtraContentClass={cn(styles.searchIcon)}
-                placeholder="Search"
-                extraChildren={
-                  <button className={styles.searchBtn}>
-                    <Search />
-                  </button>
-                }
-              />
               <MenuItems items={items} isMobile />
               <button
                 className={cn(styles.other)}

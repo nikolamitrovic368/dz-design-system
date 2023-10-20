@@ -60,7 +60,8 @@ const styles: any = {
     mr-1
   `,
   submenuItemMobile: `
-    p-5
+    px-5
+    py-[18px]
     w-full
     block
     min-w-fit
