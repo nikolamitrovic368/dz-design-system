@@ -1,7 +1,6 @@
 import React from 'react';
 import { cn } from '../utils/classnames';
 // import Link from 'next/link'
-import { DzSvg } from '../svgIcons/DzSvg';
 
 import { IconProps } from '../svgIcons/types';
 

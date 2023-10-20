@@ -5,7 +5,12 @@ import { cn } from '../../utils/classnames';
 import { BREAKPOINTS } from '../../layout/breakpoints';
 import useWindowSize from '../../hooks/useWindowSize';
 import useHover from '../../hooks/useHover';
-import { OutlineFacebook, OutlineInstagram, OutlineTwitter, OutlineWechat } from '../../svgIcons';
+import {
+  OutlineFacebook,
+  OutlineInstagram,
+  OutlineTwitter,
+  OutlineWechat,
+} from '../../svgIcons';
 import OutlineNewsletter from '../../svgIcons/outlineNewsletter';
 
 export interface FooterData {
@@ -200,9 +205,7 @@ export const DzFooter: FC<DzFooterProps> = ({
           ) : null}
           {instagram ? (
             <DzLink href={instagram} ref={instagramHover} openNewTab>
-              <OutlineInstagram
-                fill={isInstagramHover ? '#757575' : 'black'}
-              />
+              <OutlineInstagram fill={isInstagramHover ? '#757575' : 'black'} />
             </DzLink>
           ) : null}
 
@@ -217,9 +220,7 @@ export const DzFooter: FC<DzFooterProps> = ({
             onClick={() => newsletterAction()}
             ref={newsletterHover}
           >
-            <OutlineNewsletter
-              fill={isNewsletterHover ? '#757575' : 'black'}
-            />
+            <OutlineNewsletter fill={isNewsletterHover ? '#757575' : 'black'} />
           </button>
         </div>
       </div>
