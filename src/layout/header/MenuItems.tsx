@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { DesktopSubmenu } from './DesktopSubmenus';
 import { DzLink, DzLinkProps, RouterProps, TEXT_LINK_SIZES } from '../../atoms';
 import { cn } from '../../utils/classnames';
@@ -7,43 +7,44 @@ import useHover from '../../hooks/useHover';
 import { BREAKPOINTS } from '../../layout/breakpoints';
 import useWindowSize from '../../hooks/useWindowSize';
 
-export interface MenuItemsProps {
+export type MenuItemsProps = {
   items: any[];
   isMobile?: boolean;
   linkProps?: DzLinkProps | RouterProps;
-}
+  LinkElement: any;
+};
 
-interface PageLink {
+type PageLink = {
   url: string;
-}
+};
 
-interface MenuItemLink {
+type MenuItemLink = {
   title: string;
   newTab: boolean;
   link: string;
-}
+};
 
-interface RootLink {
+type RootLink = {
   link: string;
   newTab: boolean;
-}
+};
 
-interface SubmenuItems {
+type SubmenuItems = {
   items: any[];
-}
+};
 
-interface MenuItemPage {
+type MenuItemPage = {
   title: string;
   newTab: boolean;
   anchor: string;
   page: PageLink;
-}
+};
 
-interface MenuItemSubmenu {
+type MenuItemSubmenu = {
   title: string;
   rootLink: RootLink;
   submenu: SubmenuItems;
-}
+};
 
 const styles: any = {
   menuContainer: `
@@ -85,7 +86,13 @@ const styles: any = {
 };
 
 export const renderPerType = {
-  menuItemLink: (data: MenuItemLink, isMobile, linkProps, className) => {
+  menuItemLink: (
+    data: MenuItemLink,
+    isMobile,
+    linkProps,
+    className,
+    LinkElement
+  ) => {
     const { title, newTab, link } = data ?? {};
 
     return (
@@ -95,6 +102,7 @@ export const renderPerType = {
         openNewTab={newTab}
         className={className}
         textLinkSize={isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM}
+        LinkElement={LinkElement}
       >
         {title}
       </DzLink>
@@ -104,7 +112,8 @@ export const renderPerType = {
     data: MenuItemSubmenu,
     isMobile: boolean,
     linkProps,
-    className
+    className,
+    LinkElement
   ) => {
     const { title, submenu } = data ?? {};
 
@@ -121,6 +130,7 @@ export const renderPerType = {
         rootUrl={rootURL}
         items={items}
         linkProps={linkPropsEnrich}
+        LinkElement={LinkElement}
       />
     ) : (
       <DesktopSubmenu
@@ -129,10 +139,17 @@ export const renderPerType = {
         items={items}
         linkProps={linkPropsEnrich}
         linkClass={className}
+        LinkElement={LinkElement}
       />
     );
   },
-  menuItemPage: (data: MenuItemPage, isMobile, linkProps, className) => {
+  menuItemPage: (
+    data: MenuItemPage,
+    isMobile,
+    linkProps,
+    className,
+    LinkElement
+  ) => {
     const { title, newTab, anchor, page } = data ?? {};
     const { url = '' } = page ?? {};
     const urlWithAnchor = anchor ? `${url}#${anchor}` : url;
@@ -144,6 +161,7 @@ export const renderPerType = {
         openNewTab={newTab}
         className={className}
         textLinkSize={isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM}
+        LinkElement={LinkElement}
       >
         {title}
       </DzLink>
@@ -155,7 +173,8 @@ export const renderItems = (
   items,
   isMobile = false,
   linkProps = {},
-  isNested = false
+  isNested = false,
+  LinkElement: any
 ) => {
   // eslint-disable-next-line
   const { width } = useWindowSize();
@@ -183,17 +202,18 @@ export const renderItems = (
         className="relative"
         key={`${isMobile ? 'mbl' : 'dsk'}-${title}-link-item`}
       >
-        {renderFunction(item, isMobile, linkProps, listItemStyles)}
+        {renderFunction(item, isMobile, linkProps, listItemStyles, LinkElement)}
       </li>
     ) : null;
   });
 };
 
-export const MenuItems: FC<MenuItemsProps> = ({
+export const MenuItems = ({
   items = [],
   isMobile = false,
   linkProps = {},
-}) => {
+  LinkElement,
+}: MenuItemsProps) => {
   const desktopItems = useRef<HTMLUListElement | null>(null);
   const isHoverRoot = useHover(desktopItems);
   const linkPropsMenu = useMemo(() => (isHoverRoot ? linkProps : {}), [
@@ -208,7 +228,7 @@ export const MenuItems: FC<MenuItemsProps> = ({
         isMobile ? styles.menuContainerMobile : styles.menuContainer
       )}
     >
-      {renderItems(items, isMobile, linkPropsMenu)}
+      {renderItems(items, isMobile, linkPropsMenu, undefined, LinkElement)}
     </ul>
   );
 };

@@ -25,6 +25,8 @@ export interface DzFormModalProps {
   recaptchaNode?: ReactNode;
   disableBackdrop?: boolean;
   onFocus?: Function;
+  onChange?: (fieldName: string, value: any) => void;
+  onDirty?: () => void;
 }
 
 export interface SubmissionResult {
@@ -51,6 +53,8 @@ export const DzFormModal = ({
   type,
   disableBackdrop = false,
   onFocus,
+  onChange,
+  onDirty,
 }: DzFormModalProps) => {
   const formSteps = FORM_TYPES_TO_STEPS[type];
   const [submittedFormValues, setSubmittedFormValues] = useState<
@@ -79,7 +83,6 @@ export const DzFormModal = ({
     setIsSubmitSuccessful(undefined);
     onSubmit(formValues)
       .then((result: SubmissionResult) => {
-        setIsSubmitSuccessful(true);
         if (result.isSuccess) {
           setIsSubmitSuccessful(true);
         } else {
@@ -121,6 +124,8 @@ export const DzFormModal = ({
         steps={formSteps}
         onSubmit={onSubmitForm}
         onFocus={onFocus}
+        onChange={onChange}
+        onDirty={onDirty}
         showStepsCount={false}
         recaptchaNode={recaptchaNode}
         containerClassName="bg-white-100 max-w-[984px]"

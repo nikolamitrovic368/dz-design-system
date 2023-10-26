@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  useMemo,
-  useState,
-  useCallback,
-  useLayoutEffect,
-} from 'react';
+import React, { FC, useMemo, useState, useCallback } from 'react';
 import { cn } from '../../utils/classnames';
 import { DzSectionMenuProps, SectionNavItem } from './types';
 import { styles } from './styles';
@@ -13,6 +7,7 @@ import { scrollToElementId, slugify } from '../../utils/misc';
 import useScrollDirection, {
   ScrollDirection,
 } from '../../hooks/useScrollDirection';
+import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 
 const HEADER_OFFSET = 120;
 
@@ -58,7 +53,7 @@ export const DzSectionMenu: FC<DzSectionMenuProps> = ({
     return direction === ScrollDirection.UP ? styles.mblStickyUp : '';
   }, [direction]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!usePrefix || !prefix) return;
     const elements = document.querySelectorAll(`[id^='${prefix}']`);
     if (!elements?.length) return;

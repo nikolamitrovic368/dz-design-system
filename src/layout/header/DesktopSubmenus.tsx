@@ -1,10 +1,13 @@
 import React, {
-  FC,
   Fragment,
   useState,
   useMemo,
   useCallback,
   useEffect,
+  forwardRef,
+  ForwardRefExoticComponent,
+  PropsWithChildren,
+  LegacyRef,
 } from 'react';
 import { Popover } from '@headlessui/react';
 
@@ -20,6 +23,7 @@ export interface DesktopSubmenuProps {
   rootUrl?: string;
   linkProps?: DzLinkProps | RouterProps;
   linkClass?: string;
+  LinkElement: any;
 }
 
 const styles: any = {
@@ -50,7 +54,7 @@ const styles: any = {
     flex
     flex-col
     py-[0.875rem]
-    z-30
+    z-[51]
     min-w-[10.3164rem]
     absolute
     left-[15px]
@@ -76,14 +80,23 @@ const styles: any = {
   `,
 };
 
-export const DesktopSubmenu: FC<DesktopSubmenuProps> = ({
+const linkHolderComponent: ForwardRefExoticComponent<PropsWithChildren> = forwardRef(
+  ({ children }, ref) => (
+    <div tabIndex={0} ref={ref as LegacyRef<HTMLDivElement>}>
+      {children}
+    </div>
+  )
+);
+
+export const DesktopSubmenu = ({
   title = '',
   rootUrl = '',
   items = [],
   linkProps = {},
   linkClass = '',
-}) => {
-  const [hoverOverMenu, SetHoverOverMenu] = useState(false);
+  LinkElement,
+}: DesktopSubmenuProps) => {
+  const [hoverOverMenu, setHoverOverMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const [isHoverRoot, setIsHoverRoot] = useState(false);
   const [isFocusRoot, setIsFocusRoot] = useState(false);
@@ -114,21 +127,6 @@ export const DesktopSubmenu: FC<DesktopSubmenuProps> = ({
     linkProps,
   ]);
 
-  const handleClick = useCallback(
-    e => {
-      const url = e?.target?.href;
-      if (!url) return false;
-      const props = linkProps as DzLinkProps;
-      if (linkProps && props.openNewTab) {
-        window.open(url, '_blank');
-      } else {
-        window.location = e?.target?.href;
-      }
-      return false;
-    },
-    [linkProps]
-  );
-
   const resetVisibleFocus = useCallback(() => {
     setVisitedFocusElements(0);
   }, []);
@@ -136,36 +134,36 @@ export const DesktopSubmenu: FC<DesktopSubmenuProps> = ({
   const handleUserKeyPress = useCallback(
     event => {
       const { key, keyCode } = event;
-      if (!(keyCode === 13 && key === 'Enter')) return false;
-      if (isFocusRoot && openSubMenu) {
-        handleClick(event);
-      }
+      const isEnterPressed = keyCode === 13 && key === 'Enter';
+      if (!isEnterPressed) return false;
+
       if (isFocusRoot) {
-        setOpenSubMenu(true);
+        setOpenSubMenu(false);
       }
     },
-    [handleClick, isFocusRoot, openSubMenu]
+    [isFocusRoot, openSubMenu]
   );
 
   return (
     <Popover as={Fragment}>
-      <Popover.Button as={Fragment}>
+      <Popover.Button as={linkHolderComponent}>
         <DzLink
           {...linkProps}
           href={rootUrl}
           onKeyDown={handleUserKeyPress}
           onFocus={() => {
+            setOpenSubMenu(true);
             setIsFocusRoot(true);
             resetVisibleFocus();
           }}
           onBlur={() => setIsFocusRoot(false)}
-          onClick={handleClick}
           onMouseEnter={() => {
             setIsHoverRoot(true);
             resetVisibleFocus();
           }}
           onMouseLeave={() => {
             setIsHoverRoot(false);
+            setOpenSubMenu(false);
           }}
           className={cn(
             showElements ? '!text-black-100' : '',
@@ -174,6 +172,7 @@ export const DesktopSubmenu: FC<DesktopSubmenuProps> = ({
             'outline-transparent',
             paddingClasses
           )}
+          LinkElement={LinkElement}
         >
           {title}
         </DzLink>
@@ -181,12 +180,16 @@ export const DesktopSubmenu: FC<DesktopSubmenuProps> = ({
       <Popover.Panel
         as="ul"
         static
+        focus
         className={cn(styles.childMenus, showClasses)}
-        onMouseEnter={() => SetHoverOverMenu(true)}
-        onMouseLeave={() => SetHoverOverMenu(false)}
+        onMouseEnter={() => setHoverOverMenu(true)}
+        onMouseLeave={() => {
+          setOpenSubMenu(false);
+          setHoverOverMenu(false);
+        }}
         onBlur={() => setVisitedFocusElements(element => element + 1)}
       >
-        {renderItems(items, false, linkPropsHover, true)}
+        {renderItems(items, false, linkPropsHover, true, LinkElement)}
       </Popover.Panel>
     </Popover>
   );

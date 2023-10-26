@@ -8,6 +8,7 @@ export interface DzLogoProps {
   url: string;
   className?: any;
   svgProps?: IconProps;
+  LinkElement: any;
 }
 
 const styles = {
@@ -16,12 +17,12 @@ const styles = {
 };
 
 export const DzLogo = (props: DzLogoProps) => {
-  const { url = '/', className } = props;
+  const { url = '/', className, LinkElement = 'a' } = props;
   return (
     <div className={cn(styles.logoContainer)}>
-      <a href={url} className={cn(styles.logo, className)}>
+      <LinkElement href={url} className={cn(styles.logo, className)}>
         David Zwirner
-      </a>
+      </LinkElement>
     </div>
   );
 };

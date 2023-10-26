@@ -1,5 +1,4 @@
 import React, {
-  FC,
   Fragment,
   useState,
   MouseEventHandler,
@@ -19,6 +18,7 @@ export interface MenuItemsMobileProps {
   handleSearch: MouseEventHandler<any>;
   footerData: FooterData;
   newsletterAction: Function;
+  LinkElement: any;
 }
 
 const styles: any = {
@@ -68,11 +68,12 @@ const styles: any = {
   `,
 };
 
-export const MenuItemsMobile: FC<MenuItemsMobileProps> = ({
+export const MenuItemsMobile = ({
   items = [],
   footerData,
   newsletterAction = () => null,
-}) => {
+  LinkElement,
+}: MenuItemsMobileProps) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const { width, height } = useWindowSize();
@@ -131,7 +132,19 @@ export const MenuItemsMobile: FC<MenuItemsMobileProps> = ({
             }}
           >
             <div className={cn(styles.subMenu)}>
-              <MenuItems items={items} isMobile />
+              <DzInputText
+                onKeyDown={handleKeyDown}
+                customClassContent={cn(styles.search)}
+                customInputClass={cn(styles.searchInput)}
+                customExtraContentClass={cn(styles.searchIcon)}
+                placeholder="Search"
+                extraChildren={
+                  <button className={styles.searchBtn}>
+                    <Search />
+                  </button>
+                }
+              />
+              <MenuItems items={items} isMobile LinkElement={LinkElement} />
               <button
                 className={cn(styles.other)}
                 onClick={() => newsletterAction()}

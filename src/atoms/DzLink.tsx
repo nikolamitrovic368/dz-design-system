@@ -7,6 +7,12 @@ import {
   ForwardRefExoticComponent,
 } from 'react';
 
+const internalLinkFlags = [
+  '.davidzwirner.com',
+  '.zwirner.dev',
+  '.zwirner.tech',
+];
+
 export const LINK_VARIANTS = {
   NAV: 'nav',
   TEXT: 'text',
@@ -49,10 +55,10 @@ export type DzLinkProps = {
   withoutStyle?: boolean;
 } & ComponentPropsWithRef<'a'>;
 
-export interface RouterProps {
+export type RouterProps = {
   useRoute?: boolean;
   router?: any;
-}
+};
 
 const styles: any = {
   element: `
@@ -104,7 +110,7 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
   (
     {
       children,
-      href,
+      href: hrefFromProps,
       openNewTab = false,
       className = '',
       linkProps,
@@ -118,12 +124,17 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
     },
     ref
   ) => {
+    const href = hrefFromProps || '/404';
     const isActive = router?.asPath === href;
     const inactiveStyle = !isActive ? styles.inactive : '';
-    const isNewTab =
-      openNewTab !== undefined
-        ? openNewTab
-        : href && !href.startsWith('/') && !href.startsWith('#');
+    const localFlagThatHrefIncludes = internalLinkFlags.find(flag =>
+      href.includes(flag)
+    );
+    const isExternalLink =
+      href.startsWith('http') && !localFlagThatHrefIncludes;
+    const parsedHref = localFlagThatHrefIncludes
+      ? href.split(localFlagThatHrefIncludes).at(1) ?? '/'
+      : href;
 
     const linkStyle = !withoutStyle
       ? cn(
@@ -135,23 +146,41 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
         )
       : '';
 
-    const LinkElementType = LinkElement ?? 'a';
-
-    if (!isNewTab) {
+    // TEMP for parts of system where Link are not passed via props. Remove after end.
+    if (!isExternalLink && LinkElement === 'a') {
       return (
-        <LinkElementType
-          key={textLinkSize}
+        <LinkElement
           href={href}
+          target={openNewTab ? '_blank' : '_self'}
+          rel="noopener noreferrer"
           ref={ref}
           className={linkStyle}
           {...rest}
           {...linkProps}
         >
           {children}
-        </LinkElementType>
+        </LinkElement>
       );
     }
 
+    // Usage for Next.js Link
+    if (!isExternalLink) {
+      return (
+        <LinkElement
+          href={parsedHref}
+          target={openNewTab ? '_blank' : '_self'}
+          rel="noopener noreferrer"
+          ref={ref}
+          className={linkStyle}
+          {...rest}
+          {...linkProps}
+        >
+          {children}
+        </LinkElement>
+      );
+    }
+
+    // Usage for external links
     return (
       <a
         ref={ref}
