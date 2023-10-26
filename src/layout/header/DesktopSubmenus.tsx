@@ -141,7 +141,7 @@ export const DesktopSubmenu = ({
         setOpenSubMenu(false);
       }
     },
-    [isFocusRoot, openSubMenu]
+    [isFocusRoot]
   );
 
   return (

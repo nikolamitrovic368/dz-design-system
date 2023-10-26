@@ -102,9 +102,7 @@ export const DzHeader = ({
       style={isMouseOver ? { zIndex: HEADER_CONTAINER_Z_INDEX + 1 } : {}}
     >
       <div className={cn(styles.leftSide)}>
-        <DzLogo
-          LinkElement={LinkElement}
-        />
+        <DzLogo LinkElement={LinkElement} />
       </div>
       {isSmall ? (
         <nav
