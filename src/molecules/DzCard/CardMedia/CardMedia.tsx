@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   DzText,
   DzMedia,
@@ -8,12 +8,22 @@ import {
   ObjectPositionType,
   MEDIA_ASPECT_RATIOS,
 } from '../../../atoms';
-import { CardMediaData, CardMediaProps } from './types';
+import { CardMediaData } from './types';
 import { styles } from './styles';
 import { cn } from '../../../utils/classnames';
 import { slugify } from '../../../utils';
 
-export const CardMedia: FC<CardMediaProps> = ({ data, onClickImage }) => {
+type CardMediaProps = {
+  data: CardMediaData;
+  onClickImage?: (data: CardMediaData) => void;
+  LinkElement: any;
+};
+
+export const CardMedia = ({
+  data,
+  onClickImage,
+  LinkElement = 'a',
+}: CardMediaProps) => {
   const {
     id,
     media,
@@ -34,6 +44,7 @@ export const CardMedia: FC<CardMediaProps> = ({ data, onClickImage }) => {
           ...(media?.imgProps || {}),
           onClick: () => onClickImage?.(data),
         }}
+        LinkElement={LinkElement}
       />
       {description ? (
         <DzText

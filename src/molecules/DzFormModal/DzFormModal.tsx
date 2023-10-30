@@ -11,7 +11,7 @@ import {
 import { inquireFormSteps } from './formSteps/inquireFormSteps';
 import { newsletterFormSteps } from './formSteps/newsletterFormSteps';
 
-export interface DzFormModalProps {
+export type DzFormModalProps = {
   isOpen: boolean;
   onClose: () => void;
   title: string;
@@ -27,12 +27,13 @@ export interface DzFormModalProps {
   onFocus?: Function;
   onChange?: (fieldName: string, value: any) => void;
   onDirty?: () => void;
-}
+  LinkElement: any;
+};
 
-export interface SubmissionResult {
+export type SubmissionResult = {
   isSuccess: boolean;
   error?: string;
-}
+};
 
 const FORM_TYPES_TO_STEPS = {
   [FORM_MODAL_TYPES.INQUIRE]: inquireFormSteps,
@@ -55,6 +56,7 @@ export const DzFormModal = ({
   onFocus,
   onChange,
   onDirty,
+  LinkElement = 'a',
 }: DzFormModalProps) => {
   const formSteps = FORM_TYPES_TO_STEPS[type];
   const [submittedFormValues, setSubmittedFormValues] = useState<
@@ -121,6 +123,7 @@ export const DzFormModal = ({
       }
     >
       <DzForm
+        LinkElement={LinkElement}
         steps={formSteps}
         onSubmit={onSubmitForm}
         onFocus={onFocus}

@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import {
   DzMedia,
   DzText,
@@ -13,7 +13,7 @@ import {
 } from '../../../atoms';
 import { cn } from '../../../utils/classnames';
 import { priceFormatter } from '../../../utils/formatters';
-import { CardArtworkData, CardArtworkProps } from './types';
+import { CardArtworkData } from './types';
 import { globalStyles, stylesSizes } from './styles';
 import { mergeStyles } from '../../../lib/styles';
 import { typeToSize } from '../sizes';
@@ -21,12 +21,23 @@ import useWindowSize from '../../../hooks/useWindowSize';
 import { BREAKPOINTS } from '../../../layout/breakpoints';
 import { slugify } from '../../../utils';
 import { CardViewport } from '../types';
+import { useIsInViewportSingleCallback } from '../../../hooks/useIsInViewportSingleCallback';
 
-export const CardArtwork: FC<CardArtworkProps> = ({
+export type CardArtworkProps = {
+  LinkElement: any;
+  data: CardArtworkData;
+  onClickImage?: (data: CardArtworkData) => void;
+  onViewport?: (data: CardArtworkData) => void;
+  imageStyles?: any;
+};
+
+export const CardArtwork = ({
   data,
   onClickImage,
+  onViewport,
   imageStyles,
-}) => {
+  LinkElement = 'a',
+}: CardArtworkProps) => {
   const {
     id,
     size,
@@ -48,7 +59,7 @@ export const CardArtwork: FC<CardArtworkProps> = ({
     enableZoom = true,
     viewport = CardViewport.Desktop,
   } = data as CardArtworkData;
-
+  const targetRef = useIsInViewportSingleCallback(onViewport);
   const { width } = useWindowSize();
   const isSmall = useMemo(() => {
     return width <= BREAKPOINTS.MD;
@@ -68,18 +79,18 @@ export const CardArtwork: FC<CardArtworkProps> = ({
     children => {
       if (data?.slug) {
         return (
-          <DzLink href={data?.slug} withoutStyle>
+          <DzLink href={data?.slug} withoutStyle LinkElement={LinkElement}>
             {children}
           </DzLink>
         );
       }
       return children;
     },
-    [data]
+    [data, LinkElement]
   );
 
   return renderWithLink(
-    <div id={id} className={cn(styles.cardContainer, 'group')}>
+    <div id={id} className={cn(styles.cardContainer, 'group')} ref={targetRef}>
       <DzMedia
         className="overflow-hidden"
         imgClass={cn(
@@ -95,6 +106,7 @@ export const CardArtwork: FC<CardArtworkProps> = ({
           ...(media?.imgProps || {}),
           onClick: () => onClickImage?.(data),
         }}
+        LinkElement={LinkElement}
       />
       <div className={cn(styles.artwork.infoContainer)}>
         <div className={cn(styles.artwork.leftPanel)}>

@@ -1,8 +1,8 @@
-import React, { FC, useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { cn } from '../../utils/classnames';
-import { DzSectionMenuProps, SectionNavItem } from './types';
+import { SectionMenuCTA, SectionNavItem } from './types';
 import { styles } from './styles';
-import { DzButton, DzLink } from '../../atoms';
+import { DzButton, DzLink, DzLinkProps } from '../../atoms';
 import { scrollToElementId, slugify } from '../../utils/misc';
 import useScrollDirection, {
   ScrollDirection,
@@ -11,7 +11,20 @@ import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 
 const HEADER_OFFSET = 120;
 
-export const DzSectionMenu: FC<DzSectionMenuProps> = ({
+export type DzSectionMenuProps = {
+  sections?: SectionNavItem[];
+  cta?: SectionMenuCTA;
+  onSelection?: Function;
+  prefix?: string;
+  usePrefix?: boolean;
+  sticky?: boolean;
+  useLinks?: boolean;
+  linksProps?: Partial<Omit<DzLinkProps, 'LinkElement'>>;
+  className?: string;
+  LinkElement: any;
+};
+
+export const DzSectionMenu = ({
   sections,
   cta,
   onSelection,
@@ -21,7 +34,8 @@ export const DzSectionMenu: FC<DzSectionMenuProps> = ({
   useLinks = false,
   linksProps = {},
   className,
-}) => {
+  LinkElement = 'a',
+}: DzSectionMenuProps) => {
   const [direction] = useScrollDirection();
   const [isHover, setIsHover] = useState(false);
   const [activeEl, setActiveEl] = useState(null);
@@ -100,7 +114,11 @@ export const DzSectionMenu: FC<DzSectionMenuProps> = ({
                   onClick={() => handleSelection(id, text)}
                 >
                   {useLinks && url ? (
-                    <DzLink {...linksProps} href={url}>
+                    <DzLink
+                      {...linksProps}
+                      href={url}
+                      LinkElement={LinkElement}
+                    >
                       {text}
                     </DzLink>
                   ) : (

@@ -10,7 +10,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 export type MenuItemsProps = {
   items: any[];
   isMobile?: boolean;
-  linkProps?: DzLinkProps | RouterProps;
+  linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   LinkElement: any;
 };
 
@@ -85,14 +85,22 @@ const styles: any = {
   `,
 };
 
-export const renderPerType = {
-  menuItemLink: (
-    data: MenuItemLink,
+type RenderPerTypeCbArgs<T> = {
+  data: T;
+  isMobile: boolean;
+  linkProps: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
+  className: string;
+  LinkElement: any;
+};
+
+const renderPerType = {
+  menuItemLink: ({
+    data,
     isMobile,
     linkProps,
     className,
-    LinkElement
-  ) => {
+    LinkElement,
+  }: RenderPerTypeCbArgs<MenuItemLink>) => {
     const { title, newTab, link } = data ?? {};
 
     return (
@@ -108,13 +116,13 @@ export const renderPerType = {
       </DzLink>
     );
   },
-  menuItemSubmenu: (
-    data: MenuItemSubmenu,
-    isMobile: boolean,
+  menuItemSubmenu: ({
+    data,
+    isMobile,
     linkProps,
     className,
-    LinkElement
-  ) => {
+    LinkElement,
+  }: RenderPerTypeCbArgs<MenuItemSubmenu>) => {
     const { title, submenu } = data ?? {};
 
     const rootLink = data?.rootLink?.[0] ?? {};
@@ -143,13 +151,13 @@ export const renderPerType = {
       />
     );
   },
-  menuItemPage: (
-    data: MenuItemPage,
+  menuItemPage: ({
+    data,
     isMobile,
     linkProps,
     className,
-    LinkElement
-  ) => {
+    LinkElement,
+  }: RenderPerTypeCbArgs<MenuItemPage>) => {
     const { title, newTab, anchor, page } = data ?? {};
     const { url = '' } = page ?? {};
     const urlWithAnchor = anchor ? `${url}#${anchor}` : url;
@@ -169,13 +177,13 @@ export const renderPerType = {
   },
 };
 
-export const renderItems = (
+export const renderItems = ({
   items,
   isMobile = false,
   linkProps = {},
   isNested = false,
-  LinkElement: any
-) => {
+  LinkElement = 'a',
+}) => {
   // eslint-disable-next-line
   const { width } = useWindowSize();
   // eslint-disable-next-line
@@ -190,7 +198,9 @@ export const renderItems = (
 
   return items?.map(item => {
     const { _type, title } = item ?? {};
-    const renderFunction = renderPerType?.[_type];
+    const renderFunction = renderPerType[
+      _type
+    ] as typeof renderPerType[keyof typeof renderPerType];
     const listItemStyles = _type === 'menuItemSubmenu' ? '' : itemListClass;
 
     const { mobileEnabled, desktopEnabled } = item;
@@ -202,7 +212,13 @@ export const renderItems = (
         className="relative"
         key={`${isMobile ? 'mbl' : 'dsk'}-${title}-link-item`}
       >
-        {renderFunction(item, isMobile, linkProps, listItemStyles, LinkElement)}
+        {renderFunction({
+          data: item,
+          isMobile,
+          linkProps,
+          className: listItemStyles,
+          LinkElement,
+        })}
       </li>
     ) : null;
   });
@@ -212,7 +228,7 @@ export const MenuItems = ({
   items = [],
   isMobile = false,
   linkProps = {},
-  LinkElement,
+  LinkElement = 'a',
 }: MenuItemsProps) => {
   const desktopItems = useRef<HTMLUListElement | null>(null);
   const isHoverRoot = useHover(desktopItems);
@@ -228,7 +244,7 @@ export const MenuItems = ({
         isMobile ? styles.menuContainerMobile : styles.menuContainer
       )}
     >
-      {renderItems(items, isMobile, linkPropsMenu, undefined, LinkElement)}
+      {renderItems({ items, isMobile, linkProps: linkPropsMenu, LinkElement })}
     </ul>
   );
 };

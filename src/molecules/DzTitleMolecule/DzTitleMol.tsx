@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { TITLE_SIZES, TITLE_TYPES } from '../../atoms';
 import { cn } from '../../utils/classnames';
 import { DzTitleSection } from './DzTitleSection';
-import { DzTitleSectionProps } from './DzTitleMolecule';
 
 const styles: any = {
   title: `
@@ -19,10 +18,13 @@ const DEFAULT_TITLE_PROPS = {
   classNameSubtitle: cn(styles.title),
 };
 
-export const DzTitleMol: FC<DzTitleSectionProps> = props => {
+export const DzTitleMol = (
+  props: React.ComponentProps<typeof DzTitleSection>
+) => {
   return (
     <DzTitleSection
       {...props}
+      LinkElement={props.LinkElement ?? 'a'}
       titleProps={{ ...DEFAULT_TITLE_PROPS, ...(props.titleProps ?? {}) }}
     />
   );

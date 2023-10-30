@@ -49,7 +49,7 @@ export type DzLinkProps = {
   useRoute?: boolean;
   router?: any;
   className?: string;
-  LinkElement?: any;
+  LinkElement: any;
   linkProps?: any;
   textLinkSize?: TextLinkSize;
   withoutStyle?: boolean;
@@ -146,52 +146,35 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
         )
       : '';
 
-    // TEMP for parts of system where Link are not passed via props. Remove after end.
-    if (!isExternalLink && LinkElement === 'a') {
+    // Usage for external links
+    if (isExternalLink || LinkElement === 'a') {
       return (
-        <LinkElement
-          href={href}
+        <a
+          ref={ref}
           target={openNewTab ? '_blank' : '_self'}
           rel="noopener noreferrer"
-          ref={ref}
-          className={linkStyle}
+          href={href}
           {...rest}
-          {...linkProps}
+          className={linkStyle}
         >
           {children}
-        </LinkElement>
+        </a>
       );
     }
 
     // Usage for Next.js Link
-    if (!isExternalLink) {
-      return (
-        <LinkElement
-          href={parsedHref}
-          target={openNewTab ? '_blank' : '_self'}
-          rel="noopener noreferrer"
-          ref={ref}
-          className={linkStyle}
-          {...rest}
-          {...linkProps}
-        >
-          {children}
-        </LinkElement>
-      );
-    }
-
-    // Usage for external links
     return (
-      <a
-        ref={ref}
-        target="_blank"
+      <LinkElement
+        href={parsedHref}
+        target={openNewTab ? '_blank' : '_self'}
         rel="noopener noreferrer"
-        href={href}
-        {...rest}
+        ref={ref}
         className={linkStyle}
+        {...rest}
+        {...linkProps}
       >
         {children}
-      </a>
+      </LinkElement>
     );
   }
 );

@@ -1,5 +1,4 @@
 import React, {
-  FC,
   useMemo,
   useCallback,
   useEffect,
@@ -8,7 +7,6 @@ import React, {
 } from 'react';
 import { DzLink, LINK_VARIANTS, TEXT_LINK_SIZES } from '../../atoms';
 import { DzGridColumns, DzColumn, ColumnSpan } from '../../layout/DzGrid';
-import { DzListProps } from './types';
 import { styles } from './styles';
 import { cn } from '../../utils/classnames';
 import { BREAKPOINTS } from '../../layout/breakpoints';
@@ -20,16 +18,29 @@ import {
   alphabet,
 } from './utils';
 import useHover from '../../hooks/useHover';
+import { DzListItem } from './types';
 
 const DISABLE_SCROLL_SELECTION = true;
-export const DzList: FC<DzListProps> = ({
+
+export type DzListProps = {
+  numberOfCol?: number;
+  list: DzListItem[];
+  sort?: boolean;
+  useFullAlphabet?: boolean;
+  stickyOffset?: string;
+  customSort?: (a: DzListItem, b: DzListItem) => number;
+  LinkElement: any;
+};
+
+export const DzList = ({
   numberOfCol = 4,
   list,
   useFullAlphabet = true,
   sort = false,
   stickyOffset = '0px',
   customSort,
-}) => {
+  LinkElement = 'a',
+}: DzListProps) => {
   const keyOfFirstElement = useRef(1);
   const prevChar = useRef('');
   const [notMatchingLetters, setNotMatchingLetters] = useState<string[]>([]);
@@ -173,13 +184,13 @@ export const DzList: FC<DzListProps> = ({
                         id={`${currentChar}-section-${keyOfFirstElement.current}`}
                       >
                         <DzLink
-                          LinkElement="a"
                           href={url}
                           variant={LINK_VARIANTS.NAV}
                           textLinkSize={
                             isMobile ? TEXT_LINK_SIZES.LG : TEXT_LINK_SIZES.MD
                           }
                           className={isHover ? styles.linkDesktop : ''}
+                          LinkElement={LinkElement}
                         >
                           {text}
                         </DzLink>

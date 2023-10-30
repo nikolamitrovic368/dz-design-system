@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Tab } from '@headlessui/react';
 import { cn } from '../../utils/classnames';
 import { DzCard, CARD_TYPES } from '../index';
@@ -7,12 +7,6 @@ import { DzText, TEXT_SIZES } from '../../atoms';
 import useWindowSize from '../../hooks/useWindowSize';
 import { BREAKPOINTS } from '../../layout/breakpoints';
 import useHover from '../../hooks/useHover';
-
-export interface DzTabsCardsProps {
-  tabs: any[];
-  span: ColumnSpan | ColumnSpan[];
-  className?: string;
-}
 
 const styles: any = {
   tabGroup: `
@@ -72,6 +66,13 @@ const styles: any = {
   `,
 };
 
+export type DzTabsCardsProps = {
+  tabs: any[];
+  span: ColumnSpan | ColumnSpan[];
+  className?: string;
+  LinkElement: any;
+};
+
 const tabsRender = (tabs, hoverRoot) => {
   return tabs.map(tab => {
     const { title } = tab;
@@ -96,7 +97,7 @@ const tabsRender = (tabs, hoverRoot) => {
   });
 };
 
-const tabsPanels = ({ tabs, span, isSmall = false }) => {
+const tabsPanels = ({ tabs, span, isSmall = false, LinkElement }) => {
   return tabs.map((tab, index) => {
     const { title, cards } = tab;
     return (
@@ -113,6 +114,7 @@ const tabsPanels = ({ tabs, span, isSmall = false }) => {
                 <DzCard
                   type={CARD_TYPES.LOCATION}
                   data={{ ...card, hideImage: isSmall, size: span }}
+                  LinkElement={LinkElement}
                 />
               </DzColumn>
             );
@@ -123,11 +125,12 @@ const tabsPanels = ({ tabs, span, isSmall = false }) => {
   });
 };
 
-export const DzTabsCards: FC<DzTabsCardsProps> = ({
+export const DzTabsCards = ({
   tabs,
   span = 3,
   className = '',
-}) => {
+  LinkElement = 'a',
+}: DzTabsCardsProps) => {
   const { width } = useWindowSize();
   const isSmall = useMemo(() => {
     return width <= BREAKPOINTS.MD;
@@ -142,7 +145,7 @@ export const DzTabsCards: FC<DzTabsCardsProps> = ({
         {tabsRender(tabs, isHover)}
       </Tab.List>
       <Tab.Panels className={cn(styles.tabPanels)}>
-        {tabsPanels({ tabs, span, isSmall })}
+        {tabsPanels({ tabs, span, isSmall, LinkElement })}
       </Tab.Panels>
     </Tab.Group>
   );

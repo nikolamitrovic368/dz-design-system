@@ -1,4 +1,4 @@
-import React, { FC, useMemo, ReactNode, HTMLAttributes } from 'react';
+import React, { useMemo, ReactNode, HTMLAttributes } from 'react';
 import { cn } from '../../utils/classnames';
 import {
   DzMedia,
@@ -33,9 +33,10 @@ export const SPLIT_TYPES_NAMES = [SPLIT_TYPES.TALL, SPLIT_TYPES.SHORT] as const;
 
 export type SplitTypes = typeof SPLIT_TYPES_NAMES[number];
 
-interface DataSplit {
+type DataSplit = {
   title: string;
-  media: DzMediaProps;
+  media: Omit<DzMediaProps, 'LinkElement'>;
+  hideMedia?: boolean;
   category?: string;
   subtitle?: string;
   secondaryTitle?: string;
@@ -44,19 +45,18 @@ interface DataSplit {
   linkCTA?: LinkCTA;
   buttonCTA?: ButtonCTA;
   portableTextDescription?: ReactNode;
-}
+};
 
-interface LinkCTA {
+type LinkCTA = {
   text: string;
   url: string;
-  linkElement: any;
-  linkProps?: Partial<DzLinkProps>;
-}
+  linkProps?: Partial<Omit<DzLinkProps, 'LinkElement'>>;
+};
 
-interface ButtonCTA {
+type ButtonCTA = {
   text: string;
   ctaProps?: DzButtonProps;
-}
+};
 
 export interface DzSplitProps extends HTMLAttributes<HTMLDivElement> {
   type: SplitTypes;
@@ -64,6 +64,7 @@ export interface DzSplitProps extends HTMLAttributes<HTMLDivElement> {
   reverse?: boolean;
   animate?: boolean;
   mediaContainerClass?: string;
+  LinkElement: any;
 }
 
 const styles: any = {
@@ -132,18 +133,21 @@ const styles: any = {
 };
 const NUMBER_OF_CHARS_TEXT = 50;
 const NUMBER_OF_CHARS_BODY = 300;
-export const DzSplit: FC<DzSplitProps> = ({
+
+export const DzSplit = ({
   type = SPLIT_TYPES.TALL,
   reverse = false,
   animate = false,
   mediaContainerClass = '',
   data,
+  LinkElement = 'a',
   ...rest
-}) => {
+}: DzSplitProps) => {
   const {
     media,
     title,
     subtitle,
+    hideMedia,
     secondaryTitle,
     secondarySubtitle,
     category,
@@ -192,14 +196,17 @@ export const DzSplit: FC<DzSplitProps> = ({
         <div
           className={cn(mediaContainerStyles, 'w-full', mediaContainerClass)}
         >
-          <DzMedia
-            className={isPodcast ? styles.podcast : ''}
-            imgClass={animate ? styles.animateImg : ''}
-            objectFit={MEDIA_OBJECT_FIT.COVER}
-            objectPosition={ObjectPositionType.TOP}
-            aspectRatio={MEDIA_ASPECT_RATIOS['4:3']}
-            {...media}
-          />
+          {!hideMedia ? (
+            <DzMedia
+              className={isPodcast ? styles.podcast : ''}
+              imgClass={animate ? styles.animateImg : ''}
+              objectFit={MEDIA_OBJECT_FIT.COVER}
+              objectPosition={ObjectPositionType.TOP}
+              aspectRatio={MEDIA_ASPECT_RATIOS['4:3']}
+              {...media}
+              LinkElement={LinkElement}
+            />
+          ) : null}
         </div>
       </div>
 
@@ -249,9 +256,9 @@ export const DzSplit: FC<DzSplitProps> = ({
             className={cn(styles.linkCta)}
             {...(linkCTA.linkProps ?? {})}
             href={linkCTA.url}
-            LinkElement={linkCTA.linkElement}
             variant={LINK_VARIANTS.TEXT}
             textLinkSize={isSmall ? TEXT_LINK_SIZES.XS : TEXT_LINK_SIZES.SM}
+            LinkElement={LinkElement}
           >
             {linkCTA.text}
           </DzLink>

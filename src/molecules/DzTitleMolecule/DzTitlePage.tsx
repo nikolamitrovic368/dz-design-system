@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import {
   DzText,
   DzTitle,
@@ -8,11 +8,36 @@ import {
   BUTTON_SIZES,
   LINK_VARIANTS,
   DzLink,
+  DzTitleProps,
+  DzLinkProps,
+  DzButtonProps,
 } from '../../atoms';
 import { cn } from '../../utils/classnames';
-import { DzColumn, DzGridColumns } from '../../layout';
+import { ColumnProps, ColumnSpan, DzColumn, DzGridColumns } from '../../layout';
 import { sliceMaxCharLength } from '../../utils/validators';
-import { DzTitlePageProps } from './DzTitleMolecule';
+
+export type DzMoleculeTitleCTA = {
+  ctaProps?: DzButtonProps;
+  title: string;
+  description?: string;
+};
+
+type DzTitlePageProps = {
+  category?: string;
+  title: string;
+  subtitle?: string;
+  description?: ReactNode;
+  titleProps?: DzTitleProps;
+  primaryCTA?: DzMoleculeTitleCTA;
+  linkCTA?: Omit<DzLinkProps, 'LinkElement'>;
+  customClass?: string;
+  descriptionColSpan?: ColumnSpan;
+  fullLeftContainer?: boolean;
+  customCTAContainerProps?: ColumnProps;
+  isWide?: boolean;
+  disableMaxTitleLength?: boolean;
+  LinkElement: any;
+};
 
 const styles: any = {
   titleContainer: `
@@ -86,7 +111,7 @@ const DEFAULT_TITLE_PROPS = {
   subtitleType: TITLE_TYPES.P,
 };
 
-export const DzTitlePage: FC<DzTitlePageProps> = ({
+export const DzTitlePage = ({
   category,
   title,
   subtitle,
@@ -99,7 +124,8 @@ export const DzTitlePage: FC<DzTitlePageProps> = ({
   customCTAContainerProps = {},
   isWide = false,
   disableMaxTitleLength,
-}) => {
+  LinkElement = 'a',
+}: DzTitlePageProps) => {
   return (
     <div
       className={cn(
@@ -168,6 +194,7 @@ export const DzTitlePage: FC<DzTitlePageProps> = ({
               className={styles.linkCTA}
               variant={LINK_VARIANTS.TEXT}
               {...linkCTA}
+              LinkElement={LinkElement}
             >
               Learn More
             </DzLink>

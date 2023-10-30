@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 export interface DzSpotifyProps extends HTMLAttributes<HTMLIFrameElement> {
   [key: string]: any;
@@ -11,7 +11,7 @@ export interface DzSpotifyProps extends HTMLAttributes<HTMLIFrameElement> {
   loading?: 'eager' | 'lazy' | undefined;
 }
 
-export const DzSpotify: FC<DzSpotifyProps> = ({
+export const DzSpotify = ({
   title = 'Spotify Web Player',
   link,
   className = '',
@@ -22,7 +22,7 @@ export const DzSpotify: FC<DzSpotifyProps> = ({
   loading = 'lazy',
   allow = 'clipboard-write; encrypted-media; picture-in-picture;',
   ...props
-}) => {
+}: DzSpotifyProps) => {
   if (!link) return null;
   const url = new URL(link);
   return (

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { cn } from '../../utils/classnames';
 import { DzText, DzLink, LINK_VARIANTS } from '../../atoms';
 import { DzColumn, DzGridColumns } from '../../layout';
@@ -10,7 +10,7 @@ import DzContainerTitle from './DzContainerTitle';
 import { splitLocationAddressLines } from './utils/formatAddress';
 import { InquireFormContextData, INQUIRY_TYPES } from '../DzFormModal';
 
-export interface DzTitleExhibitionProps {
+type DzTitleExhibitionProps = {
   artists: Array<ArtistData>;
   checklistPDFURL?: string;
   displayDate?: string;
@@ -24,7 +24,8 @@ export interface DzTitleExhibitionProps {
   title: string;
   subtitle?: string;
   subpageTitle?: string;
-}
+  LinkElement: any;
+};
 
 const styles: any = {
   infoColumnContainer: `
@@ -87,7 +88,7 @@ const EXHIBITION_STATES_TO_LABELS = {
 };
 
 // TODO add a variant for this in DzTitleMolecule and pass through props from consumer
-export const DzTitleExhibition: FC<DzTitleExhibitionProps> = ({
+export const DzTitleExhibition = ({
   artists,
   checklistPDFURL,
   displayDate,
@@ -101,7 +102,8 @@ export const DzTitleExhibition: FC<DzTitleExhibitionProps> = ({
   title,
   subtitle,
   subpageTitle,
-}) => {
+  LinkElement = 'a',
+}: DzTitleExhibitionProps) => {
   const locationHours = location ? collectHours(location) : '';
   const locationLines = splitLocationAddressLines(location?.address);
   const isSmall = useIsSmallWindowSize();
@@ -132,6 +134,7 @@ export const DzTitleExhibition: FC<DzTitleExhibitionProps> = ({
         }}
         fullLeftContainer
         disableMaxTitleLength
+        LinkElement={LinkElement}
       />
       {showCoordinates && (
         <DzGridColumns className={styles.container}>
@@ -180,7 +183,11 @@ export const DzTitleExhibition: FC<DzTitleExhibitionProps> = ({
               <div className={styles.infoColumnContainer}>
                 <DzText className={styles.infoColumnTitle} text={'Location'} />
                 <div className={styles.infoColumnBody}>
-                  <DzLink href={location.url} target="_blank">
+                  <DzLink
+                    href={location.url}
+                    target="_blank"
+                    LinkElement={LinkElement}
+                  >
                     {locationLines.map(locationLine => (
                       <DzText
                         key={locationLine}
@@ -221,6 +228,7 @@ export const DzTitleExhibition: FC<DzTitleExhibitionProps> = ({
                       variant={LINK_VARIANTS.TEXT}
                       className={styles.mdText}
                       key={fullName}
+                      LinkElement={LinkElement}
                     >
                       {fullName}
                     </DzLink>
@@ -244,6 +252,7 @@ export const DzTitleExhibition: FC<DzTitleExhibitionProps> = ({
                     className={styles.smallText}
                     href={pressReleasePDFURL}
                     variant={LINK_VARIANTS.TEXT}
+                    LinkElement={LinkElement}
                   >
                     View Press Release
                   </DzLink>
@@ -260,6 +269,7 @@ export const DzTitleExhibition: FC<DzTitleExhibitionProps> = ({
                     className={styles.smallText}
                     href={checklistPDFURL}
                     variant={LINK_VARIANTS.TEXT}
+                    LinkElement={LinkElement}
                   >
                     Download Checklist
                   </DzLink>

@@ -38,6 +38,8 @@ module.exports = {
         },
         white: {
           100: '#FFFFFF',
+          '100-op-80': '#FFFFFFCC',
+          '100-op-60': '#FFFFFF99',
         },
         yellow: {
           10: 'rgba(255, 209, 23, 0.1)',
@@ -130,6 +132,7 @@ module.exports = {
       },
       dropShadow: {
         100: '0px 2px 18px rgba(0, 0, 0, 0.06)',
+        150: '0px 2px 18px rgba(0, 0, 0, 0.08)'
       },
       textDecorationColor: {
         'black-60': '#757575',

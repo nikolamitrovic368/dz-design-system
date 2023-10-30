@@ -1,14 +1,12 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-import DzTitleMolecule, {
-  DzMoleculeLinkCTA,
-  DzMoleculeTitleCTA,
-  DzTitleMoleculeTypes,
-} from './DzTitleMolecule';
+import DzTitleMolecule, { DzTitleMoleculeTypes } from './DzTitleMolecule';
 import { TITLE_SIZES, TITLE_TYPES, TitleType } from '../../atoms';
 import { ColumnProps } from '../../layout';
+import { DzMoleculeLinkCTA } from './DzTitleSection';
+import { DzMoleculeTitleCTA } from './DzTitlePage';
 
-interface ContainerTitleProps {
+type ContainerTitleProps = {
   type?: DzTitleMoleculeTypes;
   titleType?: TitleType;
   title: string;
@@ -20,7 +18,8 @@ interface ContainerTitleProps {
   fullLeftContainer?: boolean;
   customCTAContainerProps?: ColumnProps;
   disableMaxTitleLength?: boolean;
-}
+  LinkElement: any;
+};
 
 const styles: any = {
   pageTitleContainer: `
@@ -36,7 +35,7 @@ const stylesPerType: any = {
   [DzTitleMoleculeTypes.MOLECULE]: styles.moleculeTitleContainer,
 };
 
-export const DzContainerTitle: FC<ContainerTitleProps> = ({
+export const DzContainerTitle = ({
   type = DzTitleMoleculeTypes.PAGE,
   title,
   titleType = TITLE_TYPES.H1,
@@ -48,7 +47,8 @@ export const DzContainerTitle: FC<ContainerTitleProps> = ({
   primaryCTA,
   customCTAContainerProps,
   disableMaxTitleLength,
-}) => {
+  LinkElement = 'a',
+}: ContainerTitleProps) => {
   return (
     <DzTitleMolecule
       type={type}
@@ -67,6 +67,7 @@ export const DzContainerTitle: FC<ContainerTitleProps> = ({
         customCTAContainerProps,
         disableMaxTitleLength,
       }}
+      LinkElement={LinkElement}
     />
   );
 };

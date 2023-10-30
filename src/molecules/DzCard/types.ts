@@ -6,13 +6,13 @@ import { CardSizes } from './sizes';
 
 export type CardSizeType = CardSizes | ColumnSpan;
 
-export interface BaseCard {
+export type BaseCard = {
   id?: string;
   //    12col or 12  or [Mobile Size, Desktop Size]
   size: CardSizeType | CardSizeType[];
   viewport?: CardViewport;
   isDisabled?: boolean;
-}
+};
 
 export enum CardViewport {
   Desktop = 'Desktop',
@@ -42,14 +42,10 @@ export const CARD_TYPES_NAMES = [
 
 export type CardTypes = typeof CARD_TYPES_NAMES[number];
 
-export type DataCardType = CardArtworkData | CardMediaData | CardContentData;
-
-export interface DzCardProps {
-  type: CardTypes;
-  data: DataCardType;
-  onClickImage?: (data: CardMediaData | CardArtworkData) => void;
-  imageStyles?: any;
-}
+export type DataCardType =
+  | Omit<CardArtworkData, 'LinkElement'>
+  | Omit<CardMediaData, 'LinkElement'>
+  | Omit<CardContentData, 'LinkElement'>;
 
 export function isArtworkCard(object: unknown): object is CardArtworkData {
   if (object !== null && typeof object === 'object' && object) {

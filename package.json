@@ -1,5 +1,5 @@
 {
-  "version": "0.0.138",
+  "version": "0.0.143",
   "license": "MIT",
   "main": "dist/design-system.esm.js",
   "typings": "dist/index.d.ts",
@@ -107,6 +107,7 @@
     "react-drag-drop-files": "^2.3.10",
     "react-zoom-pan-pinch": "^3.1.0",
     "swiper": "^9.3.1",
+    "use-is-in-viewport": "^1.0.9",
     "uuid": "^9.0.0"
   },
   "jest": {

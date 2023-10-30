@@ -1,5 +1,4 @@
 import React, {
-  FC,
   Fragment,
   ReactNode,
   forwardRef,
@@ -37,8 +36,14 @@ import { BREAKPOINTS } from '../../layout/breakpoints';
 
 register();
 
-export interface DzHeroItem {
-  media: DzMediaProps;
+type LinkCTA = {
+  text: string;
+  url: string;
+  linkProps?: Omit<DzLinkProps, 'LinkElement'>;
+};
+
+export type DzHeroItem = {
+  media: Omit<DzMediaProps, 'LinkElement'>;
   hideMedia?: boolean;
   category?: string;
   title: string;
@@ -48,21 +53,15 @@ export interface DzHeroItem {
   description?: ReactNode;
   portableTextDescription?: ReactNode;
   linkCTA?: LinkCTA;
-}
+};
 
-export interface DzHeroProps {
+export type DzHeroProps = {
   items: DzHeroItem[];
   onSlideChange?: Function;
   className?: string;
   primaryTitleProps?: Omit<DzTitleProps, 'title' | 'subtitle'>;
-}
-
-interface LinkCTA {
-  text: string;
-  url: string;
-  linkElement: any;
-  linkProps?: DzLinkProps;
-}
+  LinkElement: any;
+};
 
 const styles: any = {
   heroContainer: `
@@ -97,10 +96,10 @@ const styles: any = {
     md:text-xxl
   `,
   linkCta: `
-   mt-2.5
-   mb-[2.219rem]
-   md:mt-[1.875rem]
-   md:mb-0
+    mt-2.5
+    mb-[2.219rem]
+    md:mt-[1.875rem]
+    md:mb-0
   `,
   mediaImage: `
     w-full
@@ -183,8 +182,8 @@ enum Actions {
   PREV = 'previous',
 }
 
-export const DzHero: FC<DzHeroProps> = forwardRef<HTMLDivElement, DzHeroProps>(
-  ({ items, className = '', primaryTitleProps }, ref) => {
+export const DzHero = forwardRef<HTMLDivElement, DzHeroProps>(
+  ({ items, className = '', primaryTitleProps, LinkElement = 'a' }, ref) => {
     const [currentItemIndex, setCurrentItemIndex] = useState<number>(0);
     const [activeAnimation, setActiveAnimation] = useState(0);
     const { width } = useWindowSize();
@@ -219,6 +218,7 @@ export const DzHero: FC<DzHeroProps> = forwardRef<HTMLDivElement, DzHeroProps>(
                   key={`${item?.media?.url}-${item.title}`}
                   imgClass={cn(styles.mediaImage)}
                   {...item.media}
+                  LinkElement={LinkElement}
                 />
               ))}
           </MediaWrapper>
@@ -281,11 +281,11 @@ export const DzHero: FC<DzHeroProps> = forwardRef<HTMLDivElement, DzHeroProps>(
                     <DzLink
                       {...(item.linkCTA.linkProps ?? {})}
                       href={item.linkCTA.url}
-                      LinkElement={item.linkCTA.linkElement}
                       textLinkSize={
                         isSmall ? TEXT_LINK_SIZES.XS : TEXT_LINK_SIZES.SM
                       }
                       variant={LINK_VARIANTS.TEXT}
+                      LinkElement={LinkElement}
                     >
                       {item.linkCTA.text}
                     </DzLink>

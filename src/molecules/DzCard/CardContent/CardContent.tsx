@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   DzText,
   DzMedia,
@@ -18,15 +18,22 @@ import { BREAKPOINTS } from '../../../layout/breakpoints';
 import { CardViewport, typeToSize } from '..';
 import { mergeStyles } from '../../../lib/styles';
 import { globalStyles, stylesSizes } from './styles';
-import { CardContentData, CardContentProps } from './types';
+import { CardContentData } from './types';
 import { cn } from '../../../utils/classnames';
 import { slugify } from '../../../utils';
 import { camelCaseItemProps } from '../../../utils/props';
 
-export const CardContent: FC<CardContentProps> = ({
+type CardContentProps = {
+  data: CardContentData;
+  isLocation?: boolean;
+  LinkElement: any;
+};
+
+export const CardContent = ({
   data,
   isLocation = false,
-}) => {
+  LinkElement = 'a',
+}: CardContentProps) => {
   const {
     size,
     id,
@@ -86,21 +93,29 @@ export const CardContent: FC<CardContentProps> = ({
     [isHoverLink, styles]
   );
 
-  const renderWithLink = useCallback((children, linkProps) => {
-    if (linkProps) {
-      return (
-        <DzLink
-          {...linkProps}
-          withoutStyle
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-        >
-          {children}
-        </DzLink>
-      );
-    }
-    return children;
-  }, []);
+  const disabledLinkStyle = cardLink
+    ? 'pointer-events-none'
+    : 'pointer-events-auto';
+
+  const renderWithLink = useCallback(
+    (children, linkProps) => {
+      if (linkProps) {
+        return (
+          <DzLink
+            {...linkProps}
+            withoutStyle
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+            LinkElement={LinkElement}
+          >
+            {children}
+          </DzLink>
+        );
+      }
+      return children;
+    },
+    [LinkElement]
+  );
 
   return renderWithLink(
     <div
@@ -127,6 +142,7 @@ export const CardContent: FC<CardContentProps> = ({
             ...(media?.imgProps || {}),
           }}
           {...media}
+          LinkElement={LinkElement}
         />
       ) : null}
 
@@ -189,9 +205,10 @@ export const CardContent: FC<CardContentProps> = ({
             <DzLink
               {...(linkCTA.linkProps ?? {})}
               href={linkCTA.url}
-              LinkElement={cardLink ? 'span' : linkCTA.linkElement}
+              // LinkElement={cardLink ? 'span' : LinkElement}
+              LinkElement={LinkElement}
               variant={LINK_VARIANTS.TEXT}
-              className={cn(linkHoverStyle)}
+              className={cn(linkHoverStyle, disabledLinkStyle)}
               textLinkSize={isSmall ? TEXT_LINK_SIZES.XS : TEXT_LINK_SIZES.SM}
             >
               {linkCTA.text}

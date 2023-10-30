@@ -15,7 +15,6 @@ export const sectionData = {
   subtitle: 'Lorem ipsum dolor sit amet, consectetuer adipiscin',
   linkCTA: {
     text: 'View All',
-    linkElement: 'a',
     url: '/',
   },
 };
@@ -25,8 +24,10 @@ export const exhibitionData = {
   openingReception: 'April 19, 6-9pm',
   startDate: '2023-08-06',
   endDate: '2023-08-29',
-  pressReleasePDFURL: "https://cdn.sanity.io/files/juzvn5an/test/3117e550d45fd4effbcd064d048cf9768f2298d0.pdf",
-  checklistPDFURL: "https://cdn.sanity.io/files/juzvn5an/test/3117e550d45fd4effbcd064d048cf9768f2298d0.pdf",
+  pressReleasePDFURL:
+    'https://cdn.sanity.io/files/juzvn5an/test/3117e550d45fd4effbcd064d048cf9768f2298d0.pdf',
+  checklistPDFURL:
+    'https://cdn.sanity.io/files/juzvn5an/test/3117e550d45fd4effbcd064d048cf9768f2298d0.pdf',
   artists: [
     {
       description:

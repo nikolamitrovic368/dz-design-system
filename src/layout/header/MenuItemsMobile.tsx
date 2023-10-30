@@ -16,13 +16,13 @@ import { DzFooter, FooterData } from '../footer/DzFooter';
 import useWindowSize from '../../hooks/useWindowSize';
 import { DzInputText } from '../../atoms';
 
-export interface MenuItemsMobileProps {
+export type MenuItemsMobileProps = {
   items: any[];
   handleSearch: MouseEventHandler<any>;
   footerData: FooterData;
   newsletterAction: Function;
   LinkElement: any;
-}
+};
 
 const styles: any = {
   logoMenu: `
@@ -76,7 +76,7 @@ export const MenuItemsMobile = ({
   handleSearch = () => null,
   footerData,
   newsletterAction = () => null,
-  LinkElement,
+  LinkElement = 'a',
 }: MenuItemsMobileProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const handleKeyDown = useCallback(
@@ -167,6 +167,7 @@ export const MenuItemsMobile = ({
                 data={footerData}
                 newsletterAction={newsletterAction}
                 isOnHeader
+                LinkElement={LinkElement}
               />
             </div>
           </Popover.Panel>

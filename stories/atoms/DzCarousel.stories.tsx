@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { DzCarousel } from '../../src/molecules/DzCarousel/DzCarousel';
-import { CARD_TYPES, DzCard } from '../../src/molecules/DzCard';
+import { CARD_TYPES, DataCardType, DzCard } from '../../src/molecules/DzCard';
 import { DzGridColumns, DzColumn } from '../../src/layout/DzGrid';
 import { contentData } from '../../constants/mocks/DzCard';
 import {
@@ -40,9 +40,10 @@ const Template: Story<DzCarouselProps & { showGrid: boolean }> = args => (
         .map(_ => (
           <DzCard
             {...{
-              data: contentData,
+              data: contentData as DataCardType,
               type: CARD_TYPES.CONTENT,
             }}
+            LinkElement={'a'}
           />
         ))}
     </DzCarousel>

@@ -32,7 +32,7 @@ export type DzHeaderProps = {
   handleSearch: MouseEventHandler<any>;
   newsletterAction: Function;
   headerClass?: string;
-  linkProps?: DzLinkProps | RouterProps;
+  linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   footerData: FooterData;
   LinkElement: any;
 };

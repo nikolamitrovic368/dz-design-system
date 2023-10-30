@@ -17,14 +17,14 @@ import { renderItems } from './MenuItems';
 import { BREAKPOINTS } from '../../layout/breakpoints';
 import useWindowSize from '../../hooks/useWindowSize';
 
-export interface DesktopSubmenuProps {
+type DesktopSubmenuProps = {
   title: string;
   items: any[];
   rootUrl?: string;
-  linkProps?: DzLinkProps | RouterProps;
+  linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   linkClass?: string;
   LinkElement: any;
-}
+};
 
 const styles: any = {
   headerContainer: `
@@ -94,7 +94,7 @@ export const DesktopSubmenu = ({
   items = [],
   linkProps = {},
   linkClass = '',
-  LinkElement,
+  LinkElement = 'a',
 }: DesktopSubmenuProps) => {
   const [hoverOverMenu, setHoverOverMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
@@ -189,7 +189,12 @@ export const DesktopSubmenu = ({
         }}
         onBlur={() => setVisitedFocusElements(element => element + 1)}
       >
-        {renderItems(items, false, linkPropsHover, true, LinkElement)}
+        {renderItems({
+          items,
+          linkProps: linkPropsHover,
+          isNested: true,
+          LinkElement,
+        })}
       </Popover.Panel>
     </Popover>
   );

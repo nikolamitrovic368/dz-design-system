@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { DzButtonProps } from '../../atoms';
 import { InterstitialSplit, InterstitialSplitProps } from './InterstitialSplit';
 import {
@@ -23,23 +23,37 @@ export const INTERSTITIAL_TEXT_COLORS_NAMES = [
 
 export type TextColors = typeof INTERSTITIAL_TEXT_COLORS_NAMES[number];
 
-export interface DzInterstitialProps {
-  data: (InterstitialSplitProps | InterstitialFullWidthProps) & {
+export type DzInterstitialProps = {
+  data: (
+    | Omit<InterstitialSplitProps, 'LinkElement'>
+    | Omit<InterstitialFullWidthProps, 'LinkElement'>
+  ) & {
     split: boolean;
   };
-}
-export interface PrimaryCTAInterstitial {
+  LinkElement: any;
+};
+export type PrimaryCTAInterstitial = {
   text: string;
   ctaProps?: DzButtonProps;
-}
+};
 
-export const DzInterstitial: FC<DzInterstitialProps> = ({
-  data: { split = false, ...rest },
-}) =>
-  split ? (
-    <InterstitialSplit {...(rest as InterstitialSplitProps)} />
+export const DzInterstitial = ({
+  data,
+  LinkElement = 'a',
+}: DzInterstitialProps) => {
+  const { split = false, ...rest } = data;
+
+  return split ? (
+    <InterstitialSplit
+      {...(rest as InterstitialSplitProps)}
+      LinkElement={LinkElement}
+    />
   ) : (
-    <InterstitialFullWidth {...(rest as InterstitialFullWidthProps)} />
+    <InterstitialFullWidth
+      {...(rest as InterstitialFullWidthProps)}
+      LinkElement={LinkElement}
+    />
   );
+};
 
 export default DzInterstitial;

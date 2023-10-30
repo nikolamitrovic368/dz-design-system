@@ -32,7 +32,6 @@ ComplexGridWithLink.args = {
   useLink: true,
   linkCTA: {
     text: 'View all',
-    linkElement: 'a',
     url: '/',
   },
   steps: [

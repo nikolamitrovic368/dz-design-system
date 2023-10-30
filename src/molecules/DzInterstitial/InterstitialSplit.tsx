@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import {
   DzMedia,
   DzMediaProps,
@@ -15,7 +15,7 @@ import { TextColors, PrimaryCTAInterstitial } from './DzInterstitial';
 import { BREAKPOINTS } from '../../layout/breakpoints';
 import useWindowSize from '../../hooks/useWindowSize';
 
-export interface InterstitialSplitProps {
+export type InterstitialSplitProps = {
   title?: string;
   description?: string;
   category?: string;
@@ -24,7 +24,8 @@ export interface InterstitialSplitProps {
   textColor?: TextColors;
   customClass?: string;
   customDescriptionClass?: string;
-}
+  LinkElement: any;
+};
 
 const styles: any = {
   splitContainer: `
@@ -70,7 +71,7 @@ const styles: any = {
   `,
 };
 
-export const InterstitialSplit: FC<InterstitialSplitProps> = ({
+export const InterstitialSplit = ({
   textColor = 'black-100',
   category,
   title = '',
@@ -79,7 +80,8 @@ export const InterstitialSplit: FC<InterstitialSplitProps> = ({
   media,
   customClass = '',
   customDescriptionClass = '',
-}) => {
+  LinkElement = 'a',
+}: InterstitialSplitProps) => {
   const textClassColor = `text-${textColor}`;
   const { width } = useWindowSize();
   const isSmall = useMemo(() => {
@@ -92,6 +94,7 @@ export const InterstitialSplit: FC<InterstitialSplitProps> = ({
           className={cn(styles.mediaContainer)}
           imgClass={cn(!isSmall ? styles.image : 'object-cover')}
           {...media}
+          LinkElement={LinkElement}
         />
       ) : null}
 

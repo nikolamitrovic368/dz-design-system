@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import { DzButtonProps, DzMediaProps } from '../../../atoms';
 import { BaseCard } from '../types';
 
-interface CardCTA {
+type CardCTA = {
   text: string;
   ctaProps?: DzButtonProps;
-}
+};
 
 export interface CardArtworkData extends BaseCard {
-  media: DzMediaProps;
+  media: Omit<DzMediaProps, 'LinkElement'>;
   artistName: string;
   artworkTitle: string;
   artworkYear: string;
@@ -25,10 +25,4 @@ export interface CardArtworkData extends BaseCard {
   primaryCTA?: CardCTA;
   secondaryCTA?: CardCTA;
   slug?: string;
-}
-
-export interface CardArtworkProps {
-  data: CardArtworkData;
-  onClickImage?: (data: CardArtworkData) => void;
-  imageStyles?: any;
 }

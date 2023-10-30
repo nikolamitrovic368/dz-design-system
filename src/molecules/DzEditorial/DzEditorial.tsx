@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { EditorialComplex, EditorialComplexProps } from './EditorialComplex';
 import { EditorialSimple, EditorialSimpleProps } from './EditorialSimple';
@@ -23,12 +23,17 @@ export type DzEditorialDataType =
   | EditorialSimpleProps
   | EditorialQuoteProps;
 
-export interface DzEditorialProps {
+export type DzEditorialProps = {
   type: EditorialType;
   data: DzEditorialDataType;
-}
+  LinkElement: any;
+};
 
-export const DzEditorial: FC<DzEditorialProps> = ({ type, data }) => {
+export const DzEditorial = ({
+  type,
+  data,
+  LinkElement = 'a',
+}: DzEditorialProps) => {
   if (type === EditorialType.SIMPLE) {
     const { paragraphs = [] } = (data as EditorialSimpleProps) ?? {};
     return <EditorialSimple paragraphs={paragraphs} />;
@@ -45,6 +50,7 @@ export const DzEditorial: FC<DzEditorialProps> = ({ type, data }) => {
         media={media}
         paragraphs={paragraphs}
         reverse={reverse}
+        LinkElement={LinkElement}
       />
     );
   }

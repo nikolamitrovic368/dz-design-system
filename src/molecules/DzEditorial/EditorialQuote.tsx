@@ -1,13 +1,13 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { cn } from '../../utils/classnames';
 import { DzTitle, TITLE_TYPES } from '../../atoms';
 
-export interface EditorialQuoteProps {
+export type EditorialQuoteProps = {
   quote?: string;
   quoteDetail?: string;
   portableTextQuote?: ReactNode;
   portableTextQuoteDetail?: ReactNode;
-}
+};
 
 const styles: any = {
   editorialContainer: `
@@ -36,12 +36,12 @@ const styles: any = {
   `,
 };
 
-export const EditorialQuote: FC<EditorialQuoteProps> = ({
+export const EditorialQuote = ({
   quote,
   quoteDetail,
   portableTextQuote,
   portableTextQuoteDetail,
-}) => {
+}: EditorialQuoteProps) => {
   if (
     !quote &&
     !quoteDetail &&

@@ -30,6 +30,7 @@ export interface DzArrowProps extends HTMLAttributes<HTMLButtonElement> {
 
 const styles: any = {
   arrowContainer: `
+    group
     w-10
     h-10
     rounded-full
@@ -41,16 +42,19 @@ const styles: any = {
     w-4
     mx-auto
   `,
-  fill: `
-    bg-white-100
-    hover:drop-shadow-100
-    active:drop-shadow-100
+  fill: ` 
+    bg-white-100-op-80
+    drop-shadow-100
+    hover:bg-white-100
+    active:bg-white-100
+    hover:drop-shadow-150
+    active:drop-shadow-150
     `,
   arrowFill: `
-    text-black-100
+    text-black-60
+    group-hover:text-black-100
   `,
   outline: `
-    group
     border
     border-black-40
     hover:border-black-100
@@ -60,6 +64,9 @@ const styles: any = {
     text-black-80
     group-hover:text-black-100
     group-active:text-black-100
+  `,
+  fillDisabled: `
+    !bg-white-100-op-60
   `,
   disabled: `
     !border-black-40
@@ -86,7 +93,9 @@ export const DzArrow = forwardRef<HTMLButtonElement, DzArrowProps>(
       <Fragment />
     );
 
-    const disabledStyle = disabled ? styles.disabled : '';
+    const disabledStyle = disabled
+      ? cn(styles.disabled, styles?.[`${mode}Disabled`])
+      : '';
 
     useEffect(() => {
       const ArwComponent = lazy(() =>
@@ -99,7 +108,6 @@ export const DzArrow = forwardRef<HTMLButtonElement, DzArrowProps>(
           <ArwComponent
             className={cn(
               styles.arrowIcon,
-              styles[`arrow${direction}`],
               disabled && styles.arrowDisabled,
               mode === ArrowMode.FILL && styles.arrowFill,
               mode === ArrowMode.OUTLINE && styles.arrowOutline

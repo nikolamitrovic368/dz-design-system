@@ -1,10 +1,9 @@
-import React, { FC, ReactNode } from 'react';
-import { DzTitleProps, DzButtonProps, DzLinkProps } from '../../atoms';
-import { ColumnProps } from '../../layout/DzGrid';
+import React, { ComponentProps } from 'react';
 import { DzTitlePage } from './DzTitlePage';
 import { DzTitleSection } from './DzTitleSection';
 import { DzTitleMol } from './DzTitleMol';
-import { ColumnSpan } from '../../layout';
+export { DzMoleculeLinkCTA } from './DzTitleSection';
+export { DzMoleculeTitleCTA } from './DzTitlePage';
 
 export enum DzTitleMoleculeTypes {
   PAGE = 'page',
@@ -14,63 +13,42 @@ export enum DzTitleMoleculeTypes {
   EXCEPTIONAL = 'exceptional',
 }
 
-export interface DzTitlePageProps {
-  category?: string;
-  title: string;
-  subtitle?: string;
-  description?: ReactNode;
-  titleProps?: DzTitleProps;
-  primaryCTA?: DzMoleculeTitleCTA;
-  linkCTA?: DzLinkProps;
-  customClass?: string;
-  descriptionColSpan?: ColumnSpan;
-  fullLeftContainer?: boolean;
-  customCTAContainerProps?: ColumnProps;
-  isWide?: boolean;
-  disableMaxTitleLength?: boolean;
-}
+type DzTitleSectionData = Omit<
+  ComponentProps<typeof DzTitleSection>,
+  'LinkElement'
+>;
+type DzTitlePageData = Omit<ComponentProps<typeof DzTitlePage>, 'LinkElement'>;
 
-export interface DzMoleculeTitleCTA {
-  ctaProps?: DzButtonProps;
-  title: string;
-  description?: string;
-}
-
-export interface DzTitleSectionProps {
-  title: string;
-  subtitle?: string;
-  titleProps?: Partial<DzTitleProps>;
-  linkCTA?: DzMoleculeLinkCTA;
-  customClass?: string;
-  fullLeftContainer?: boolean;
-}
-
-export interface DzMoleculeLinkCTA {
-  text: string;
-  url: string;
-  linkElement: any;
-  linkProps?: DzLinkProps;
-}
-
-export interface DzTitleMoleculeProps {
-  data: DzTitlePageProps | DzTitleSectionProps;
+export type DzTitleMoleculeProps = {
+  data: DzTitlePageData | DzTitleSectionData;
   type: DzTitleMoleculeTypes;
-}
+  LinkElement: any;
+};
 
-export const DzTitleMolecule: FC<DzTitleMoleculeProps> = ({
+export const DzTitleMolecule = ({
   type = DzTitleMoleculeTypes.PAGE,
   data,
-}) => {
+  LinkElement = 'a',
+}: DzTitleMoleculeProps) => {
   if (type === DzTitleMoleculeTypes.PAGE) {
-    return <DzTitlePage {...(data as DzTitlePageProps)} />;
+    return (
+      <DzTitlePage {...(data as DzTitlePageData)} LinkElement={LinkElement} />
+    );
   }
 
   if (type === DzTitleMoleculeTypes.SECTION) {
-    return <DzTitleSection {...(data as DzTitleSectionProps)} />;
+    return (
+      <DzTitleSection
+        {...(data as DzTitleSectionData)}
+        LinkElement={LinkElement}
+      />
+    );
   }
 
   if (type === DzTitleMoleculeTypes.MOLECULE) {
-    return <DzTitleMol {...(data as DzTitleSectionProps)} />;
+    return (
+      <DzTitleMol {...(data as DzTitleSectionData)} LinkElement={LinkElement} />
+    );
   }
 
   return <div>Not supported type</div>;

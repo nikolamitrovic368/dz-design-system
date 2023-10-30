@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import {
   DzMedia,
   DzMediaProps,
@@ -32,6 +32,7 @@ export interface InterstitialFullWidthProps
   classNameContent?: string;
   mode?: InterstitialMode;
   fullWidth?: boolean;
+  LinkElement: any;
 }
 
 const styles: any = {
@@ -118,7 +119,7 @@ const MODE_TEXT_COLORS = {
   [InterstitialMode.LIGHT]: 'white-100',
 };
 
-export const InterstitialFullWidth: FC<InterstitialFullWidthProps> = ({
+export const InterstitialFullWidth = ({
   textColor = '',
   category,
   title = '',
@@ -130,7 +131,8 @@ export const InterstitialFullWidth: FC<InterstitialFullWidthProps> = ({
   classNameContent = '',
   mode = InterstitialMode.LIGHT,
   fullWidth = false,
-}) => {
+  LinkElement = 'a',
+}: InterstitialFullWidthProps) => {
   const textClassColor = `text-${textColor || MODE_TEXT_COLORS[mode]}`;
 
   return (
@@ -147,6 +149,7 @@ export const InterstitialFullWidth: FC<InterstitialFullWidthProps> = ({
           className={cn(styles.mediaContainer)}
           imgClass={cn(styles.image)}
           {...media}
+          LinkElement={LinkElement}
         />
       ) : null}
 

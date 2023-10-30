@@ -1,11 +1,12 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { cn } from '../../utils/classnames';
 import { DzMedia, DzMediaProps } from '../../atoms';
 import { EditorialText, EditorialTextProps } from './EditorialText';
 
 export interface EditorialComplexProps extends EditorialTextProps {
-  media?: DzMediaProps;
+  media?: Omit<DzMediaProps, 'LinkElement'>;
   reverse?: boolean;
+  LinkElement: any;
 }
 
 const styles: any = {
@@ -34,11 +35,12 @@ const styles: any = {
   `,
 };
 
-export const EditorialComplex: FC<EditorialComplexProps> = ({
+export const EditorialComplex = ({
   media,
   paragraphs,
   reverse = false,
-}) => {
+  LinkElement = 'a',
+}: EditorialComplexProps) => {
   return (
     <div
       className={cn(
@@ -48,7 +50,7 @@ export const EditorialComplex: FC<EditorialComplexProps> = ({
     >
       {media ? (
         <div className={cn(styles.leftPane)}>
-          <DzMedia {...media} />
+          <DzMedia {...media} LinkElement={LinkElement} />
         </div>
       ) : null}
       <div className={cn(styles.rightPane)}>

@@ -1,22 +1,24 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { cn } from '../utils/classnames';
 import { DzLink, DzLinkProps } from './DzLink';
 
-interface PageBreadcrumb {
+type PageBreadcrumb = {
   name: string;
   href: string;
   current: boolean;
   active?: boolean;
-}
-export interface DzBreadcrumbsProps {
+};
+export type DzBreadcrumbsProps = {
   pages: PageBreadcrumb[];
-  linkProps?: DzLinkProps;
-}
+  linkProps?: Omit<DzLinkProps, 'LinkElement'>;
+  LinkElement: any;
+};
 
-export const DzBreadcrumbs: FC<DzBreadcrumbsProps> = ({
-  pages = [],
-  linkProps = {},
-}) => {
+// unused
+export const DzBreadcrumbs = (props: DzBreadcrumbsProps) => {
+  const { pages = [], linkProps, LinkElement = 'a' } = props;
+
+  const nonNullableLinkProps = linkProps ?? {};
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ol className="flex items-center space-x-4">
@@ -42,13 +44,13 @@ export const DzBreadcrumbs: FC<DzBreadcrumbsProps> = ({
               ) : null}
 
               <DzLink
-                LinkElement="a"
+                LinkElement={LinkElement}
                 className={cn(
                   'ml-4 text-xs font-medium hover:text-black-100',
                   page.active ? 'text-black-100' : 'text-black-60'
                 )}
                 aria-current={page.current ? 'page' : undefined}
-                {...linkProps}
+                {...nonNullableLinkProps}
                 href={page.href}
               >
                 {page.name}

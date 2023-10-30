@@ -3,7 +3,7 @@ import { useState } from 'react';
 import DzFormModal from './DzFormModal';
 import { FORM_MODAL_TYPE_NAMES } from './types/DzFormModalTypes';
 
-interface UseDzFormModalProps {
+type UseDzFormModalProps = {
   formType: typeof FORM_MODAL_TYPE_NAMES[number];
   onSubmit: (formValues: any) => Promise<any>;
   title: string;
@@ -16,7 +16,8 @@ interface UseDzFormModalProps {
   recaptchaNode?: ReactNode;
   onChange?: (fieldName: string, value: string) => void;
   onDirty?: () => void;
-}
+  LinkElement: any;
+};
 export const useDzFormModal = ({
   formType,
   onSubmit,
@@ -30,6 +31,7 @@ export const useDzFormModal = ({
   recaptchaNode,
   onChange,
   onDirty,
+  LinkElement = 'a',
 }: UseDzFormModalProps) => {
   const [isOpen, setIsOpen] = useState(disableBackdrop || false);
   const openClickHandler = () => setIsOpen(true);
@@ -51,6 +53,7 @@ export const useDzFormModal = ({
       recaptchaNode={recaptchaNode}
       onChange={onChange}
       onDirty={onDirty}
+      LinkElement={LinkElement}
     />
   );
 

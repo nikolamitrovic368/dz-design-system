@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 import { cn } from '../utils/classnames';
 import { DzText, TEXT_SIZES, TEXT_TYPES } from './DzText';
 import CloseIcon from '../svgIcons/close';
@@ -60,7 +60,7 @@ export type BannerMessageVariant = typeof BANNER_VARIANT_NAMES[number];
 export type BannerAlertVariant = typeof ALERT_VARIANT_NAMES[number];
 export type BannerToastVariant = typeof TOAST_VARIANT_NAMES[number];
 
-export interface DzBannerProps {
+export type DzBannerProps = {
   type?: BannerType;
   messageVariant?: BannerMessageVariant;
   alertVariation?: BannerAlertVariant;
@@ -71,7 +71,8 @@ export interface DzBannerProps {
   linkText?: string;
   link?: string;
   onClickClose?: MouseEventHandler<any>;
-}
+  LinkElement: any;
+};
 
 const styles: any = {
   tDark: `
@@ -230,7 +231,8 @@ const styles: any = {
   `,
 };
 
-export const DzBanner: FC<DzBannerProps> = ({
+// unused
+export const DzBanner = ({
   type = TYPES.MESSAGE,
   messageVariant = MESSAGE_VARIANTS.DEFAULT,
   alertVariation = ALERT_VARIANT.DEFAULT,
@@ -240,8 +242,9 @@ export const DzBanner: FC<DzBannerProps> = ({
   showInfoIcon = false,
   linkText = '',
   link = '',
+  LinkElement = 'a',
   onClickClose = () => null,
-}) => {
+}: DzBannerProps) => {
   const variantStyles = {
     [TYPES.MESSAGE]: (isText: boolean = false) =>
       isText ? styles.title?.[messageVariant] : styles?.[messageVariant],
@@ -307,7 +310,7 @@ export const DzBanner: FC<DzBannerProps> = ({
   const renderLink =
     type === TYPES.TOAST && linkText && link ? (
       <DzLink
-        LinkElement="a"
+        LinkElement={LinkElement}
         href={link}
         className={cn(styles.link?.[type])}
         variant={LINK_VARIANTS.TEXT}

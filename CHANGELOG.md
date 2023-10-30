@@ -1,3 +1,65 @@
+# v0.0.143 (Mon Oct 30 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-770: Update design of nav arrows [#215](https://github.com/Zwirner/design-system/pull/215) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
+# v0.0.142 (Mon Oct 30 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-135: remove linkElement from props as no more used [#210](https://github.com/Zwirner/design-system/pull/210) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+- add onViewport callback to artwork card [#214](https://github.com/Zwirner/design-system/pull/214) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 2
+
+- adam ([@inconduit](https://github.com/inconduit))
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.141 (Fri Oct 27 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-135 refactor: update functions, add types [#208](https://github.com/Zwirner/design-system/pull/208) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.140 (Thu Oct 26 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-705: add split hide media option [#207](https://github.com/Zwirner/design-system/pull/207) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
+# v0.0.139 (Thu Oct 26 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-135 part DzMedia, and some unused components [#205](https://github.com/Zwirner/design-system/pull/205) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.138 (Wed Oct 25 2023)
 
 #### 🐛 Bug Fix

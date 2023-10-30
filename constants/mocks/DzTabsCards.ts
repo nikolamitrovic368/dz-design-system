@@ -23,7 +23,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {
@@ -49,7 +48,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {
@@ -75,7 +73,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {
@@ -101,7 +98,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {
@@ -132,7 +128,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {
@@ -163,7 +158,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {
@@ -194,7 +188,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {
@@ -225,7 +218,6 @@ export const tabs = [
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu',
         linkCTA: {
           text: 'Learn More',
-          linkElement: 'a',
           url: '/',
         },
         primaryCTA: {

@@ -9,7 +9,7 @@ type MobileSubmenuProps = {
   title: string;
   items: any[];
   rootUrl?: string;
-  linkProps?: DzLinkProps | RouterProps;
+  linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   LinkElement: any;
 };
 
@@ -68,9 +68,7 @@ export const MobileSubmenus = ({
             </Disclosure.Button>
           </div>
           <Disclosure.Panel className={cn(styles.panelItems)}>
-            <ul>
-              {renderItems(items, true, undefined, undefined, LinkElement)}
-            </ul>
+            <ul>{renderItems({ items, isMobile: true, LinkElement })}</ul>
           </Disclosure.Panel>
         </>
       )}

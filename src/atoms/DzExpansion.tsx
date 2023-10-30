@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Transition, Disclosure } from '@headlessui/react';
 import {
   DzTitle,
@@ -17,27 +17,28 @@ import { DzLink } from './DzLink';
 import { cn } from '../utils/classnames';
 import ArrowDown from '../svgIcons/arrowDown';
 
-interface ExpansionSection {
+type ExpansionSection = {
   slug?: string;
   title: string;
   content?: string;
-}
+};
 
-export interface DzExpansionProps {
+export type DzExpansionProps = {
   title: string;
   subtitle?: string;
   link?: string;
   linkText?: string;
   sections?: ExpansionSection[];
-}
+  LinkElement: any;
+};
 
-interface TitleTypeProps {
+type TitleTypeProps = {
   titleType: TitleType;
   titleSize: TitleSize;
   subtitleSize?: TitleSize;
   title: string;
   subtitle?: string;
-}
+};
 
 const styles = {
   expansion: `
@@ -84,14 +85,15 @@ const styles = {
     mt-[0.9375rem]
   `,
 };
-
-export const DzExpansion: FC<DzExpansionProps> = ({
+// unused
+export const DzExpansion = ({
   title = '',
   subtitle = '',
   linkText = '',
   link = '/',
   sections = [],
-}) => {
+  LinkElement = 'a',
+}: DzExpansionProps) => {
   const getTitle = ({
     titleType,
     titleSize,
@@ -111,7 +113,7 @@ export const DzExpansion: FC<DzExpansionProps> = ({
   };
   const renderLink =
     linkText && link ? (
-      <DzLink LinkElement="a" href={link} className={cn(styles.link)}>
+      <DzLink LinkElement={LinkElement} href={link} className={cn(styles.link)}>
         {linkText}
       </DzLink>
     ) : null;

@@ -35,6 +35,7 @@ export const simple: EditorialSimpleProps = {
 };
 
 export const complex: EditorialComplexProps = {
+  LinkElement: 'a',
   media: {
     url: '/',
     type: MEDIA_TYPES.IMAGE,

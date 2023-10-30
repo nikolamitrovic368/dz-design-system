@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { DzText } from '../../atoms';
 import { DzLink } from '../../atoms';
 import { cn } from '../../utils/classnames';
@@ -11,21 +11,21 @@ import { BREAKPOINTS } from '../../layout/breakpoints';
 import useWindowSize from '../../hooks/useWindowSize';
 import useHover from '../../hooks/useHover';
 
-export interface FooterData {
+export type FooterData = {
   copies: Copies;
   links: Link[];
   socialMedia: SocialMedia;
-}
+};
 
-interface SocialMedia {
+type SocialMedia = {
   _type: string;
   weChat: string;
   instagram: string;
   twitter: string;
   facebook: string;
-}
+};
 
-interface Link {
+type Link = {
   _key: string;
   _type: string;
   newTab: boolean;
@@ -35,22 +35,23 @@ interface Link {
   title: string;
   anchor?: string;
   page?: Page;
-}
+};
 
-interface Page {
+type Page = {
   url: string;
-}
+};
 
-interface Copies {
+type Copies = {
   rights: string;
-}
+};
 
-export interface DzFooterProps {
+export type DzFooterProps = {
   data: FooterData;
   newsletterAction: Function;
   footerClass?: string;
   isOnHeader?: boolean;
-}
+  LinkElement: any;
+};
 
 const styles: any = {
   footer: `
@@ -112,12 +113,13 @@ const styles: any = {
     text-center
   `,
 };
-export const DzFooter: FC<DzFooterProps> = ({
+export const DzFooter = ({
   data,
   newsletterAction = () => null,
   footerClass = '',
   isOnHeader = false,
-}) => {
+  LinkElement = 'a',
+}: DzFooterProps) => {
   const { width } = useWindowSize();
   const isSmall = useMemo(() => {
     return width <= BREAKPOINTS.MD;
@@ -182,6 +184,7 @@ export const DzFooter: FC<DzFooterProps> = ({
                   href={urlWithAnchor}
                   openNewTab={newTab}
                   className={styles.link}
+                  LinkElement={LinkElement}
                 >
                   {title}
                 </DzLink>
@@ -191,18 +194,33 @@ export const DzFooter: FC<DzFooterProps> = ({
         </div>
         <div className={cn(styles.socialContainer)}>
           {twitter ? (
-            <DzLink href={twitter} ref={twitterHover} openNewTab>
+            <DzLink
+              href={twitter}
+              ref={twitterHover}
+              openNewTab
+              LinkElement={LinkElement}
+            >
               <BoldTwitterIcon fill={isTwitterHover ? '#757575' : 'black'} />
             </DzLink>
           ) : null}
 
           {facebook ? (
-            <DzLink href={facebook} ref={facebookHover} openNewTab>
+            <DzLink
+              href={facebook}
+              ref={facebookHover}
+              openNewTab
+              LinkElement={LinkElement}
+            >
               <BoldFacebookIcon fill={isFacebookHover ? '#757575' : 'black'} />
             </DzLink>
           ) : null}
           {instagram ? (
-            <DzLink href={instagram} ref={instagramHover} openNewTab>
+            <DzLink
+              href={instagram}
+              ref={instagramHover}
+              openNewTab
+              LinkElement={LinkElement}
+            >
               <BoldInstagramIcon
                 fill={isInstagramHover ? '#757575' : 'black'}
               />
@@ -210,7 +228,12 @@ export const DzFooter: FC<DzFooterProps> = ({
           ) : null}
 
           {weChat ? (
-            <DzLink href={weChat} ref={weChatHover} openNewTab>
+            <DzLink
+              href={weChat}
+              ref={weChatHover}
+              openNewTab
+              LinkElement={LinkElement}
+            >
               <BoldWeChatIcon fill={isWeChatHover ? '#757575' : 'black'} />
             </DzLink>
           ) : null}

@@ -1,14 +1,31 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   DzTitle,
   TITLE_SIZES,
   DzLink,
   TITLE_TYPES,
   LINK_VARIANTS,
+  DzLinkProps,
+  DzTitleProps,
 } from '../../atoms';
 import { cn } from '../../utils/classnames';
 import { sliceMaxCharLength } from '../../utils/validators';
-import { DzTitleSectionProps } from './DzTitleMolecule';
+
+export type DzMoleculeLinkCTA = {
+  text: string;
+  url: string;
+  linkProps?: Omit<DzLinkProps, 'LinkElement'>;
+};
+
+type DzTitleSectionProps = {
+  title: string;
+  subtitle?: string;
+  titleProps?: Partial<DzTitleProps>;
+  linkCTA?: DzMoleculeLinkCTA;
+  customClass?: string;
+  fullLeftContainer?: boolean;
+  LinkElement: any;
+};
 
 const styles: any = {
   titleContainer: `
@@ -39,13 +56,14 @@ const DEFAULT_TITLE_PROPS = {
 
 const CHARACTER_LIMIT_TITLE = 50;
 
-export const DzTitleSection: FC<DzTitleSectionProps> = ({
+export const DzTitleSection = ({
   title,
   subtitle,
   titleProps = DEFAULT_TITLE_PROPS,
   linkCTA,
   customClass = '',
-}) => {
+  LinkElement = 'a',
+}: DzTitleSectionProps) => {
   return (
     <div className={cn(styles.titleContainer, customClass)}>
       <DzTitle
@@ -62,7 +80,7 @@ export const DzTitleSection: FC<DzTitleSectionProps> = ({
             variant={LINK_VARIANTS.TEXT}
             className={cn(styles.linkText)}
             href={linkCTA.url}
-            LinkElement={linkCTA.linkElement}
+            LinkElement={LinkElement}
           >
             {linkCTA.text}
           </DzLink>

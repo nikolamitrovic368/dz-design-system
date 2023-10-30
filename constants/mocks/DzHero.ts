@@ -13,7 +13,6 @@ export const items = [
     },
     linkCTA: {
       text: 'Learn More',
-      linkElement: 'a',
       url: '/',
     },
     category: 'Category Slug',
@@ -36,7 +35,6 @@ export const items = [
     },
     linkCTA: {
       text: 'Learn More',
-      linkElement: 'a',
       url: '/',
     },
     category: 'Category Slug 2',

@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import {
   DzText,
   DzTextBox,
@@ -14,7 +14,7 @@ import { DzGridColumns, DzColumn } from '../../layout';
 import { cn } from '../../utils/classnames';
 import { FORM_FIELD_TYPES } from './DzForm';
 
-export interface DzFormBuilderProps {
+export type DzFormBuilderProps = {
   form: any;
   formAction: Function;
   isSubmitDisabled?: boolean;
@@ -26,7 +26,8 @@ export interface DzFormBuilderProps {
   subtitleTextClassName?: string;
   onFocusInput?: Function;
   formStepErrorMessage?: string;
-}
+};
+
 const styles: any = {
   formLayout: `
     flex
@@ -84,7 +85,7 @@ const atomsPerType = {
   },
 };
 
-export const DzFormBuilder: FC<DzFormBuilderProps> = ({
+export const DzFormBuilder = ({
   form,
   formAction,
   isSubmitDisabled,
@@ -95,7 +96,7 @@ export const DzFormBuilder: FC<DzFormBuilderProps> = ({
   subtitleTextClassName,
   onFocusInput,
   formStepErrorMessage,
-}) => {
+}: DzFormBuilderProps) => {
   const {
     formName,
     title,
