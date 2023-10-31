@@ -205,8 +205,7 @@ export const CardContent = ({
             <DzLink
               {...(linkCTA.linkProps ?? {})}
               href={linkCTA.url}
-              // LinkElement={cardLink ? 'span' : LinkElement}
-              LinkElement={LinkElement}
+              LinkElement={cardLink ? 'span' : LinkElement}
               variant={LINK_VARIANTS.TEXT}
               className={cn(linkHoverStyle, disabledLinkStyle)}
               textLinkSize={isSmall ? TEXT_LINK_SIZES.XS : TEXT_LINK_SIZES.SM}

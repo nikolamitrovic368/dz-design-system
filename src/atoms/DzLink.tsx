@@ -146,6 +146,15 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
         )
       : '';
 
+    // Usage for links-in-cards
+    if (LinkElement === 'span') {
+      return (
+        <span ref={ref} className={linkStyle}>
+          {children}
+        </span>
+      );
+    }
+
     // Usage for external links
     if (isExternalLink || LinkElement === 'a') {
       return (

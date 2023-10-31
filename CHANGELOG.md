@@ -1,3 +1,15 @@
+# v0.0.144 (Tue Oct 31 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-XYZ: replace Link with span [#217](https://github.com/Zwirner/design-system/pull/217) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.143 (Mon Oct 30 2023)
 
 #### 🐛 Bug Fix
