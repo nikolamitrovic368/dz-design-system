@@ -111,10 +111,6 @@ export const DesktopSubmenu = ({
   const [visitedFocusElements, setVisitedFocusElements] = useState(0);
 
   const { width } = useWindowSize();
-  const paddingClasses = useMemo(
-    () => (width > BREAKPOINTS.MD && width < 900 ? styles.narrow : styles.wide),
-    [width]
-  );
   const leftClasses = useMemo(
     () =>
       width > BREAKPOINTS.MD && width < 900

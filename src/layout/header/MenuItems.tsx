@@ -204,6 +204,7 @@ export const renderItems = ({
     () => (width > BREAKPOINTS.MD && width < 900 ? styles.narrow : styles.wide),
     [width]
   );
+  // eslint-disable-next-line
   const paddingSubmenuClasses = useMemo(
     () =>
       width > BREAKPOINTS.MD && width < 900
