@@ -49,6 +49,18 @@ const styles: any = {
     flex-col
     relative
   `,
+  search: `
+    mt-5
+    mb-2.5
+    px-5
+  `,
+  searchInput: `
+    placeholder:text-black-100
+  `,
+  searchIcon: `
+    pb-3
+    pr-5
+  `,
   other: `
     p-5
     border
@@ -68,6 +80,13 @@ const styles: any = {
   toggleIcon: `
     outline-none
     md:outline-transparent
+  `,
+  searchBtn: `
+    h-[2.5rem]
+    flex
+    items-center
+    justify-center
+    outline-none
   `,
 };
 

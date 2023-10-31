@@ -12,7 +12,7 @@ import React, {
 import { Popover } from '@headlessui/react';
 
 import { cn } from '../../utils/classnames';
-import { DzLink, DzLinkProps, RouterProps } from '../../atoms';
+import { DzLink, DzLinkProps, RouterProps, TEXT_LINK_SIZES } from '../../atoms';
 import { renderItems } from './MenuItems';
 import { BREAKPOINTS } from '../../layout/breakpoints';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -24,6 +24,7 @@ type DesktopSubmenuProps = {
   linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   linkClass?: string;
   LinkElement: any;
+  isMainTree?: boolean;
 };
 
 const styles: any = {
@@ -57,7 +58,13 @@ const styles: any = {
     z-[51]
     min-w-[10.3164rem]
     absolute
-    left-[0.9375rem]
+    
+  `,
+  childMenusNarrowLeft: `
+    left-[1.09375rem]
+  `,
+  childMenusWideLeft: `
+    left-[0.546875rem]
   `,
   rootDesktop: `
     cursor-pointer
@@ -73,7 +80,7 @@ const styles: any = {
     hidden
   `,
   narrow: `
-    px-3
+    px-2.5
   `,
   wide: `
     px-5
@@ -95,6 +102,7 @@ export const DesktopSubmenu = ({
   linkProps = {},
   linkClass = '',
   LinkElement = 'a',
+  isMainTree = false,
 }: DesktopSubmenuProps) => {
   const [hoverOverMenu, setHoverOverMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
@@ -105,6 +113,13 @@ export const DesktopSubmenu = ({
   const { width } = useWindowSize();
   const paddingClasses = useMemo(
     () => (width > BREAKPOINTS.MD && width < 900 ? styles.narrow : styles.wide),
+    [width]
+  );
+  const leftClasses = useMemo(
+    () =>
+      width > BREAKPOINTS.MD && width < 900
+        ? styles.childMenusWideLeft
+        : styles.childMenusNarrowLeft,
     [width]
   );
 
@@ -169,10 +184,10 @@ export const DesktopSubmenu = ({
             showElements ? '!text-black-100' : '',
             styles.rootDesktop,
             linkClass,
-            'outline-transparent',
-            paddingClasses
+            'outline-transparent'
           )}
           LinkElement={LinkElement}
+          textLinkSize={isMainTree ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM}
         >
           {title}
         </DzLink>
@@ -181,7 +196,7 @@ export const DesktopSubmenu = ({
         as="ul"
         static
         focus
-        className={cn(styles.childMenus, showClasses)}
+        className={cn(styles.childMenus, leftClasses, showClasses)}
         onMouseEnter={() => setHoverOverMenu(true)}
         onMouseLeave={() => {
           setOpenSubMenu(false);

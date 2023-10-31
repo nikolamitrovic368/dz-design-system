@@ -53,9 +53,6 @@ const styles: any = {
     items-center
     justify-end
     max-h-[1.25rem]
-    [&>li>a]:!text-md
-    [&>li>a]:!px-0
-    [&>li]:!pl-[35px]
   `,
   menuContainerMobile: `
     mr-1
@@ -78,9 +75,15 @@ const styles: any = {
     py-[0.375rem]
   `,
   narrow: `
-    px-3
+    pl-[1.1875rem]
   `,
   wide: `
+    pl-[2.1875rem]
+  `,
+  submenuNarrow: `
+    px-2.5
+  `,
+  submenuWide: `
     px-5
   `,
 };
@@ -91,6 +94,7 @@ type RenderPerTypeCbArgs<T> = {
   linkProps: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   className: string;
   LinkElement: any;
+  isMainTree?: boolean;
 };
 
 const renderPerType = {
@@ -100,6 +104,7 @@ const renderPerType = {
     linkProps,
     className,
     LinkElement,
+    isMainTree = false,
   }: RenderPerTypeCbArgs<MenuItemLink>) => {
     const { title, newTab, link } = data ?? {};
 
@@ -109,7 +114,9 @@ const renderPerType = {
         href={link}
         openNewTab={newTab}
         className={className}
-        textLinkSize={isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM}
+        textLinkSize={
+          isMainTree || isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM
+        }
         LinkElement={LinkElement}
       >
         {title}
@@ -122,6 +129,7 @@ const renderPerType = {
     linkProps,
     className,
     LinkElement,
+    isMainTree = false,
   }: RenderPerTypeCbArgs<MenuItemSubmenu>) => {
     const { title, submenu } = data ?? {};
 
@@ -148,6 +156,7 @@ const renderPerType = {
         linkProps={linkPropsEnrich}
         linkClass={className}
         LinkElement={LinkElement}
+        isMainTree={isMainTree}
       />
     );
   },
@@ -157,6 +166,7 @@ const renderPerType = {
     linkProps,
     className,
     LinkElement,
+    isMainTree = false,
   }: RenderPerTypeCbArgs<MenuItemPage>) => {
     const { title, newTab, anchor, page } = data ?? {};
     const { url = '' } = page ?? {};
@@ -168,7 +178,9 @@ const renderPerType = {
         href={urlWithAnchor}
         openNewTab={newTab}
         className={className}
-        textLinkSize={isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM}
+        textLinkSize={
+          isMainTree || isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM
+        }
         LinkElement={LinkElement}
       >
         {title}
@@ -183,6 +195,7 @@ export const renderItems = ({
   linkProps = {},
   isNested = false,
   LinkElement = 'a',
+  isMainTree = false,
 }) => {
   // eslint-disable-next-line
   const { width } = useWindowSize();
@@ -191,10 +204,21 @@ export const renderItems = ({
     () => (width > BREAKPOINTS.MD && width < 900 ? styles.narrow : styles.wide),
     [width]
   );
+  const paddingSubmenuClasses = useMemo(
+    () =>
+      width > BREAKPOINTS.MD && width < 900
+        ? styles.submenuNarrow
+        : styles.submenuWide,
+    [width]
+  );
   const verticalPadding = isNested ? styles.verticalPadding : '';
   const itemListClass = isMobile
     ? styles.submenuItemMobile
-    : cn(styles.submenuItemDesktop, verticalPadding, paddingClasses);
+    : cn(
+        styles.submenuItemDesktop,
+        verticalPadding,
+        isMainTree ? '' : `${paddingSubmenuClasses} leading-[1.1875rem]`
+      );
 
   return items?.map(item => {
     const { _type, title } = item ?? {};
@@ -209,7 +233,10 @@ export const renderItems = ({
 
     return renderFunction ? (
       <li
-        className="relative"
+        className={cn(
+          'relative',
+          isMainTree && !isMobile ? paddingClasses : ''
+        )}
         key={`${isMobile ? 'mbl' : 'dsk'}-${title}-link-item`}
       >
         {renderFunction({
@@ -218,6 +245,7 @@ export const renderItems = ({
           linkProps,
           className: listItemStyles,
           LinkElement,
+          isMainTree,
         })}
       </li>
     ) : null;
@@ -244,7 +272,13 @@ export const MenuItems = ({
         isMobile ? styles.menuContainerMobile : styles.menuContainer
       )}
     >
-      {renderItems({ items, isMobile, linkProps: linkPropsMenu, LinkElement })}
+      {renderItems({
+        items,
+        isMobile,
+        linkProps: linkPropsMenu,
+        LinkElement,
+        isMainTree: true,
+      })}
     </ul>
   );
 };
