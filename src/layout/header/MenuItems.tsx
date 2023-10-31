@@ -62,7 +62,7 @@ const styles: any = {
   `,
   submenuItemMobile: `
     px-5
-    py-[18px]
+    py-[1.125rem]
     w-full
     block
     min-w-fit
@@ -75,7 +75,7 @@ const styles: any = {
     outline-transparent
   `,
   verticalPadding: `
-    py-[6px]
+    py-[0.375rem]
   `,
   narrow: `
     px-3

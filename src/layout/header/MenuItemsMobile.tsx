@@ -31,7 +31,7 @@ const styles: any = {
   submenuContainer: `
     absolute
     left-0
-    top-[50px]
+    top-[3.125rem]
     w-full
     overflow-y-scroll
     bg-white-100

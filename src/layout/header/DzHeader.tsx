@@ -45,7 +45,7 @@ const styles: any = {
     flex
     w-full
     bg-white-100
-    px-[20px] py-[5px] md:pt-4 md:pb-3
+    px-5 py-[0.3125rem] md:pt-4 md:pb-3
     items-center
     z-50
   `,
