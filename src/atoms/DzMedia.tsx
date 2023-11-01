@@ -1,8 +1,16 @@
-import React, { useMemo, ImgHTMLAttributes, ReactNode } from 'react';
+import React, {
+  useMemo,
+  ImgHTMLAttributes,
+  ReactNode,
+  useRef,
+  useState,
+} from 'react';
 import { cn } from '../utils/classnames';
 import { DzLink, DzLinkProps } from './DzLink';
 import { DzSpotify, DzSpotifyProps } from './DzSpotify';
-//import Plyr from 'plyr-react';
+import { Player, Youtube, DefaultUi, Vimeo, Video } from '@vime/react';
+import DzVideoPoster from './DzVideoPoster';
+import { useIsSmallWindowSize } from '../hooks';
 
 export enum ObjectPositionType {
   TOP = 'objPosTop',
@@ -62,11 +70,32 @@ export const MEDIA_TYPES_NAMES = [
   MEDIA_TYPES.PODCAST,
 ] as const;
 
+export const MEDIA_VIDEO_TYPES = {
+  MOVING_IMAGE: 'Moving Image',
+  INTERACTIVE_VIDEO: 'Interactive Video',
+};
+
+export const MEDIA_VIDEO_TYPES_NAMES = [
+  MEDIA_VIDEO_TYPES.MOVING_IMAGE,
+  MEDIA_VIDEO_TYPES.INTERACTIVE_VIDEO,
+] as const;
+
+export const MEDIA_VIDEO_PLAY_ICON_TYPES = {
+  SMALL: 'small',
+  LARGE: 'large',
+};
+
+export const MEDIA_VIDEO_PLAY_ICON_TYPES_NAMES = [
+  MEDIA_VIDEO_PLAY_ICON_TYPES.SMALL,
+  MEDIA_VIDEO_PLAY_ICON_TYPES.LARGE,
+];
+
 export type VideoSource = typeof MEDIA_TYPES_NAMES[number];
 export type MediaType = typeof MEDIA_TYPES_NAMES[number];
 export type ObjectFitType = typeof MEDIA_MEDIA_OBJECT_FIT_NAMES[number];
 export type AspectRatioType = typeof MEDIA_ASPECT_RATIOS_NAMES[number];
-
+export type VideoType = typeof MEDIA_VIDEO_TYPES_NAMES[number];
+export type VideoPlayIconType = typeof MEDIA_VIDEO_PLAY_ICON_TYPES_NAMES[number];
 export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   type: MediaType;
   url?: string;
@@ -77,7 +106,10 @@ export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: any;
   podcastProps?: Omit<DzSpotifyProps, 'link'>;
   videoProps?: any;
+  mobileVideoProps?: any;
   videoSourceType?: VideoSource;
+  videoType?: VideoType;
+  videoPlayIconSize?: VideoPlayIconType;
   aspectRatio?: AspectRatioType;
   objectFit?: ObjectFitType;
   sourceSet?: ReactNode | null;
@@ -127,22 +159,6 @@ const styles: any = {
   `,
 };
 
-const videoNode = {
-  // https://developers.google.com/youtube/player_parameters#Parameters
-  youtube: data => {
-    const placeholderText = `${data?.source?.sources?.[0]?.src} : ${data?.source?.sources?.[0]?.provider}`;
-    return <div>VIDEO PLACEHOLDER: {placeholderText}</div>;
-  },
-  // https://developer.vimeo.com/player/sdk/embed
-  vimeo: data => {
-    const placeholderText = `${data?.source?.sources?.[0]?.src} : ${data?.source?.sources?.[0]?.provider}`;
-    return <div>VIDEO PLACEHOLDER: {placeholderText}</div>;
-  },
-  url: (data, sourceSet) => {
-    return <video {...data}>{sourceSet}</video>;
-  },
-};
-
 export const DzMedia = ({
   type,
   ImgElement,
@@ -153,13 +169,20 @@ export const DzMedia = ({
   linkProps,
   className = '',
   videoProps = {},
-  videoSourceType = MEDIA_VIDEO_SOURCE_TYPES.VIMEO,
+  mobileVideoProps = {},
+  videoSourceType,
   aspectRatio = MEDIA_ASPECT_RATIOS['16:9'],
   objectFit = MEDIA_OBJECT_FIT.COVER,
   objectPosition = ObjectPositionType.CENTER,
+  videoPlayIconSize = MEDIA_VIDEO_PLAY_ICON_TYPES.SMALL,
   sourceSet = null,
   LinkElement = 'a',
 }: DzMediaProps) => {
+  const playerRef = useRef<HTMLVmPlayerElement>(null);
+  const isSmall = useIsSmallWindowSize();
+  const [isShowingPoster, setIsShowingPoster] = useState(
+    type === MEDIA_TYPES.VIDEO && videoProps?.source?.posterImage
+  );
   const nonNullableLinkProps = linkProps ?? {};
   const renderImage = useMemo(() => {
     const mediaClasses = cn(
@@ -217,8 +240,40 @@ export const DzMedia = ({
   }
 
   if (type === MEDIA_TYPES.VIDEO) {
-    const videoRender = videoNode?.[videoSourceType]?.(videoProps, sourceSet);
-    return <div className={cn(className)}>{videoRender}</div>;
+    const { src } = videoProps.source?.sources?.[0] ?? {};
+    const mobileSrc = mobileVideoProps.source?.sources?.[0]?.src;
+    const videoId = isSmall && mobileSrc ? mobileSrc : src;
+    const posterImage = videoProps?.source?.posterImage;
+    const onClickPoster = () => {
+      setIsShowingPoster(false);
+      playerRef.current?.play();
+    };
+
+    return (
+      <div className="relative">
+        <Player ref={playerRef}>
+          <DefaultUi />
+          {videoSourceType === MEDIA_VIDEO_SOURCE_TYPES.VIMEO && (
+            <Vimeo videoId={videoId} />
+          )}
+          {videoSourceType === MEDIA_VIDEO_SOURCE_TYPES.YOUTUBE && (
+            <Youtube videoId={videoId} />
+          )}
+          {videoSourceType === MEDIA_VIDEO_SOURCE_TYPES.URL && sourceSet && (
+            <Video>{sourceSet}</Video>
+          )}
+        </Player>
+        {isShowingPoster && (
+          <DzVideoPoster
+            imgSrc={posterImage}
+            onClick={onClickPoster}
+            useSmallPlayIcon={
+              videoPlayIconSize === MEDIA_VIDEO_PLAY_ICON_TYPES.SMALL
+            }
+          />
+        )}
+      </div>
+    );
   }
 
   return null;

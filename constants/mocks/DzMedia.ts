@@ -38,10 +38,11 @@ export const videoProps = {
 
 export const vimeoProps = {
   type: 'video',
+  posterImage:
+    ' https://cdn.sanity.io/images/juzvn5an/test/063d52ef713f4f4aaca45a5a2955999d5ae26ef5-1280x853.jpg',
   sources: [
     {
-      src:
-        'https://player.vimeo.com/video/812862186?h=d3919b94c1&loop=true&autoplay=true&muted=false&gesture=media&playsinline=true&byline=false&portrait=false&title=false&speed=true&transparent=false&controls=false&background=true',
+      src: '64074037',
       provider: 'vimeo',
     },
   ],

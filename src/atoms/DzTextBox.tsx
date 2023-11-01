@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEventHandler } from 'react';
+import React, { FC, useState, ChangeEventHandler, ChangeEvent } from 'react';
 import { cn } from '../utils/classnames';
 import { DzText, TEXT_SIZES, TEXT_TYPES } from './DzText';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,6 +13,7 @@ export interface DzTextBoxProps {
   maxWordLength?: number;
   formName?: string;
   hasError?: boolean;
+  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const styles = {
@@ -67,6 +68,7 @@ export const DzTextBox: FC<DzTextBoxProps> = ({
   hasError = false,
   maxWordLength = 150,
   formName = '',
+  onChange,
 }) => {
   const [formNameId] = useState<string>(formName || `${uuidv4()}-${title}`);
   const [words, setWords] = useState<string>(defaultValue);
@@ -79,6 +81,9 @@ export const DzTextBox: FC<DzTextBoxProps> = ({
     const value = e.target.value;
     if (value.length <= maxWordLength) {
       setWords(value);
+    }
+    if (!disabled && onChange) {
+      onChange(e);
     }
   };
   const countWords = (

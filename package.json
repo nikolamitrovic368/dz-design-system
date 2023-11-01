@@ -1,5 +1,5 @@
 {
-  "version": "0.0.144",
+  "version": "0.0.146",
   "license": "MIT",
   "main": "dist/design-system.esm.js",
   "typings": "dist/index.d.ts",
@@ -101,6 +101,8 @@
     "@heroicons/react": "^2.0.15",
     "@portabletext/react": "^3.0.4",
     "@seznam/compose-react-refs": "^1.0.6",
+    "@vime/core": "^5.4.1",
+    "@vime/react": "^5.4.1",
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
     "plyr-react": "^5.1.2",
