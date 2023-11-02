@@ -80,6 +80,11 @@ const styles: any = {
   toggleIcon: `
     outline-none
     md:outline-transparent
+    flex
+    w-[2.5rem]
+    h-[1.25rem]
+    justify-center
+    items-center
   `,
   searchBtn: `
     h-[2.5rem]
