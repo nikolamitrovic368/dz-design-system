@@ -1,3 +1,39 @@
+# v0.0.149 (Thu Nov 02 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-178: Reduce spacing between cards [#222](https://github.com/Zwirner/design-system/pull/222) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
+# v0.0.148 (Thu Nov 02 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 802 fix article title cutoff [#219](https://github.com/Zwirner/design-system/pull/219) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.147 (Wed Nov 01 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-799: solve closing modal [#221](https://github.com/Zwirner/design-system/pull/221) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.146 (Tue Oct 31 2023)
 
 #### 🐛 Bug Fix

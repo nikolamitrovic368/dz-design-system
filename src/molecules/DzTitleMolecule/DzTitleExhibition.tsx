@@ -133,7 +133,6 @@ export const DzTitleExhibition = ({
           start: 1,
         }}
         fullLeftContainer
-        disableMaxTitleLength
         LinkElement={LinkElement}
       />
       {showCoordinates && (

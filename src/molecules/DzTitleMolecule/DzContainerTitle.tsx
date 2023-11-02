@@ -17,7 +17,6 @@ type ContainerTitleProps = {
   primaryCTA?: DzMoleculeTitleCTA;
   fullLeftContainer?: boolean;
   customCTAContainerProps?: ColumnProps;
-  disableMaxTitleLength?: boolean;
   LinkElement: any;
 };
 
@@ -46,7 +45,6 @@ export const DzContainerTitle = ({
   linkCTA,
   primaryCTA,
   customCTAContainerProps,
-  disableMaxTitleLength,
   LinkElement = 'a',
 }: ContainerTitleProps) => {
   return (
@@ -65,7 +63,6 @@ export const DzContainerTitle = ({
         primaryCTA,
         fullLeftContainer,
         customCTAContainerProps,
-        disableMaxTitleLength,
       }}
       LinkElement={LinkElement}
     />

@@ -63,7 +63,7 @@ export const DzCarousel: React.FunctionComponent<DzCarouselProps> = ({
         class: 'pb-16',
         'space-between':
           size === DzCarouselCardSize.L || size === DzCarouselCardSize.XL
-            ? 120
+            ? 60
             : 40,
         scrollbar: 'true',
         'grab-cursor': true,

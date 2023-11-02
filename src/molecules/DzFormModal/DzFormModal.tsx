@@ -72,6 +72,7 @@ export const DzFormModal = ({
     doSubmit(formValues);
   };
   const onCloseModal = () => {
+    setIsBodyScrollLocked(false);
     onClose();
     setIsSubmitting(false);
   };
