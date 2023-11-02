@@ -58,7 +58,8 @@ const styles: any = {
     mr-1
   `,
   submenuItemMobile: `
-    p-5
+    px-5
+    py-[1.125rem]
     w-full
     block
     min-w-fit
@@ -71,12 +72,18 @@ const styles: any = {
     outline-transparent
   `,
   verticalPadding: `
-    py-3
+    py-[0.375rem]
   `,
   narrow: `
-    px-3
+    pl-[1.1875rem]
   `,
   wide: `
+    pl-[2.1875rem]
+  `,
+  submenuNarrow: `
+    px-2.5
+  `,
+  submenuWide: `
     px-5
   `,
 };
@@ -87,6 +94,7 @@ type RenderPerTypeCbArgs<T> = {
   linkProps: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   className: string;
   LinkElement: any;
+  isMainTree?: boolean;
 };
 
 const renderPerType = {
@@ -96,6 +104,7 @@ const renderPerType = {
     linkProps,
     className,
     LinkElement,
+    isMainTree = false,
   }: RenderPerTypeCbArgs<MenuItemLink>) => {
     const { title, newTab, link } = data ?? {};
 
@@ -105,7 +114,9 @@ const renderPerType = {
         href={link}
         openNewTab={newTab}
         className={className}
-        textLinkSize={isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM}
+        textLinkSize={
+          isMainTree || isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM
+        }
         LinkElement={LinkElement}
       >
         {title}
@@ -118,6 +129,7 @@ const renderPerType = {
     linkProps,
     className,
     LinkElement,
+    isMainTree = false,
   }: RenderPerTypeCbArgs<MenuItemSubmenu>) => {
     const { title, submenu } = data ?? {};
 
@@ -144,6 +156,7 @@ const renderPerType = {
         linkProps={linkPropsEnrich}
         linkClass={className}
         LinkElement={LinkElement}
+        isMainTree={isMainTree}
       />
     );
   },
@@ -153,6 +166,7 @@ const renderPerType = {
     linkProps,
     className,
     LinkElement,
+    isMainTree = false,
   }: RenderPerTypeCbArgs<MenuItemPage>) => {
     const { title, newTab, anchor, page } = data ?? {};
     const { url = '' } = page ?? {};
@@ -164,7 +178,9 @@ const renderPerType = {
         href={urlWithAnchor}
         openNewTab={newTab}
         className={className}
-        textLinkSize={isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM}
+        textLinkSize={
+          isMainTree || isMobile ? TEXT_LINK_SIZES.MD : TEXT_LINK_SIZES.SM
+        }
         LinkElement={LinkElement}
       >
         {title}
@@ -179,6 +195,7 @@ export const renderItems = ({
   linkProps = {},
   isNested = false,
   LinkElement = 'a',
+  isMainTree = false,
 }) => {
   // eslint-disable-next-line
   const { width } = useWindowSize();
@@ -187,10 +204,22 @@ export const renderItems = ({
     () => (width > BREAKPOINTS.MD && width < 900 ? styles.narrow : styles.wide),
     [width]
   );
+  // eslint-disable-next-line
+  const paddingSubmenuClasses = useMemo(
+    () =>
+      width > BREAKPOINTS.MD && width < 900
+        ? styles.submenuNarrow
+        : styles.submenuWide,
+    [width]
+  );
   const verticalPadding = isNested ? styles.verticalPadding : '';
   const itemListClass = isMobile
     ? styles.submenuItemMobile
-    : cn(styles.submenuItemDesktop, verticalPadding, paddingClasses);
+    : cn(
+        styles.submenuItemDesktop,
+        verticalPadding,
+        isMainTree ? '' : `${paddingSubmenuClasses} leading-[1.1875rem]`
+      );
 
   return items?.map(item => {
     const { _type, title } = item ?? {};
@@ -205,7 +234,10 @@ export const renderItems = ({
 
     return renderFunction ? (
       <li
-        className="relative"
+        className={cn(
+          'relative',
+          isMainTree && !isMobile ? paddingClasses : ''
+        )}
         key={`${isMobile ? 'mbl' : 'dsk'}-${title}-link-item`}
       >
         {renderFunction({
@@ -214,6 +246,7 @@ export const renderItems = ({
           linkProps,
           className: listItemStyles,
           LinkElement,
+          isMainTree,
         })}
       </li>
     ) : null;
@@ -240,7 +273,13 @@ export const MenuItems = ({
         isMobile ? styles.menuContainerMobile : styles.menuContainer
       )}
     >
-      {renderItems({ items, isMobile, linkProps: linkPropsMenu, LinkElement })}
+      {renderItems({
+        items,
+        isMobile,
+        linkProps: linkPropsMenu,
+        LinkElement,
+        isMainTree: true,
+      })}
     </ul>
   );
 };

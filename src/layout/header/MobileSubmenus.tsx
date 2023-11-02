@@ -37,8 +37,8 @@ const styles: any = {
   `,
   mobileOption: `
     pl-5
-    pr-4
-    py-[0.8125rem]
+    pr-1
+    py-[1.125rem]
     flex
     justify-between
   `,
