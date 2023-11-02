@@ -1,3 +1,15 @@
+# v0.0.150 (Thu Nov 02 2023)
+
+#### 🐛 Bug Fix
+
+- complete NWEB-733 event [#198](https://github.com/Zwirner/design-system/pull/198) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.149 (Thu Nov 02 2023)
 
 #### 🐛 Bug Fix
