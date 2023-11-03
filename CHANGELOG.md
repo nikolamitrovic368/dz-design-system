@@ -1,3 +1,27 @@
+# v0.0.150 (Thu Nov 02 2023)
+
+#### 🐛 Bug Fix
+
+- complete NWEB-733 event [#198](https://github.com/Zwirner/design-system/pull/198) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
+# v0.0.149 (Thu Nov 02 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-178: Reduce spacing between cards [#222](https://github.com/Zwirner/design-system/pull/222) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.148 (Thu Nov 02 2023)
 
 #### 🐛 Bug Fix

@@ -11,10 +11,10 @@ import Search from '../../svgIcons/search';
 
 import CloseLogo from '../../svgIcons/close';
 import { Popover, Transition } from '@headlessui/react';
-import { DzInputText } from '../../atoms/DzInputText';
 import { MenuItems } from './MenuItems';
 import { DzFooter, FooterData } from '../footer/DzFooter';
 import useWindowSize from '../../hooks/useWindowSize';
+import { DzInputText } from '../../atoms';
 
 export type MenuItemsMobileProps = {
   items: any[];
@@ -31,7 +31,7 @@ const styles: any = {
   submenuContainer: `
     absolute
     left-0
-    top-[3.75rem]
+    top-[3.125rem]
     w-full
     overflow-y-scroll
     bg-white-100
@@ -87,7 +87,6 @@ const styles: any = {
     items-center
   `,
   searchBtn: `
-    w-[2.5rem]
     h-[2.5rem]
     flex
     items-center

@@ -111,7 +111,7 @@ module.exports = {
         },
         topPositionMbl: {
           '0%': { top: '1.75rem', opacity: 0 },
-          '100%': { top: '3.75rem', opacity: 1 },
+          '100%': { top: '3.125rem', opacity: 1 },
         },
       },
       transitionTimingFunction: {
@@ -132,12 +132,12 @@ module.exports = {
       },
       dropShadow: {
         100: '0px 2px 18px rgba(0, 0, 0, 0.06)',
-        150: '0px 2px 18px rgba(0, 0, 0, 0.08)'
+        150: '0px 2px 18px rgba(0, 0, 0, 0.08)',
       },
       textDecorationColor: {
         'black-60': '#757575',
         'black-100': '#000',
-      }
+      },
     },
   },
   future: { hoverOnlyWhenSupported: true },
