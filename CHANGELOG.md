@@ -1,3 +1,15 @@
+# v0.0.152 (Mon Nov 06 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 617 newsletter form improvements [#225](https://github.com/Zwirner/design-system/pull/225) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.151 (Fri Nov 03 2023)
 
 #### 🐛 Bug Fix
