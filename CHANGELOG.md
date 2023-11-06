@@ -1,3 +1,15 @@
+# v0.0.151 (Fri Nov 03 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-799: add general inquire type, & delete unused hook [#224](https://github.com/Zwirner/design-system/pull/224) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.150 (Thu Nov 02 2023)
 
 #### 🐛 Bug Fix
