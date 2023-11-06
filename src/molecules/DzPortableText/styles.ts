@@ -5,10 +5,10 @@ export const styles: any = {
     md:text-xxl
   `,
   singleParagraph: `
-    @apply
-    my-0
+    @apply    
     text-sm
     md:text-md
+    mb-[1.25rem]
   `,
   grayParagraph: `
     @apply mx-auto

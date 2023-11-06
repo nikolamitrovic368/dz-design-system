@@ -23,7 +23,6 @@ const styles: any = {
     md:basis-1/2
     flex
     flex-col
-    gap-5
   `,
   rightPaneWide: `
     md:col-span-8
