@@ -48,6 +48,10 @@ const styles: any = {
     top-[-1.8rem]
     text-xs
     text-white-100
+    hover:underline
+    active:underline
+    focus:underline
+    underline-offset-[0.375rem]
   `,
   closeIcon: `
     mr-[0.875rem]  

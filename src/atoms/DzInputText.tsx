@@ -48,7 +48,7 @@ const styles = {
     placeholder:text-black-40
     hover:text-black-100
     hover:border-black-60
-    focus:border-black-60
+    focus-within:border-black-60
     focus:text-black-100
     active:text-black-100
   `,

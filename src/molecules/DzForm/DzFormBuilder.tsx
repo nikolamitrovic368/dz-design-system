@@ -223,6 +223,7 @@ export const DzFormBuilder = ({
         <DzColumn span={[12, CTAProps.description ? 6 : 12]}>
           <DzButton
             {...CTAProps}
+            type="button" // don't set this to "submit"; we do not want form submission on enter key press
             className={cn(styles.ctaButton)}
             disabled={isSubmitDisabled}
             size={BUTTON_SIZES.LARGE}

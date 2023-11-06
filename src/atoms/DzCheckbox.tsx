@@ -60,6 +60,10 @@ const styles = {
     flex
     gap-[0.625rem]
     bg-white-100
+    cursor-pointer
+    focus-within:underline
+    hover:underline
+    active:underline
   `,
   textContainer: `
     flex
