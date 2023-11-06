@@ -60,8 +60,6 @@ export interface DzButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const styles: any = {
   btn: `
-    underline-offset-[0.375rem]
-    hover:underline
     disabled:pointer-events-none
     outline-transparent
   `,
@@ -75,55 +73,87 @@ const styles: any = {
     gap-2
     items-center
   `,
-  light: `
+
+  primary_dark: `
+    active:border-black-100
+    active:text-black-100  
     bg-transparent
     border
-    border-white-100/40
-    text-white-100
-    disabled:text-white-40
-    disabled:border-white-40
-    focus:bg-white-100/40
-    focus:text-white-100
-    hover:bg-white-100/40
-    hover:text-white-100
-    active:bg-white-100/40
-    active:text-white-100
-  `,
-  primary: `
-    bg-transparent
-    border-black-60
-    border
-    text-black-100
-    disabled:text-black-40
+    border-black-40
     disabled:border-black-40
-    focus:bg-black-60 
-    focus:text-white-100
-    hover:bg-black-60
-    hover:text-white-100
-    active:bg-black-80
-    active:text-white-100
+    disabled:text-black-40
+    focus:border-black-100
+    focus:text-black-100    
+    hover:border-black-100
+    hover:text-black-100  
+    text-black-80
   `,
-  secondary: `
-    bg-black-100
-    text-white-100
+  secondary_dark: `
+    active:bg-black-100
+    active:text-white-100
+    bg-black-60
     disabled:bg-black-40
-    focus:bg-black-60 
+    disabled:text-white-100
+    focus:bg-black-100
     focus:text-white-100
-    hover:bg-black-60
+    hover:bg-black-100
     hover:text-white-100
-    active:bg-black-80
-    active:text-white-100
+    text-white-100
   `,
-  tertiary: `
+  tertiary_dark: `
+    active:bg-black-20
+    active:text-black-80
     bg-transparent
-    text-black-100
-    focus:bg-black-10
-    focus:text-black-100
+    disabled:text-black-40    
+    focus:bg-black-20
+    focus:text-black-80
+    hover:bg-black-20
+    hover:text-black-80
+    text-black-60
+  `,
+  primary_light: `
+    active:border-white-100
+    active:text-white-100
+    bg-transparent
+    border
+    border-white-100
+    border-opacity-40
+    disabled:border-white-100
+    disabled:text-white-100
+    disabled:text-opacity-40
+    focus:border-white-100
+    hover:border-white-100
+    hover:text-white-100
+    text-white-100
+  `,
+  secondary_light: `
+    bg-white-100
+    bg-opacity-60
+    text-black-80
+    active:bg-white-100
+    active:text-black-100
     hover:bg-white-100
     hover:text-black-100
-    active:bg-transparent
-    active:text-black-100
-    disabled:text-black-40
+    focus:bg-white-100
+    focus:text-black-100
+    disabled:bg-black-100
+    disabled:bg-opacity-20
+    disabled:text-black-80    
+  `,
+  tertiary_light: `
+    bg-transparent
+    text-white-100
+    active:bg-white-100
+    active:bg-opacity-20
+    active:text-white-100
+    hover:bg-white-100
+    hover:bg-opacity-20
+    hover:text-white-100
+    focus:bg-white-100
+    focus:bg-opacity-20
+    focus:text-white-100
+    disabled:text-white-100
+    disabled:text-opacity-40
   `,
   large: `
     py-[0.8125rem]
@@ -225,9 +255,8 @@ export const DzButton: ForwardRefExoticComponent<DzButtonProps> = forwardRef(
         ref={composeRefs(hoverRef, forwardedRef) as any}
         className={cn(
           styles.btn,
-          styles[variant],
+          styles[`${variant}_${mode}`],
           styles[size],
-          styles[mode],
           className
         )}
         style={{ maxWidth: maxWidth, minWidth: minWidth }}
