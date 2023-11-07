@@ -42,7 +42,7 @@ export const globalStyles: any = {
     `,
   },
   mediaImg: `
-    !bg-black-20
+    bg-black-20
   `,
   mediaZoom: `
     md:hover:scale-[1.03]
