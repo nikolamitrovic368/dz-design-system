@@ -193,7 +193,11 @@ export const DzPortableText = ({
     },
   };
 
-  return <PortableText components={CUSTOM_COMPONENTS} {...portableTextProps} />;
+  return (
+    <div className={styles.container}>
+      <PortableText components={CUSTOM_COMPONENTS} {...portableTextProps} />
+    </div>
+  );
 };
 
 export default DzPortableText;
