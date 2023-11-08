@@ -8,7 +8,6 @@ export const styles: any = {
     @apply    
     text-sm
     md:text-md
-    mb-[1.25rem]
   `,
   grayParagraph: `
     @apply mx-auto
@@ -31,5 +30,9 @@ export const styles: any = {
   link: `
     @apply text-sm
     md:text-md
+  `,
+  container: `
+    @apply [&>p]:mb-[1.25rem]
+    last:[&>p]:mb-0
   `,
 };
