@@ -1,3 +1,15 @@
+# v0.0.154 (Mon Nov 06 2023)
+
+#### 🐛 Bug Fix
+
+- fix portable text paragraph spacing [#226](https://github.com/Zwirner/design-system/pull/226) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.153 (Mon Nov 06 2023)
 
 #### 🐛 Bug Fix

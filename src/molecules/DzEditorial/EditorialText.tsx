@@ -28,13 +28,12 @@ const styles: any = {
     text-sm
     md:text-md
     mb-5
-    md:mb-10
   `,
   quote: `
     text-lg
     md:text-xl
-    mb-5
-    md:mb-10
+    my-5
+    md:my-10
   `,
 };
 
@@ -44,7 +43,14 @@ export const EditorialText: FC<EditorialTextProps> = ({ paragraphs }) => {
     <>
       {paragraphs.map((p, k) => {
         const { portableTextText, text } = p ?? {};
-        if (portableTextText) return portableTextText;
+        if (portableTextText)
+          return (
+            <div
+              className={p.type === EDITORIAL_TEXT_TYPES.QUOTE ? 'my-5' : ''}
+            >
+              {portableTextText}
+            </div>
+          );
         if (p.type === EDITORIAL_TEXT_TYPES.PARAGRAPH) {
           return (
             <DzText
