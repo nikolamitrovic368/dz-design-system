@@ -39,6 +39,7 @@ export type DzPortableTextProps = {
   customStyles?: {
     [key: string]: string;
   };
+  containerStyles?: string;
   builder: any;
   ImgElement: any;
   LinkElement: any;
@@ -48,6 +49,7 @@ export type DzPortableTextProps = {
 export const DzPortableText = ({
   portableProps,
   customStyles,
+  containerStyles,
   builder,
   ImgElement,
   charLimit,
@@ -194,7 +196,7 @@ export const DzPortableText = ({
   };
 
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, containerStyles || '')}>
       <PortableText components={CUSTOM_COMPONENTS} {...portableTextProps} />
     </div>
   );
