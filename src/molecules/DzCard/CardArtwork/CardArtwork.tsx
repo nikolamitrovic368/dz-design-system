@@ -1,23 +1,23 @@
 import React, { useCallback, useMemo } from 'react';
 import {
+  BUTTON_SIZES,
+  DzButton,
+  DzLink,
   DzMedia,
   DzText,
-  TEXT_TYPES,
   DzTitle,
-  TITLE_TYPES,
-  DzButton,
-  MEDIA_OBJECT_FIT,
   MEDIA_ASPECT_RATIOS,
-  BUTTON_SIZES,
-  DzLink,
+  MEDIA_OBJECT_FIT,
   MEDIA_VIDEO_PLAY_ICON_TYPES,
+  TEXT_TYPES,
+  TITLE_TYPES,
 } from '../../../atoms';
 import { cn } from '../../../utils/classnames';
 import { priceFormatter } from '../../../utils/formatters';
 import { CardArtworkData } from './types';
 import { globalStyles, stylesSizes } from './styles';
 import { mergeStyles } from '../../../lib/styles';
-import { typeToSize } from '../sizes';
+import { CardSizes, typeToSize } from '../sizes';
 import useWindowSize from '../../../hooks/useWindowSize';
 import { BREAKPOINTS } from '../../../layout/breakpoints';
 import { slugify } from '../../../utils';
@@ -65,20 +65,22 @@ export const CardArtwork = ({
   const isSmall = useMemo(() => {
     return width <= BREAKPOINTS.MD;
   }, [width]);
+  const span = Array.isArray(size)
+    ? isSmall
+      ? typeToSize(size[0])
+      : typeToSize(size[1])
+    : typeToSize(size);
+  const shouldRenderCTAs =
+    !isSmall &&
+    [CardSizes['12col'], CardSizes['10col'], CardSizes['6col']].includes(span);
+
   const videoPlayIconSize =
     size?.[1] >= 6
       ? MEDIA_VIDEO_PLAY_ICON_TYPES.LARGE
       : MEDIA_VIDEO_PLAY_ICON_TYPES.SMALL;
-
   const styles = useMemo(() => {
-    const span = Array.isArray(size)
-      ? isSmall
-        ? typeToSize(size[0])
-        : typeToSize(size[1])
-      : typeToSize(size);
-
     return mergeStyles(globalStyles, stylesSizes[viewport][span]);
-  }, [size, isSmall, viewport]);
+  }, [span, viewport]);
 
   const renderWithLink = useCallback(
     children => {
@@ -198,7 +200,7 @@ export const CardArtwork = ({
           ) : null}
         </div>
 
-        {primaryCTA || secondaryCTA ? (
+        {shouldRenderCTAs && (primaryCTA || secondaryCTA) ? (
           <div className={cn(styles.artwork.rightPanel)}>
             {primaryCTA ? (
               <DzButton
