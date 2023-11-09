@@ -1,3 +1,27 @@
+# v0.0.156 (Wed Nov 08 2023)
+
+#### 🐛 Bug Fix
+
+- don't add margin bottom to last p in portable text [#228](https://github.com/Zwirner/design-system/pull/228) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.155 (Wed Nov 08 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 882 background color artwork [#227](https://github.com/Zwirner/design-system/pull/227) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.154 (Mon Nov 06 2023)
 
 #### 🐛 Bug Fix
