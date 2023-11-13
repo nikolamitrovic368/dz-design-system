@@ -99,7 +99,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.10",
     "@heroicons/react": "^2.0.15",
-    "@portabletext/react": "^3.0.4",
+    "@portabletext/react": "^3.0.11",
     "@seznam/compose-react-refs": "^1.0.6",
     "@vime/core": "^5.4.1",
     "@vime/react": "^5.4.1",
