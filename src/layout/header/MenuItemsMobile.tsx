@@ -1,8 +1,4 @@
-import React, {
-  Fragment,
-  useState,
-  useMemo,
-} from 'react';
+import React, { Fragment, useState, useMemo } from 'react';
 import { cn } from '../../utils/classnames';
 import MenuLogo from '../../svgIcons/menu';
 
