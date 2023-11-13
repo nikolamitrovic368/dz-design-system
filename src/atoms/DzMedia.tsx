@@ -195,6 +195,8 @@ export const DzMedia = ({
     );
 
     if (!ImgElement) {
+      delete imgProps.fill;
+
       return (
         <img
           className={mediaClasses}
