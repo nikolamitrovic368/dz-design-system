@@ -14,6 +14,18 @@ export const INQUIRY_TYPE_NAMES = [
 
 export type InquiryType = typeof INQUIRY_TYPE_NAMES[number];
 
+export const INQUIRY_CATEGORIES = {
+  ARTWORK: 'Artwork',
+  GENERAL: 'General',
+};
+
+export const INQUIRY_CATEGORY_NAMES = [
+  INQUIRY_CATEGORIES.ARTWORK,
+  INQUIRY_CATEGORIES.GENERAL,
+];
+
+export type InquiryCategory = typeof INQUIRY_CATEGORY_NAMES[number];
+
 export interface InquireFormContextData {
   id?: string;
   title?: string;
