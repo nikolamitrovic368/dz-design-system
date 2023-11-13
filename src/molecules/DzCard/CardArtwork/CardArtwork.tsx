@@ -132,7 +132,7 @@ export const CardArtwork = ({
                 <>
                   <span
                     className={cn(
-                      'inline-block',
+                      'inline',
                       portableTextArtworkTitle
                         ? ''
                         : styles.artwork.artWorkTitle

@@ -1,3 +1,15 @@
+# v0.0.157 (Thu Nov 09 2023)
+
+#### 🐛 Bug Fix
+
+- add containerStyles prop for portable text container [#229](https://github.com/Zwirner/design-system/pull/229) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.156 (Wed Nov 08 2023)
 
 #### 🐛 Bug Fix
