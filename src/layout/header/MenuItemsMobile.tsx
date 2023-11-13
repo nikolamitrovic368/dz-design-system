@@ -1,8 +1,6 @@
 import React, {
   Fragment,
   useState,
-  MouseEventHandler,
-  useCallback,
   useMemo,
 } from 'react';
 import { cn } from '../../utils/classnames';
@@ -13,7 +11,6 @@ import { Popover, Transition } from '@headlessui/react';
 import { MenuItems } from './MenuItems';
 import { DzFooter, FooterData } from '../footer/DzFooter';
 import useWindowSize from '../../hooks/useWindowSize';
-import { DzInputText } from '../../atoms';
 
 export type MenuItemsMobileProps = {
   items: any[];

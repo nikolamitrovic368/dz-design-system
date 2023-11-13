@@ -1,4 +1,4 @@
-import React, { useMemo, MouseEventHandler, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { cn } from '../../utils/classnames';
 import { DzLogo, DzLinkProps, RouterProps } from '../../atoms';
 import { MenuItems } from './MenuItems';
