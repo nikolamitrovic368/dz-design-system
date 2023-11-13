@@ -85,7 +85,7 @@ export const MenuItemsMobile = ({
   const { width, height } = useWindowSize();
   const containerHeight = useMemo(() => {
     if (typeof window != 'undefined' && window.document) {
-      return window.innerHeight - 60;
+      return window.innerHeight - 50;
     }
     return null;
     //eslint-disable-next-line
