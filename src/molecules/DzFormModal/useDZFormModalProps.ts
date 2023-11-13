@@ -1,15 +1,25 @@
 export const INQUIRY_TYPES = {
-  AVAILABLE_ARTWORKS: 'availableArtworks',
-  ARTIST: 'artist',
-  EXHIBITION: 'exhibition',
-  GENERAL: 'general',
+  ARTICLE: 'Article',
+  ARTIST: 'Artist',
+  ARTWORKS: 'Artworks',
+  AVAILABLE_WORKS: 'Available Works',
+  COLLECT: 'Collect',
+  EXHIBITION: 'Exhibition',
+  HOME: 'Home',
+  OTHER: 'Other',
+  STORIES: 'Stories',
 };
 
 export const INQUIRY_TYPE_NAMES = [
-  INQUIRY_TYPES.AVAILABLE_ARTWORKS,
+  INQUIRY_TYPES.ARTICLE,
   INQUIRY_TYPES.ARTIST,
+  INQUIRY_TYPES.ARTWORKS,
+  INQUIRY_TYPES.AVAILABLE_WORKS,
+  INQUIRY_TYPES.COLLECT,
   INQUIRY_TYPES.EXHIBITION,
-  INQUIRY_TYPES.GENERAL,
+  INQUIRY_TYPES.HOME,
+  INQUIRY_TYPES.OTHER,
+  INQUIRY_TYPES.STORIES,
 ];
 
 export type InquiryType = typeof INQUIRY_TYPE_NAMES[number];
@@ -31,5 +41,4 @@ export interface InquireFormContextData {
   title?: string;
   artwork?: Record<string, any>;
   ctaText?: string;
-  inquiryType: InquiryType;
 }
