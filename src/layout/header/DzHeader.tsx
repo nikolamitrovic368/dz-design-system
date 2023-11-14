@@ -1,6 +1,12 @@
 import React, { useMemo, MouseEventHandler, useState } from 'react';
 import { cn } from '../../utils/classnames';
-import { DzLogo, DzLinkProps, RouterProps } from '../../atoms';
+import {
+  DzLogo,
+  DzLinkProps,
+  RouterProps,
+  DzLink,
+  TEXT_LINK_SIZES,
+} from '../../atoms';
 import { MenuItems } from './MenuItems';
 import { MenuItemsMobile } from './MenuItemsMobile';
 import { BREAKPOINTS } from '../../layout/breakpoints';
@@ -35,6 +41,7 @@ export type DzHeaderProps = {
   linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
   footerData: FooterData;
   LinkElement: any;
+  collections?: number;
 };
 
 const HEADER_CONTAINER_Z_INDEX = 50;
@@ -82,8 +89,26 @@ export const DzHeader = ({
   linkProps,
   footerData,
   LinkElement = 'a',
+  collections = 0,
 }: DzHeaderProps) => {
-  const { items = [] } = menu ?? {};
+  const { items: _items = [] } = menu ?? {};
+  const items: HeaderItem[] = useMemo(
+    () =>
+      collections > 0
+        ? [
+            ..._items,
+            {
+              _type: 'menuItemLink',
+              desktopEnabled: true,
+              link: '/collection',
+              mobileEnabled: true,
+              newTab: false,
+              title: `Collection (${collections})`,
+            },
+          ]
+        : _items,
+    [collections, _items]
+  );
   const { width } = useWindowSize();
   const isSmall = useMemo(() => {
     return width <= BREAKPOINTS.MD;
@@ -110,6 +135,16 @@ export const DzHeader = ({
           aria-label="Navigation"
           role="navigation"
         >
+          {collections > 0 && (
+            <DzLink
+              href="/collection"
+              className="px-[0.5625rem] pt-0.5"
+              textLinkSize={TEXT_LINK_SIZES.SM}
+              LinkElement={LinkElement}
+            >
+              Collections ({collections > 0 && collections})
+            </DzLink>
+          )}
           <MenuItemsMobile
             items={items}
             handleSearch={handleSearch}
