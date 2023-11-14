@@ -1,3 +1,15 @@
+# v0.0.160 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-922: Regression: remove Search field [#238](https://github.com/Zwirner/design-system/pull/238) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.159 (Tue Nov 14 2023)
 
 #### 🐛 Bug Fix
