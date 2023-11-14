@@ -1,3 +1,15 @@
+# v0.0.161 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-840: add collection link beside hamburger [#240](https://github.com/Zwirner/design-system/pull/240) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.160 (Tue Nov 14 2023)
 
 #### 🐛 Bug Fix
