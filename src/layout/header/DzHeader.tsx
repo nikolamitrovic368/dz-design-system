@@ -109,6 +109,7 @@ export const DzHeader = ({
         : _items,
     [collections, _items]
   );
+
   const { width } = useWindowSize();
   const isSmall = useMemo(() => {
     return width <= BREAKPOINTS.MD;
