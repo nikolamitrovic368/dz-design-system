@@ -1,3 +1,24 @@
+# v0.0.158 (Mon Nov 13 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 905 section menu cta link [#239](https://github.com/Zwirner/design-system/pull/239) ([@inconduit](https://github.com/inconduit))
+
+#### 🔩 Dependency Updates
+
+- Bump tailwind-scrollbar from 2.1.0 to 3.0.5 [#116](https://github.com/Zwirner/design-system/pull/116) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump swiper from 9.3.1 to 11.0.4 [#232](https://github.com/Zwirner/design-system/pull/232) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump react-zoom-pan-pinch from 3.1.0 to 3.3.0 [#213](https://github.com/Zwirner/design-system/pull/213) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump tslib from 2.5.0 to 2.6.2 [#135](https://github.com/Zwirner/design-system/pull/135) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump actions/setup-node from 3 to 4 [#211](https://github.com/Zwirner/design-system/pull/211) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.157 (Thu Nov 09 2023)
 
 #### 🐛 Bug Fix
