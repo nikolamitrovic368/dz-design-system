@@ -1,4 +1,4 @@
-import React, { useMemo, MouseEventHandler, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { cn } from '../../utils/classnames';
 import { DzLogo, DzLinkProps, RouterProps } from '../../atoms';
 import { MenuItems } from './MenuItems';
@@ -29,7 +29,6 @@ type MenuShape = {
 
 export type DzHeaderProps = {
   menu: MenuShape;
-  handleSearch: MouseEventHandler<any>;
   newsletterAction: Function;
   headerClass?: string;
   linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
@@ -76,7 +75,6 @@ const styles: any = {
 
 export const DzHeader = ({
   menu,
-  handleSearch = () => null,
   newsletterAction = () => null,
   headerClass = '',
   linkProps,
@@ -112,7 +110,6 @@ export const DzHeader = ({
         >
           <MenuItemsMobile
             items={items}
-            handleSearch={handleSearch}
             footerData={footerData}
             newsletterAction={newsletterAction}
             LinkElement={LinkElement}

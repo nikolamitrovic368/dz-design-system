@@ -8,7 +8,6 @@ const meta: Meta = {
   title: 'Layout/Navigation/DzHeader',
   component: DzHeader,
   argTypes: {
-    handleSearch: { action: 'clicked handleSearch' },
     newsletterAction: { action: 'clicked newsletterAction' },
   },
   parameters: {
