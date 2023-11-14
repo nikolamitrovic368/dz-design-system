@@ -43,15 +43,18 @@ const styles: any = {
     mx-auto
   `,
   fill: ` 
-    bg-white-100-op-80
+    border
+    border-black-10
+    bg-white-100-op-92
     drop-shadow-100
     hover:bg-white-100
     active:bg-white-100
-    hover:drop-shadow-150
-    active:drop-shadow-150
+    hover:border-black-10
+    hover:drop-shadow-200
+    active:drop-shadow-200
     `,
   arrowFill: `
-    text-black-60
+    text-black-80
     group-hover:text-black-100
   `,
   outline: `
@@ -69,11 +72,12 @@ const styles: any = {
     !bg-white-100-op-60
   `,
   disabled: `
-    !border-black-40
+    !border-none
+    !border-black-60
     !pointer-events-none
   `,
   arrowDisabled: `
-    !text-black-40
+    !text-black-60
   `,
 };
 
