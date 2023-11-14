@@ -59,6 +59,7 @@ export const CardContent = ({
   } = data as CardContentData;
 
   const restProps = camelCaseItemProps(rest);
+  delete restProps.hideMedia;
   const [isHoverLink, setIsHover] = useState<boolean>(false);
   const { width } = useWindowSize();
   const isSmall = useMemo(() => {

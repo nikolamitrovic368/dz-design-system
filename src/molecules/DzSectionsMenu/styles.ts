@@ -25,8 +25,9 @@ export const styles: any = {
     underline
     !text-sm
     !px-5
+    !text-black-100
     transition-text-decoration
-    duration-300
+    duration-300    
     ease-in
     underline-offset-[0.375rem]
     decoration-1
@@ -34,6 +35,9 @@ export const styles: any = {
     focus:underline
     decoration-black-40
     hover:decoration-black-60
+    hover:bg-transparent
+    active:bg-transparent
+    focus:bg-transparent
     focus:decoration-black-60
   `,
   listWrapper: `
