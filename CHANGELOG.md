@@ -1,3 +1,15 @@
+# v0.0.165 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Revert "revert dependabot upgrades" [#248](https://github.com/Zwirner/design-system/pull/248) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.164 (Wed Nov 15 2023)
 
 #### 🐛 Bug Fix
