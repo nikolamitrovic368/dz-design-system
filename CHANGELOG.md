@@ -1,3 +1,48 @@
+# v0.0.161 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-840: add collection link beside hamburger [#240](https://github.com/Zwirner/design-system/pull/240) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
+# v0.0.160 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-922: Regression: remove Search field [#238](https://github.com/Zwirner/design-system/pull/238) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
+# v0.0.159 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- hide CTAs on artwork cards spanning 4cols or less [#230](https://github.com/Zwirner/design-system/pull/230) ([@inconduit](https://github.com/inconduit))
+- NWEB-1001: change arrow styles [#231](https://github.com/Zwirner/design-system/pull/231) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### 🔩 Dependency Updates
+
+- Bump @types/react from 18.2.6 to 18.2.37 [#237](https://github.com/Zwirner/design-system/pull/237) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump @portabletext/react from 3.0.4 to 3.0.11 [#236](https://github.com/Zwirner/design-system/pull/236) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump @babel/core from 7.21.8 to 7.23.3 [#234](https://github.com/Zwirner/design-system/pull/234) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- adam ([@inconduit](https://github.com/inconduit))
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.158 (Mon Nov 13 2023)
 
 #### 🐛 Bug Fix

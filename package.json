@@ -1,5 +1,5 @@
 {
-  "version": "0.0.158",
+  "version": "0.0.161",
   "license": "MIT",
   "main": "dist/design-system.esm.js",
   "typings": "dist/index.d.ts",
@@ -54,7 +54,7 @@
   ],
   "devDependencies": {
     "@auto-it/jira": "^10.46.0",
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.23.3",
     "@size-limit/preset-small-lib": "^8.1.2",
     "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
@@ -69,7 +69,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/react": "^18.0.27",
+    "@types/react": "^18.2.37",
     "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",
     "@types/uuid": "^9.0.0",
@@ -99,7 +99,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.10",
     "@heroicons/react": "^2.0.15",
-    "@portabletext/react": "^3.0.4",
+    "@portabletext/react": "^3.0.11",
     "@seznam/compose-react-refs": "^1.0.6",
     "@vime/core": "^5.4.1",
     "@vime/react": "^5.4.1",
