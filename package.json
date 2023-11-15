@@ -108,7 +108,7 @@
     "plyr-react": "^5.1.2",
     "react-drag-drop-files": "^2.3.10",
     "react-zoom-pan-pinch": "^3.3.0",
-    "swiper": "^11.0.4",
+    "swiper": "^9.3.1",
     "use-is-in-viewport": "^1.0.9",
     "uuid": "^9.0.0"
   },
