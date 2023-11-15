@@ -1,3 +1,15 @@
+# v0.0.162 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Revert "Bump swiper from 9.3.1 to 11.0.4" [#242](https://github.com/Zwirner/design-system/pull/242) ([@tabuchid](https://github.com/tabuchid))
+
+#### Authors: 1
+
+- Doug Tabuchi ([@tabuchid](https://github.com/tabuchid))
+
+---
+
 # v0.0.161 (Tue Nov 14 2023)
 
 #### 🐛 Bug Fix
