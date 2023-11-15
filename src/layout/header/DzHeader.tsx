@@ -145,7 +145,7 @@ export const DzHeader = ({
             </DzLink>
           )}
           <MenuItemsMobile
-            items={items}
+            items={_items}
             footerData={footerData}
             newsletterAction={newsletterAction}
             LinkElement={LinkElement}
