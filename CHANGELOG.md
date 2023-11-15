@@ -1,3 +1,15 @@
+# v0.0.166 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Remove makefile from gitignore [#247](https://github.com/Zwirner/design-system/pull/247) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.165 (Wed Nov 15 2023)
 
 #### 🐛 Bug Fix
