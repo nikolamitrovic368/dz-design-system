@@ -1,3 +1,15 @@
+# v0.0.164 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- pin swiper to 9.3.1 [#246](https://github.com/Zwirner/design-system/pull/246) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.163 (Wed Nov 15 2023)
 
 #### 🐛 Bug Fix
