@@ -1,3 +1,63 @@
+# v0.0.166 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Remove makefile from gitignore [#247](https://github.com/Zwirner/design-system/pull/247) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.165 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Revert "revert dependabot upgrades" [#248](https://github.com/Zwirner/design-system/pull/248) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.164 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- pin swiper to 9.3.1 [#246](https://github.com/Zwirner/design-system/pull/246) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.163 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- revert dependabot upgrades [#244](https://github.com/Zwirner/design-system/pull/244) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.162 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Revert "Bump swiper from 9.3.1 to 11.0.4" [#242](https://github.com/Zwirner/design-system/pull/242) ([@tabuchid](https://github.com/tabuchid))
+
+#### Authors: 1
+
+- Doug Tabuchi ([@tabuchid](https://github.com/tabuchid))
+
+---
+
 # v0.0.161 (Tue Nov 14 2023)
 
 #### 🐛 Bug Fix
