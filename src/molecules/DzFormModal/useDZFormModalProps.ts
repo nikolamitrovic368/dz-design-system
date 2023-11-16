@@ -8,6 +8,7 @@ export const INQUIRY_TYPES = {
   HOME: 'Home',
   OTHER: 'Other',
   STORIES: 'Stories',
+  UTOPIA_EDITIONS: 'Utopia Editions',
 };
 
 export const INQUIRY_TYPE_NAMES = [
