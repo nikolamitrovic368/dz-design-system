@@ -1,7 +1,7 @@
 export const INQUIRY_TYPES = {
   ARTICLE: 'Article',
   ARTIST: 'Artist',
-  ARTWORKS: 'Artworks',
+  ARTWORKS: 'Artwork',
   AVAILABLE_WORKS: 'Available Works',
   COLLECT: 'Collect',
   EXHIBITION: 'Exhibition',
