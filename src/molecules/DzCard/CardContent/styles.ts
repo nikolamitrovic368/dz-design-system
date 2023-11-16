@@ -298,11 +298,9 @@ export const stylesSizes: any = {
     },
     '4col': {
       title: `
-          md:text-xl
           text-lg
         `,
       secondaryTitle: `
-          md:text-lg
           text-md
         `,
       description: `
