@@ -38,7 +38,7 @@ export type DzFormProps = {
   onFocus?: Function;
   onChange?: (fieldName: string, value: any) => void;
   onDirty?: () => void;
-  LinkElement: any;
+  LinkElement?: any;
 };
 
 const styles: any = {
