@@ -1,3 +1,15 @@
+# v0.0.168 (Fri Nov 17 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-840: Remove collection link from nav bar in mobile [#241](https://github.com/Zwirner/design-system/pull/241) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.167 (Thu Nov 16 2023)
 
 #### 🐛 Bug Fix
