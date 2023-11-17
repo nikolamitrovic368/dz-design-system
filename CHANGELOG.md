@@ -1,3 +1,15 @@
+# v0.0.169 (Fri Nov 17 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 856 send inquire type category [#253](https://github.com/Zwirner/design-system/pull/253) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.168 (Fri Nov 17 2023)
 
 #### 🐛 Bug Fix
