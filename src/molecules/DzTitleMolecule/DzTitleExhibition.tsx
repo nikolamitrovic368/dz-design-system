@@ -123,7 +123,6 @@ export const DzTitleExhibition = ({
               onClickCTA?.({
                 title: titleText,
                 ctaText: 'Inquire',
-                inquiryType: INQUIRY_TYPES.EXHIBITION,
               }),
           },
         }}
