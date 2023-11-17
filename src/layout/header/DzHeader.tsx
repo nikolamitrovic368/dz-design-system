@@ -89,12 +89,12 @@ export const DzHeader = ({
   LinkElement = 'a',
   collections = 0,
 }: DzHeaderProps) => {
-  const { items: _items = [] } = menu ?? {};
-  const items: HeaderItem[] = useMemo(
+  const { items = [] } = menu ?? {};
+  const desktopItems: HeaderItem[] = useMemo(
     () =>
       collections > 0
         ? [
-            ..._items,
+            ...items,
             {
               _type: 'menuItemLink',
               desktopEnabled: true,
@@ -104,8 +104,8 @@ export const DzHeader = ({
               title: `Collection (${collections})`,
             },
           ]
-        : _items,
-    [collections, _items]
+        : items,
+    [collections, items]
   );
 
   const { width } = useWindowSize();
@@ -158,7 +158,7 @@ export const DzHeader = ({
           role="navigation"
         >
           <MenuItems
-            items={items}
+            items={desktopItems}
             linkProps={linkProps}
             LinkElement={LinkElement}
           />
