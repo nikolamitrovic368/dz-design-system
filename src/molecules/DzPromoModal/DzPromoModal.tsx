@@ -65,6 +65,7 @@ export const DzPromoModal = ({
             title={subtitle}
           />
         </div>
+
         <DzButton
           onClick={() => onClick()}
           size="large"
