@@ -42,7 +42,7 @@ export const DzPromoModal = ({
     <DzModalContainer
       isOpen={isOpen}
       onClose={onCloseModal}
-      className="max-w-[57.875rem] md:max-h-[37.5rem] p-0 flex flex-col md:flex-row"
+      className="max-w-[57.875rem] md:max-h-[37.5rem] !p-0 flex flex-col md:flex-row"
     >
       <div className="md:w-1/2 md:max-h-[37.5rem] overflow-hidden">
         <img
