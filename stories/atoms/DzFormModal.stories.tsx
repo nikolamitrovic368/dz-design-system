@@ -57,6 +57,5 @@ CustomNewsetterDzFormModal.args = {
     src:
       'https://assets.davidzwirner.com/v7/_assets_/davidzwirner/galleries/gallery-cover-images/dz_gallery_20th_street_cover_image.jpg?w=1100&q=85&org_if_sml=1&force_format=webp',
     alt: 'test image',
-    imgClass: 'h-full',
   },
 };

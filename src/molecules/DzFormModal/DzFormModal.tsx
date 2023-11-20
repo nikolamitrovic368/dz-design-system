@@ -165,7 +165,7 @@ export const DzFormModal = ({
             type={MEDIA_TYPES.IMAGE}
             ImgElement={ImgElement}
             LinkElement={LinkElement}
-            imgClass="h-full"
+            imgClass="h-full" // sync storybook img behaviour with NextImage behaviour
             imageContainerClassName="md:w-1/3 h-[180px] md:h-auto"
             imgProps={{
               src: image.src,
