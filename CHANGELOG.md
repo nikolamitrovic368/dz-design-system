@@ -1,3 +1,15 @@
+# v0.0.170 (Mon Nov 20 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-779 : 4col Content Cards: Reduce Font Size of Primary and Secondary text fields [#251](https://github.com/Zwirner/design-system/pull/251) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.169 (Fri Nov 17 2023)
 
 #### 🐛 Bug Fix
