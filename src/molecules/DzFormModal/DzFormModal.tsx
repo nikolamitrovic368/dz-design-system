@@ -184,8 +184,12 @@ export const DzFormModal = ({
             showStepsCount={false}
             recaptchaNode={recaptchaNode}
             containerClassName="bg-white-100 md:w-2/3 p-5"
-            titleTextClassName="text-xl md:text-xxl"
-            subtitleTextClassName="text-sm md:text-md"
+            titleTextClassName={
+              image ? 'text-lg md:text-xl' : 'text-xl md:text-xxl'
+            }
+            subtitleTextClassName={
+              image ? 'text-xs md:text-sm' : 'text-sm md:text-md'
+            }
             isSubmitDisabled={isSubmitting}
             overlayContent={
               isSubmitSuccessful !== undefined ? (
