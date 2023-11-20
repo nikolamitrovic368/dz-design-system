@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import DzForm from '../DzForm/DzForm';
-import { DzModalContainer } from '../../atoms';
+import { DzMedia, DzModalContainer, MEDIA_TYPES } from '../../atoms';
 import { termsAndConditions } from './termsAndConditions';
 import useLockedBodyScroll from '../../hooks/useLockedBodyScroll';
 import ResultOverlay from './ResultOverlay';
@@ -28,6 +28,11 @@ export type DzFormModalProps = {
   onChange?: (fieldName: string, value: any) => void;
   onDirty?: () => void;
   LinkElement: any;
+  ImgElement: any;
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
 export type SubmissionResult = {
@@ -57,6 +62,8 @@ export const DzFormModal = ({
   onChange,
   onDirty,
   LinkElement = 'a',
+  ImgElement,
+  image,
 }: DzFormModalProps) => {
   const formSteps = FORM_TYPES_TO_STEPS[type];
   const [submittedFormValues, setSubmittedFormValues] = useState<
@@ -64,7 +71,7 @@ export const DzFormModal = ({
   >();
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState<
     boolean | undefined
-  >(undefined);
+  >();
   const [, setIsBodyScrollLocked] = useLockedBodyScroll(false, 'root');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const onSubmitForm = (formValues: Record<string, any>) => {
@@ -123,34 +130,79 @@ export const DzFormModal = ({
           : ''
       }
     >
-      <DzForm
-        LinkElement={LinkElement}
-        steps={formSteps}
-        onSubmit={onSubmitForm}
-        onFocus={onFocus}
-        onChange={onChange}
-        onDirty={onDirty}
-        showStepsCount={false}
-        recaptchaNode={recaptchaNode}
-        containerClassName="bg-white-100 max-w-[984px]"
-        titleTextClassName="text-xl md:text-xxl"
-        subtitleTextClassName="text-sm md:text-md"
-        isSubmitDisabled={isSubmitting}
-        overlayContent={
-          isSubmitSuccessful !== undefined ? (
-            <ResultOverlay
-              isSuccess={isSubmitSuccessful}
-              successTitle={successTitle}
-              successSubtitle={successSubtitle}
-              errorTitle={errorTitle}
-              errorSubtitle={errorSubtitle}
-              onClickClose={onCloseModal}
-              onClickRetry={onClickRetry}
-              hideCloseButton={disableBackdrop}
-            />
-          ) : null
-        }
-      />
+      {!image ? (
+        <DzForm
+          LinkElement={LinkElement}
+          steps={formSteps}
+          onSubmit={onSubmitForm}
+          onFocus={onFocus}
+          onChange={onChange}
+          onDirty={onDirty}
+          showStepsCount={false}
+          recaptchaNode={recaptchaNode}
+          containerClassName="bg-white-100 max-w-[926px] p-5"
+          titleTextClassName="text-xl md:text-xxl"
+          subtitleTextClassName="text-sm md:text-md"
+          isSubmitDisabled={isSubmitting}
+          overlayContent={
+            isSubmitSuccessful !== undefined ? (
+              <ResultOverlay
+                isSuccess={isSubmitSuccessful}
+                successTitle={successTitle}
+                successSubtitle={successSubtitle}
+                errorTitle={errorTitle}
+                errorSubtitle={errorSubtitle}
+                onClickClose={onCloseModal}
+                onClickRetry={onClickRetry}
+                hideCloseButton={disableBackdrop}
+              />
+            ) : null
+          }
+        />
+      ) : (
+        <div className="flex flex-col md:flex-row max-w-[926px]">
+          <DzMedia
+            type={MEDIA_TYPES.IMAGE}
+            ImgElement={ImgElement}
+            LinkElement={LinkElement}
+            imageContainerClassName="md:w-1/3 h-[180px] md:h-auto"
+            imgProps={{
+              src: image.src,
+              alt: image.alt,
+              fill: true,
+              sizes: '(max-width: 768px) 728px, 308px',
+            }}
+          />
+          <DzForm
+            LinkElement={LinkElement}
+            steps={formSteps}
+            onSubmit={onSubmitForm}
+            onFocus={onFocus}
+            onChange={onChange}
+            onDirty={onDirty}
+            showStepsCount={false}
+            recaptchaNode={recaptchaNode}
+            containerClassName="bg-white-100 md:w-2/3 p-5"
+            titleTextClassName="text-xl md:text-xxl"
+            subtitleTextClassName="text-sm md:text-md"
+            isSubmitDisabled={isSubmitting}
+            overlayContent={
+              isSubmitSuccessful !== undefined ? (
+                <ResultOverlay
+                  isSuccess={isSubmitSuccessful}
+                  successTitle={successTitle}
+                  successSubtitle={successSubtitle}
+                  errorTitle={errorTitle}
+                  errorSubtitle={errorSubtitle}
+                  onClickClose={onCloseModal}
+                  onClickRetry={onClickRetry}
+                  hideCloseButton={disableBackdrop}
+                />
+              ) : null
+            }
+          />
+        </div>
+      )}
     </DzModalContainer>
   );
 };
