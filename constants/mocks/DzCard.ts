@@ -22,6 +22,7 @@ export const artWorkData: Partial<CardArtworkData> = {
   dimensions: '13 x 12 inches (33 x 30.5 cm)',
   edition: 'Edition 1 of 5, 2AP',
   price: 2000,
+  currency: 'GBP',
   framed: 'Unframed',
   primaryCTA: {
     text: 'Button',
