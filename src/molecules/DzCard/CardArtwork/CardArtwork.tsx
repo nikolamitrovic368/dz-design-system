@@ -187,7 +187,7 @@ export const CardArtwork = ({
             <div className={cn(styles.artwork.priceContainer)}>
               <DzTitle
                 titleType={TITLE_TYPES.P}
-                title={`${currency}${priceFormatter({ price, currency })}`}
+                title={`${currency} ${priceFormatter({ price, currency })}`}
                 classNameTitle={cn(styles.artwork.priceTitle)}
               />
               {framed ? (
