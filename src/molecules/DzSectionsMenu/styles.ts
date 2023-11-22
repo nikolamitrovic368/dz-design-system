@@ -6,7 +6,7 @@ export const styles: any = {
     items-center
     bg-white-100
     z-50
-    md:h-[3.75rem]
+    md:h-[4.375rem]
     overflow-y-hidden
   `,
   mblSelector: `
