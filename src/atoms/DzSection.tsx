@@ -6,7 +6,7 @@ export const SECTION_SCROLL_TOP_MARGIN = '120px';
 
 const styles: any = {
   sectionContainer: `
-    scroll-mt-[${SECTION_SCROLL_TOP_MARGIN}]
+    scroll-mt-[120px]
   `,
 };
 type DzSectionProps = PropsWithChildren & { id: string; className?: string };
