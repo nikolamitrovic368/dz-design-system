@@ -1,3 +1,20 @@
+# v0.0.171 (Wed Nov 22 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-955: Custom newsletter popup [#260](https://github.com/Zwirner/design-system/pull/260) ([@MadaShindeInai](https://github.com/MadaShindeInai) [@grudev888](https://github.com/grudev888) runner@fv-az411-616.3o3m4cib2vcuvgqhi5dgwulx3d.bx.internal.cloudapp.net [@inconduit](https://github.com/inconduit))
+
+#### Authors: 6
+
+- [@grudev888](https://github.com/grudev888)
+- adam ([@inconduit](https://github.com/inconduit))
+- David Torres (runner@fv-az247-635.ejdpp4afj4jevf2dson2zsfl2e.cx.internal.cloudapp.net)
+- David Torres (runner@fv-az411-616.3o3m4cib2vcuvgqhi5dgwulx3d.bx.internal.cloudapp.net)
+- David Torres (runner@fv-az796-243.g5touaexsuoenia5rc2vk0vpac.phxx.internal.cloudapp.net)
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.170 (Mon Nov 20 2023)
 
 #### 🐛 Bug Fix
