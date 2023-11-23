@@ -52,7 +52,12 @@ export const DzPromoModal = ({
       className="max-w-[57.875rem] md:h-[37.5rem] !p-0 flex flex-col md:flex-row"
     >
       <div className="md:w-1/2 max-md:h-[15rem] overflow-hidden">
-        <DzMedia type="image" imgProps={imgProps} LinkElement={LinkElement} className='h-full' />
+        <DzMedia
+          type="image"
+          imgProps={imgProps}
+          LinkElement={LinkElement}
+          className="h-full"
+        />
       </div>
       <div className="p-5 flex flex-col md:justify-between w-full md:w-1/2">
         <div>
@@ -69,7 +74,11 @@ export const DzPromoModal = ({
           />
         </div>
 
-        <DzLink href={url} LinkElement={LinkElement} className="w-full mt-10 text-center">
+        <DzLink
+          href={url}
+          LinkElement={LinkElement}
+          className="w-full mt-10 text-center"
+        >
           {linkText}
         </DzLink>
       </div>
