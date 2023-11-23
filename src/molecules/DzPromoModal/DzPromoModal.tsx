@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {
-  DzButton,
+  DzLink,
+  DzMedia,
   DzModalContainer,
   DzTitle,
   TITLE_SIZES,
@@ -11,12 +12,16 @@ import useLockedBodyScroll from '../../hooks/useLockedBodyScroll';
 export type DzPromoModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  disableBackdrop?: boolean;
   title: string;
   subtitle?: string;
-  buttonText: string;
-  onClick: () => void;
-  imgSrc: string;
-  imgAlt: string;
+  linkText: string;
+  imgProps: {
+    src: string;
+    alt: string;
+  };
+  LinkElement: any;
+  url: string;
 };
 
 export const DzPromoModal = ({
@@ -24,10 +29,11 @@ export const DzPromoModal = ({
   onClose,
   title,
   subtitle,
-  buttonText,
-  onClick,
-  imgSrc,
-  imgAlt,
+  linkText = 'Explore',
+  disableBackdrop = false,
+  imgProps,
+  LinkElement = 'a',
+  url,
 }: DzPromoModalProps) => {
   const [, setIsBodyScrollLocked] = useLockedBodyScroll(false, 'root');
   const onCloseModal = () => {
@@ -42,14 +48,11 @@ export const DzPromoModal = ({
     <DzModalContainer
       isOpen={isOpen}
       onClose={onCloseModal}
-      className="max-w-[57.875rem] md:max-h-[37.5rem] !p-0 flex flex-col md:flex-row"
+      disableBackdrop={disableBackdrop}
+      className="max-w-[57.875rem] md:h-[37.5rem] !p-0 flex flex-col md:flex-row"
     >
-      <div className="md:w-1/2 md:max-h-[37.5rem] overflow-hidden">
-        <img
-          src={imgSrc}
-          className="w-full h-[240px] md:h-full object-cover"
-          alt={imgAlt}
-        />
+      <div className="md:w-1/2 max-md:h-[15rem] overflow-hidden">
+        <DzMedia type="image" imgProps={imgProps} LinkElement={LinkElement} className='h-full' />
       </div>
       <div className="p-5 flex flex-col md:justify-between w-full md:w-1/2">
         <div>
@@ -66,13 +69,9 @@ export const DzPromoModal = ({
           />
         </div>
 
-        <DzButton
-          onClick={() => onClick()}
-          size="large"
-          className="w-full mt-10"
-        >
-          {buttonText}
-        </DzButton>
+        <DzLink href={url} LinkElement={LinkElement} className="w-full mt-10 text-center">
+          {linkText}
+        </DzLink>
       </div>
     </DzModalContainer>
   );
