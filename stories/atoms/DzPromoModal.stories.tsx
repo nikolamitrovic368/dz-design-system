@@ -1,9 +1,6 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-  DzPromoModal,
-  DzPromoModalProps,
-} from '../../src/molecules/DzPromoModal/DzPromoModal';
+import { DzPromoModal } from '../../src/molecules/DzPromoModal/DzPromoModal';
 
 const meta: Meta = {
   title: 'Atoms/Modals/DzPromoModal',
@@ -18,7 +15,9 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<DzPromoModalProps> = args => <DzPromoModal {...args} />;
+const Template: Story<ComponentProps<typeof DzPromoModal>> = args => (
+  <DzPromoModal {...args} />
+);
 
 export const PrimaryDzPromoModal = Template.bind({});
 PrimaryDzPromoModal.args = {

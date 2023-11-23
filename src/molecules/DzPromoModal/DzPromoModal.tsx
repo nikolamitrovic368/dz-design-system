@@ -9,7 +9,7 @@ import {
 } from '../../atoms';
 import useLockedBodyScroll from '../../hooks/useLockedBodyScroll';
 
-export type DzPromoModalProps = {
+type DzPromoModalProps = {
   isOpen: boolean;
   onClose: () => void;
   disableBackdrop?: boolean;
