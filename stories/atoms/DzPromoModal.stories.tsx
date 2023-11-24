@@ -23,7 +23,7 @@ export const PrimaryDzPromoModal = Template.bind({});
 PrimaryDzPromoModal.args = {
   isOpen: true,
   linkText: 'Explore',
-  imgProps: {
+  image: {
     src:
       'https://cdn.sanity.io/images/juzvn5an/test/eb12cba8eedbe3d418d0f6ad8db889d55862006d-1080x1920.jpg?w=2000&fit=max&auto=format',
     alt: 'leaf',

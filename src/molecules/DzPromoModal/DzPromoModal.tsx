@@ -63,13 +63,13 @@ export const DzPromoModal = ({
         <div>
           <DzTitle
             titleType={TITLE_TYPES.H1}
-            titleSize={TITLE_SIZES.XL}
+            titleSize={TITLE_SIZES.XXL}
             title={title}
           />
           <DzTitle
             className="pt-1"
             titleType={TITLE_TYPES.P}
-            titleSize={TITLE_SIZES.MD}
+            titleSize={TITLE_SIZES.LG}
             title={subtitle}
           />
         </div>
