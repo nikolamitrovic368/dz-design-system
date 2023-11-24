@@ -1,3 +1,15 @@
+# v0.0.172 (Fri Nov 24 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 847 fix carousel scroll [#261](https://github.com/Zwirner/design-system/pull/261) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.171 (Wed Nov 22 2023)
 
 #### 🐛 Bug Fix
