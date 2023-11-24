@@ -183,6 +183,7 @@ export const DzCarousel: React.FunctionComponent<DzCarouselProps> = ({
           width: '100%',
           zIndex: 100,
         }}
+        className="hidden md:block"
       />
     </div>
   );

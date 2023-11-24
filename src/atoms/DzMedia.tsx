@@ -114,6 +114,7 @@ export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   objectFit?: ObjectFitType;
   sourceSet?: ReactNode | null;
   objectPosition?: ObjectPositionType;
+  imageContainerClassName?: string;
   LinkElement: any;
 }
 
@@ -171,6 +172,7 @@ export const DzMedia = ({
   videoProps = {},
   mobileVideoProps = {},
   videoSourceType,
+  imageContainerClassName = '',
   aspectRatio = MEDIA_ASPECT_RATIOS['16:9'],
   objectFit = MEDIA_OBJECT_FIT.COVER,
   objectPosition = ObjectPositionType.CENTER,
@@ -230,7 +232,11 @@ export const DzMedia = ({
       {renderImage}
     </DzLink>
   ) : (
-    <div className={cn(styles.mediaContainer, className)}>{renderImage}</div>
+    <div
+      className={cn(styles.mediaContainer, className, imageContainerClassName)}
+    >
+      {renderImage}
+    </div>
   );
 
   if (type === MEDIA_TYPES.IMAGE) {
