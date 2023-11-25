@@ -53,7 +53,7 @@
     }
   ],
   "devDependencies": {
-    "@auto-it/jira": "^10.46.0",
+    "@auto-it/jira": "^11.0.4",
     "@babel/core": "^7.23.3",
     "@size-limit/preset-small-lib": "^8.1.2",
     "@storybook/addon-a11y": "^6.5.16",
