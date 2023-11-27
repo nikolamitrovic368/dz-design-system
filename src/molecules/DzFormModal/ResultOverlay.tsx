@@ -23,13 +23,13 @@ const WE_ARE_SORRY = 'We are sorry, but something went wrong.';
 
 const styles = {
   container: `
-    bg-white-100     
+    bg-white-100 
   `,
   buttonsContainer: `
     absolute 
     flex
-    bottom-0 
-    right-0 
+    bottom-5 
+    right-5 
     w-full       
   `,
   button: `

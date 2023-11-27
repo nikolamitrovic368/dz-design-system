@@ -74,6 +74,7 @@ const styles: any = {
     bg-white-100
     w-full
     h-full
+    p-5
   `,
 };
 
