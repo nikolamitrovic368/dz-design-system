@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import {
   DzLink,
   DzMedia,
@@ -8,6 +8,8 @@ import {
   TITLE_TYPES,
 } from '../../atoms';
 import useLockedBodyScroll from '../../hooks/useLockedBodyScroll';
+import { BREAKPOINTS } from '../../layout/breakpoints';
+import useWindowSize from '../../hooks/useWindowSize';
 
 type Props = {
   isOpen: boolean;
@@ -44,6 +46,10 @@ export const DzPromoModal = ({
     setIsBodyScrollLocked,
   ]);
 
+  const { width } = useWindowSize();
+  const isSmall = useMemo(() => {
+    return width <= BREAKPOINTS.MD;
+  }, [width]);
   return (
     <DzModalContainer
       isOpen={isOpen}
@@ -63,13 +69,13 @@ export const DzPromoModal = ({
         <div>
           <DzTitle
             titleType={TITLE_TYPES.H1}
-            titleSize={TITLE_SIZES.XXL}
+            titleSize={TITLE_SIZES[isSmall ? 'XL' : 'XXL']}
             title={title}
           />
           <DzTitle
             className="pt-1"
             titleType={TITLE_TYPES.P}
-            titleSize={TITLE_SIZES.LG}
+            titleSize={TITLE_SIZES[isSmall ? 'MD' : 'LG']}
             title={subtitle}
           />
         </div>
