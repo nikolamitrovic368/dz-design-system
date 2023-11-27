@@ -64,7 +64,7 @@ export const DzPortableText = ({
   const CUSTOM_COMPONENTS = {
     types: {
       bodyImage: ({ value }: PortableTextTypeComponentProps<any>) => {
-        const { _key, alt, asset, caption } = value?.image ?? {};
+        const { _key, alt, asset, caption } = value?.media?.image ?? {};
         const imgSrc = asset ? builder.image(asset).url() : '';
 
         return (

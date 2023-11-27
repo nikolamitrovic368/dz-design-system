@@ -19,13 +19,12 @@ const styles: any = {
     h-screen
     top-0
     left-0
-    px-[1.25rem]
+    px-5
     py-[4.125rem]
     md:py-0
     flex
     items-center
     justify-center
-    overflow-y-scroll
   `,
   containerBackdrop: `
     bg-black-100
@@ -36,7 +35,6 @@ const styles: any = {
     bg-white-100
     relative
     m-auto
-    p-[1.25rem]
   `,
   closeContainer: `
     cursor-pointer

@@ -17,6 +17,11 @@ type UseDzFormModalProps = {
   onChange?: (fieldName: string, value: string) => void;
   onDirty?: () => void;
   LinkElement: any;
+  ImgElement: any;
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 export const useDzFormModal = ({
   formType,
@@ -32,6 +37,8 @@ export const useDzFormModal = ({
   onChange,
   onDirty,
   LinkElement = 'a',
+  ImgElement,
+  image,
 }: UseDzFormModalProps) => {
   const [isOpen, setIsOpen] = useState(disableBackdrop || false);
   const openClickHandler = () => setIsOpen(true);
@@ -54,6 +61,8 @@ export const useDzFormModal = ({
       onChange={onChange}
       onDirty={onDirty}
       LinkElement={LinkElement}
+      ImgElement={ImgElement}
+      image={image}
     />
   );
 
