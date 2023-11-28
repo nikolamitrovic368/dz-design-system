@@ -240,16 +240,16 @@ export const stylesSizes: any = {
     '12col': {
       artwork: {
         artistName: `
-          md:text-md
+          md:text-md 
         `,
         artWorkTitle: `
-          md:text-md
+          md:text-md 
         `,
         artworkYear: `
-          md:text-md
+          md:text-md 
         `,
         priceTitle: `
-          md:text-md
+          md:text-md 
         `,
       },
       mediaZoom: `
