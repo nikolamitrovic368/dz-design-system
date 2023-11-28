@@ -1,3 +1,17 @@
+# v0.0.176 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1025: FE: Custom promo popup [#252](https://github.com/Zwirner/design-system/pull/252) ([@grudev888](https://github.com/grudev888) [@MadaShindeInai](https://github.com/MadaShindeInai) [@inconduit](https://github.com/inconduit))
+
+#### Authors: 3
+
+- [@grudev888](https://github.com/grudev888)
+- adam ([@inconduit](https://github.com/inconduit))
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.175 (Tue Nov 28 2023)
 
 #### 🐛 Bug Fix
