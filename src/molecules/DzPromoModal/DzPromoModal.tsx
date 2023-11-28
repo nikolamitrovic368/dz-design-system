@@ -4,8 +4,11 @@ import {
   DzMedia,
   DzModalContainer,
   DzTitle,
+  DzButton,
   TITLE_SIZES,
   TITLE_TYPES,
+  BUTTON_SIZES,
+  BUTTON_VARIANTS,
 } from '../../atoms';
 import useLockedBodyScroll from '../../hooks/useLockedBodyScroll';
 import { BREAKPOINTS } from '../../layout/breakpoints';
@@ -85,7 +88,13 @@ export const DzPromoModal = ({
           LinkElement={LinkElement}
           className="w-full mt-10 text-center"
         >
-          {linkText}
+          <DzButton
+            size={BUTTON_SIZES.LARGE}
+            variant={BUTTON_VARIANTS.PRIMARY}
+            className="w-full"
+          >
+            {linkText}
+          </DzButton>
         </DzLink>
       </div>
     </DzModalContainer>
