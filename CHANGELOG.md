@@ -1,3 +1,22 @@
+# v0.0.173 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-960: image prop fixes + custom CTA text [#269](https://github.com/Zwirner/design-system/pull/269) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+- NWEB-1114: BUG: Currencies does not reflect on web [#262](https://github.com/Zwirner/design-system/pull/262) ([@grudev888](https://github.com/grudev888))
+
+#### 🔩 Dependency Updates
+
+- Bump @auto-it/jira from 10.46.0 to 11.0.4 [#254](https://github.com/Zwirner/design-system/pull/254) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@grudev888](https://github.com/grudev888)
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.172 (Fri Nov 24 2023)
 
 #### 🐛 Bug Fix
