@@ -74,9 +74,10 @@ export const DzPromoModal = ({
             titleType={TITLE_TYPES.H1}
             titleSize={TITLE_SIZES[isSmall ? 'XL' : 'XXL']}
             title={title}
+            className="mt-0 md:mt-[0.625rem]"
           />
           <DzTitle
-            className="pt-1"
+            className="pt-1 mt-0 md:mt-[0.625rem]"
             titleType={TITLE_TYPES.P}
             titleSize={TITLE_SIZES[isSmall ? 'MD' : 'LG']}
             title={subtitle}
