@@ -115,6 +115,7 @@ export const CardArtwork = ({
         objectFit={MEDIA_OBJECT_FIT.CONTAIN}
         aspectRatio={MEDIA_ASPECT_RATIOS['4:3']}
         {...media}
+        {...(data?.slug ? { url: undefined } : {})}
         imgProps={{
           id: `CardMedia-${slugify(media?.imgProps?.alt) || ''}`,
           ...(media?.imgProps || {}),

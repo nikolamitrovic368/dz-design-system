@@ -26,3 +26,4 @@ export * from './DzTitle';
 export * from './DzRange';
 export * from './DzMedia';
 export * from './DzFileUploader';
+export * from './DzSection';

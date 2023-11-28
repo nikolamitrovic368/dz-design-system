@@ -1,3 +1,27 @@
+# v0.0.175 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- ensure DzMedia inside CardArtwork does not render nested <a> [#268](https://github.com/Zwirner/design-system/pull/268) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.174 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 71 fix adp subnav back [#266](https://github.com/Zwirner/design-system/pull/266) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.173 (Tue Nov 28 2023)
 
 #### 🐛 Bug Fix
