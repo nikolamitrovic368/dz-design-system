@@ -20,6 +20,7 @@ export interface CardArtworkData extends BaseCard {
   portableTextAdditionalInformation?: ReactNode;
   edition: string;
   price?: number;
+  currency?: string;
   framed?: string;
   enableZoom?: boolean;
   primaryCTA?: CardCTA;

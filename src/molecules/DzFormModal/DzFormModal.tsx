@@ -19,6 +19,7 @@ export type DzFormModalProps = {
   successTitle?: string;
   successSubtitle?: string;
   errorTitle?: string;
+  ImgElement: any;
   errorSubtitle?: string;
   onSubmit: (formValues: Record<string, any>) => Promise<any>;
   type: typeof FORM_MODAL_TYPE_NAMES[number];
@@ -28,11 +29,13 @@ export type DzFormModalProps = {
   onChange?: (fieldName: string, value: any) => void;
   onDirty?: () => void;
   LinkElement: any;
-  ImgElement: any;
   image?: {
     src: string;
     alt: string;
-  };
+  } | null;
+  primaryCTA?: {
+    text: string | null;
+  } | null;
 };
 
 export type SubmissionResult = {
@@ -64,6 +67,7 @@ export const DzFormModal = ({
   LinkElement = 'a',
   ImgElement,
   image,
+  primaryCTA,
 }: DzFormModalProps) => {
   const formSteps = FORM_TYPES_TO_STEPS[type];
   const [submittedFormValues, setSubmittedFormValues] = useState<
@@ -118,6 +122,9 @@ export const DzFormModal = ({
   formSteps[0].title = title;
   formSteps[0].primarySubtitle = subtitle;
   formSteps[0].CTAProps.description = termsAndConditions;
+  formSteps[0].CTAProps.text = !primaryCTA?.text
+    ? formSteps[0].CTAProps.text
+    : primaryCTA?.text;
 
   return (
     <DzModalContainer
