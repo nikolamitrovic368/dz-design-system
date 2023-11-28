@@ -74,6 +74,13 @@ export const CardArtwork = ({
   const shouldRenderCTAs =
     !isSmall &&
     [CardSizes['12col'], CardSizes['10col'], CardSizes['6col']].includes(span);
+  const portableTextArtworkTitleStyles =
+    isSmall ||
+    [CardSizes['4col'], CardSizes['3col'], CardSizes['2col']].includes(span)
+      ? '[&>*>*]:!text-sm'
+      : '[&>*>*]:!text-md';
+  !isSmall &&
+    [CardSizes['12col'], CardSizes['10col'], CardSizes['6col']].includes(span);
 
   const videoPlayIconSize =
     size?.[1] >= 6
@@ -135,7 +142,7 @@ export const CardArtwork = ({
                     className={cn(
                       'inline',
                       portableTextArtworkTitle
-                        ? ''
+                        ? portableTextArtworkTitleStyles
                         : styles.artwork.artWorkTitle
                     )}
                   >
