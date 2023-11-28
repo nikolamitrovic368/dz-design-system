@@ -8,7 +8,7 @@ import { ArtistData } from './types/DzTitleExhibitionTypes';
 import { collectHours } from './utils/collectHours';
 import DzContainerTitle from './DzContainerTitle';
 import { splitLocationAddressLines } from './utils/formatAddress';
-import { InquireFormContextData, INQUIRY_TYPES } from '../DzFormModal';
+import { InquireFormContextData } from '../DzFormModal';
 
 type DzTitleExhibitionProps = {
   artists: Array<ArtistData>;
