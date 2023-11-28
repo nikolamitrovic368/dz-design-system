@@ -76,7 +76,7 @@ export const CardArtwork = ({
     [CardSizes['12col'], CardSizes['10col'], CardSizes['6col']].includes(span);
   const portableTextArtworkTitleStyles =
     isSmall ||
-    [CardSizes['4col'], CardSizes['3col'], CardSizes['2col']].includes(span)
+    [CardSizes['3col'], CardSizes['2col']].includes(span)
       ? '[&>*>*]:!text-sm'
       : '[&>*>*]:!text-md';
   !isSmall &&
