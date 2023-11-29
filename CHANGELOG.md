@@ -1,3 +1,15 @@
+# v0.0.177 (Wed Nov 29 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1055: The artwork's title in 3col artwork card does't match Figma [#270](https://github.com/Zwirner/design-system/pull/270) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.176 (Tue Nov 28 2023)
 
 #### 🐛 Bug Fix
