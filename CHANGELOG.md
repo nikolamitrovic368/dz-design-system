@@ -1,3 +1,15 @@
+# v0.0.178 (Wed Nov 29 2023)
+
+#### 🐛 Bug Fix
+
+- fix DzSplit image fit to contain [#267](https://github.com/Zwirner/design-system/pull/267) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.177 (Wed Nov 29 2023)
 
 #### 🐛 Bug Fix
