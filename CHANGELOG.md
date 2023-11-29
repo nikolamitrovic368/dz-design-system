@@ -1,3 +1,15 @@
+# v0.0.179 (Wed Nov 29 2023)
+
+#### 🐛 Bug Fix
+
+- export DzPromoModal [#272](https://github.com/Zwirner/design-system/pull/272) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.178 (Wed Nov 29 2023)
 
 #### 🐛 Bug Fix
