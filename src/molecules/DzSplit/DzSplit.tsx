@@ -201,7 +201,7 @@ export const DzSplit = ({
               className={isPodcast ? styles.podcast : ''}
               imgClass={animate ? styles.animateImg : ''}
               objectFit={MEDIA_OBJECT_FIT.CONTAIN}
-              objectPosition={ObjectPositionType.TOP}
+              objectPosition={ObjectPositionType.CENTER}
               aspectRatio={MEDIA_ASPECT_RATIOS['4:3']}
               {...media}
               LinkElement={LinkElement}
