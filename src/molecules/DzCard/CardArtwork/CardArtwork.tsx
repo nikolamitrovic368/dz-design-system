@@ -14,7 +14,11 @@ import {
 } from '../../../atoms';
 import { cn } from '../../../utils/classnames';
 import { priceFormatter } from '../../../utils/formatters';
-import { CardArtworkData } from './types';
+import {
+  ARTWORK_DISPLAY_FILTERS,
+  ArtworkDisplayFilters,
+  CardArtworkData,
+} from './types';
 import { globalStyles, stylesSizes } from './styles';
 import { mergeStyles } from '../../../lib/styles';
 import { CardSizes, typeToSize } from '../sizes';
@@ -30,6 +34,7 @@ export type CardArtworkProps = {
   onClickImage?: (data: CardArtworkData) => void;
   onViewport?: (data: CardArtworkData) => void;
   imageStyles?: any;
+  displayFilters?: ArtworkDisplayFilters;
 };
 
 export const CardArtwork = ({
@@ -38,6 +43,7 @@ export const CardArtwork = ({
   onViewport,
   imageStyles,
   LinkElement = 'a',
+  displayFilters,
 }: CardArtworkProps) => {
   const {
     id,
@@ -103,94 +109,113 @@ export const CardArtwork = ({
     [data, LinkElement]
   );
 
+  const shouldDisplayProp = (propName: string) =>
+    displayFilters?.[propName] !== false;
+
   return renderWithLink(
     <div id={id} className={cn(styles.cardContainer, 'group')} ref={targetRef}>
-      <DzMedia
-        className="overflow-hidden"
-        imgClass={cn(
-          styles.mediaImg,
-          imageStyles,
-          enableZoom ? cn(styles.mediaZoom, 'md:group-hover:scale-[1.03]') : ''
-        )}
-        objectFit={MEDIA_OBJECT_FIT.CONTAIN}
-        aspectRatio={MEDIA_ASPECT_RATIOS['4:3']}
-        {...media}
-        {...(data?.slug ? { url: undefined } : {})}
-        imgProps={{
-          id: `CardMedia-${slugify(media?.imgProps?.alt) || ''}`,
-          ...(media?.imgProps || {}),
-          onClick: () => onClickImage?.(data),
-        }}
-        videoPlayIconSize={videoPlayIconSize}
-        LinkElement={LinkElement}
-      />
+      {shouldDisplayProp('artworkMedia') && (
+        <DzMedia
+          className="overflow-hidden"
+          imgClass={cn(
+            styles.mediaImg,
+            imageStyles,
+            enableZoom
+              ? cn(styles.mediaZoom, 'md:group-hover:scale-[1.03]')
+              : ''
+          )}
+          objectFit={MEDIA_OBJECT_FIT.CONTAIN}
+          aspectRatio={MEDIA_ASPECT_RATIOS['4:3']}
+          {...media}
+          {...(data?.slug ? { url: undefined } : {})}
+          imgProps={{
+            id: `CardMedia-${slugify(media?.imgProps?.alt) || ''}`,
+            ...(media?.imgProps || {}),
+            onClick: () => onClickImage?.(data),
+          }}
+          videoPlayIconSize={videoPlayIconSize}
+          LinkElement={LinkElement}
+        />
+      )}
       <div className={cn(styles.artwork.infoContainer)}>
         <div className={cn(styles.artwork.leftPanel)}>
           <div>
-            <DzTitle
-              classNameTitle={cn(styles.artwork.artistName)}
-              titleType={TITLE_TYPES.P}
-              title={artistName}
-            />
-            <DzTitle
-              titleType={
-                portableTextArtworkTitle ? TITLE_TYPES.D : TITLE_TYPES.P
-              }
-              title={
-                <>
-                  <span
-                    className={cn(
-                      'inline',
-                      portableTextArtworkTitle
-                        ? portableTextArtworkTitleStyles
-                        : styles.artwork.artWorkTitle
-                    )}
-                  >
-                    {portableTextArtworkTitle || artworkTitle}
-                  </span>
-                  {artworkYear ? (
-                    <>
-                      ,{' '}
-                      <span className={cn(styles.artwork.artworkYear)}>
-                        {artworkYear}
-                      </span>
-                    </>
-                  ) : null}
-                </>
-              }
-            />
+            {shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.ARTIST_NAME) && (
+              <DzTitle
+                classNameTitle={cn(styles.artwork.artistName)}
+                titleType={TITLE_TYPES.P}
+                title={artistName}
+              />
+            )}
+            {shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.TITLE) && (
+              <DzTitle
+                titleType={
+                  portableTextArtworkTitle ? TITLE_TYPES.D : TITLE_TYPES.P
+                }
+                title={
+                  <>
+                    <span
+                      className={cn(
+                        'inline',
+                        portableTextArtworkTitle
+                          ? portableTextArtworkTitleStyles
+                          : styles.artwork.artWorkTitle
+                      )}
+                    >
+                      {portableTextArtworkTitle || artworkTitle}
+                    </span>
+                    {artworkYear ? (
+                      <>
+                        ,{' '}
+                        <span className={cn(styles.artwork.artworkYear)}>
+                          {artworkYear}
+                        </span>
+                      </>
+                    ) : null}
+                  </>
+                }
+              />
+            )}
           </div>
 
           <div>
-            {medium ? (
+            {medium && shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.MEDIUM) ? (
               <DzText
                 className={cn(styles.artwork.tombstoneText)}
                 text={medium}
                 textType={TEXT_TYPES.P}
               />
             ) : null}
-            {dimensions ? (
+            {dimensions &&
+            shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.DIMENSIONS) ? (
               <DzText
                 className={cn(styles.artwork.tombstoneText)}
                 text={dimensions}
                 textType={TEXT_TYPES.P}
               />
             ) : null}
-            {portableTextDimensions ? portableTextDimensions : null}
-            {portableTextFramedDimensions ? portableTextFramedDimensions : null}
-            {edition ? (
+            {portableTextDimensions &&
+            shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.DIMENSIONS)
+              ? portableTextDimensions
+              : null}
+            {portableTextFramedDimensions &&
+            shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.FRAMED_DIMENSIONS)
+              ? portableTextFramedDimensions
+              : null}
+            {edition && shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.EDITION) ? (
               <DzText
                 className={cn(styles.artwork.tombstoneText)}
                 text={edition}
                 textType={TEXT_TYPES.P}
               />
             ) : null}
-            {portableTextAdditionalInformation
+            {portableTextAdditionalInformation &&
+            shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.ADDITIONAL_INFORMATION)
               ? portableTextAdditionalInformation
               : null}
           </div>
 
-          {price ? (
+          {price && shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.PRICE) ? (
             <div className={cn(styles.artwork.priceContainer)}>
               <DzTitle
                 titleType={TITLE_TYPES.P}
@@ -208,7 +233,9 @@ export const CardArtwork = ({
           ) : null}
         </div>
 
-        {shouldRenderCTAs && (primaryCTA || secondaryCTA) ? (
+        {shouldRenderCTAs &&
+        (primaryCTA || secondaryCTA) &&
+        shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.CTA) ? (
           <div className={cn(styles.artwork.rightPanel)}>
             {primaryCTA ? (
               <DzButton
