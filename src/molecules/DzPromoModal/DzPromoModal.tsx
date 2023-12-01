@@ -9,6 +9,7 @@ import {
   TITLE_TYPES,
   BUTTON_SIZES,
   BUTTON_VARIANTS,
+  MEDIA_TYPES,
 } from '../../atoms';
 import useLockedBodyScroll from '../../hooks/useLockedBodyScroll';
 import { BREAKPOINTS } from '../../layout/breakpoints';
@@ -26,6 +27,7 @@ type Props = {
     alt: string;
   };
   LinkElement: any;
+  ImgElement: any;
   url: string;
 };
 
@@ -36,6 +38,7 @@ export const DzPromoModal = ({
   subtitle,
   linkText = 'Explore',
   disableBackdrop = false,
+  ImgElement,
   image,
   LinkElement = 'a',
   url,
@@ -60,43 +63,49 @@ export const DzPromoModal = ({
       disableBackdrop={disableBackdrop}
       className="max-w-[57.875rem] md:h-[37.5rem] !p-0 flex flex-col md:flex-row"
     >
-      <div className="md:w-1/2 max-md:h-[15rem] overflow-hidden">
+      <div className="flex flex-col md:flex-row max-w-[926px] h-full">
         <DzMedia
-          type="image"
-          imgProps={image}
+          type={MEDIA_TYPES.IMAGE}
+          ImgElement={ImgElement}
           LinkElement={LinkElement}
-          className="h-full"
+          imgClass="h-full" // sync storybook img behaviour with NextImage behaviour
+          imageContainerClassName="md:w-1/2 h-60 md:h-auto"
+          imgProps={{
+            ...image,
+            fill: true,
+            sizes: '(max-width: 768px) 725px, 463px',
+          }}
         />
-      </div>
-      <div className="p-5 flex flex-col md:justify-between w-full md:w-1/2">
-        <div>
-          <DzTitle
-            titleType={TITLE_TYPES.H1}
-            titleSize={TITLE_SIZES[isSmall ? 'XL' : 'XXL']}
-            title={title}
-            className="mt-0 md:mt-[0.625rem]"
-          />
-          <DzTitle
-            className="pt-1 mt-0 md:mt-[0.625rem]"
-            titleType={TITLE_TYPES.P}
-            titleSize={TITLE_SIZES[isSmall ? 'MD' : 'LG']}
-            title={subtitle}
-          />
-        </div>
+        <div className="p-5 flex flex-col md:justify-between md:w-1/2">
+          <div>
+            <DzTitle
+              titleType={TITLE_TYPES.H1}
+              titleSize={TITLE_SIZES[isSmall ? 'XL' : 'XXL']}
+              title={title}
+              className="mt-0 md:mt-[0.625rem]"
+            />
+            <DzTitle
+              className="pt-1 mt-0 md:mt-[0.625rem]"
+              titleType={TITLE_TYPES.P}
+              titleSize={TITLE_SIZES[isSmall ? 'MD' : 'LG']}
+              title={subtitle}
+            />
+          </div>
 
-        <DzLink
-          href={url}
-          LinkElement={LinkElement}
-          className="w-full mt-10 text-center"
-        >
-          <DzButton
-            size={BUTTON_SIZES.LARGE}
-            variant={BUTTON_VARIANTS.PRIMARY}
-            className="w-full"
+          <DzLink
+            href={url}
+            LinkElement={LinkElement}
+            className="w-full mt-10 text-center"
           >
-            {linkText}
-          </DzButton>
-        </DzLink>
+            <DzButton
+              size={BUTTON_SIZES.LARGE}
+              variant={BUTTON_VARIANTS.PRIMARY}
+              className="w-full"
+            >
+              {linkText}
+            </DzButton>
+          </DzLink>
+        </div>
       </div>
     </DzModalContainer>
   );
