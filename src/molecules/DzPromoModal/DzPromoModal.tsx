@@ -29,6 +29,7 @@ type Props = {
   LinkElement: any;
   ImgElement: any;
   url: string;
+  openNewTab: boolean;
 };
 
 export const DzPromoModal = ({
@@ -42,6 +43,7 @@ export const DzPromoModal = ({
   image,
   LinkElement = 'a',
   url,
+  openNewTab = false,
 }: Props) => {
   const [, setIsBodyScrollLocked] = useLockedBodyScroll(false, 'root');
   const onCloseModal = () => {
@@ -94,6 +96,7 @@ export const DzPromoModal = ({
 
           <DzLink
             href={url}
+            openNewTab={openNewTab}
             LinkElement={LinkElement}
             className="w-full mt-10 text-center"
           >
