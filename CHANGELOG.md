@@ -1,3 +1,15 @@
+# v0.0.180 (Fri Dec 01 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-XYZ: update to use NextJS Image component [#274](https://github.com/Zwirner/design-system/pull/274) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.179 (Wed Nov 29 2023)
 
 #### 🐛 Bug Fix
