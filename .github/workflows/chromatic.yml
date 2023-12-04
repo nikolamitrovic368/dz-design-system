@@ -23,7 +23,7 @@ jobs:
       #👇 Adds Chromatic as a step in the workflow
       - name: Chromatic deployment
         id: chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@v10
         # Options required for Chromatic's GitHub Action
         with:
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/ember/en/deploy/ to obtain it
