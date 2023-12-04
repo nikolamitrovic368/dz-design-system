@@ -6,6 +6,7 @@ import {
   ReactNode,
   ForwardRefExoticComponent,
 } from 'react';
+import { styles as btnStyles } from './DzButton';
 
 const internalLinkFlags = [
   '.davidzwirner.com',
@@ -78,20 +79,7 @@ const styles: any = {
     focus:decoration-current
     decoration-black-60 
   `,
-  button: `
-    active:border-black-100
-    active:text-black-100  
-    bg-transparent
-    border
-    border-black-40
-    disabled:border-black-40
-    disabled:text-black-40
-    focus:border-black-100
-    focus:text-black-100    
-    hover:border-black-100
-    hover:text-black-100  
-    text-black-80
-  `,
+  button: btnStyles.primary_dark,
   text: `
     underline
     decoration-black-40 

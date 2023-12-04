@@ -58,7 +58,7 @@ export interface DzButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   mode?: ButtonModes;
 }
 
-const styles: any = {
+export const styles: any = {
   btn: `
     disabled:pointer-events-none
     outline-transparent
