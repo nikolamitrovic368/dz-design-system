@@ -73,7 +73,6 @@ const styles: any = {
     gap-2
     items-center
   `,
-
   primary_dark: `
     active:border-black-100
     active:text-black-100  

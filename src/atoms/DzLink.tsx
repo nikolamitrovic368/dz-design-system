@@ -16,6 +16,7 @@ const internalLinkFlags = [
 export const LINK_VARIANTS = {
   NAV: 'nav',
   TEXT: 'text',
+  BUTTON: 'button',
 };
 
 export const TEXT_LINK_SIZES = {
@@ -37,6 +38,7 @@ export const TEXT_LINK_SIZES_NAMES = [
 export const LINK_VARIANTS_NAMES = [
   LINK_VARIANTS.NAV,
   LINK_VARIANTS.TEXT,
+  LINK_VARIANTS.BUTTON,
 ] as const;
 export type TextLinkSize = typeof TEXT_LINK_SIZES_NAMES[number];
 export type LinkVariants = typeof LINK_VARIANTS_NAMES[number];
@@ -75,6 +77,20 @@ const styles: any = {
     focus:underline
     focus:decoration-current
     decoration-black-60 
+  `,
+  button: `
+    active:border-black-100
+    active:text-black-100  
+    bg-transparent
+    border
+    border-black-40
+    disabled:border-black-40
+    disabled:text-black-40
+    focus:border-black-100
+    focus:text-black-100    
+    hover:border-black-100
+    hover:text-black-100  
+    text-black-80
   `,
   text: `
     underline
