@@ -164,7 +164,10 @@ export const CardArtwork = ({
                     >
                       {portableTextArtworkTitle || artworkTitle}
                     </span>
-                    {artworkYear ? (
+                    {artworkYear &&
+                    shouldDisplayProp(
+                      ARTWORK_DISPLAY_FILTERS.DATE_SELECTION
+                    ) ? (
                       <>
                         ,{' '}
                         <span className={cn(styles.artwork.artworkYear)}>
@@ -215,22 +218,22 @@ export const CardArtwork = ({
               : null}
           </div>
 
-          {price && shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.PRICE) ? (
-            <div className={cn(styles.artwork.priceContainer)}>
+          <div className={cn(styles.artwork.priceContainer)}>
+            {price && shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.PRICE) ? (
               <DzTitle
                 titleType={TITLE_TYPES.P}
                 title={`${currency} ${priceFormatter({ price, currency })}`}
                 classNameTitle={cn(styles.artwork.priceTitle)}
               />
-              {framed ? (
-                <DzText
-                  className={cn(styles.artwork.tombstoneText)}
-                  text={framed}
-                  textType={TEXT_TYPES.P}
-                />
-              ) : null}
-            </div>
-          ) : null}
+            ) : null}
+            {framed && shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.FRAMED) ? (
+              <DzText
+                className={cn(styles.artwork.tombstoneText)}
+                text={framed}
+                textType={TEXT_TYPES.P}
+              />
+            ) : null}
+          </div>
         </div>
 
         {shouldRenderCTAs &&
