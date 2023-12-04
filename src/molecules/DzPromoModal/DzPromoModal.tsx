@@ -63,9 +63,9 @@ export const DzPromoModal = ({
       isOpen={isOpen}
       onClose={onCloseModal}
       disableBackdrop={disableBackdrop}
-      className="max-w-[57.875rem] md:h-[37.5rem] !p-0 flex flex-col md:flex-row"
+      className="max-w-[57.875rem] w-full md:h-[37.5rem] !p-0 flex flex-col md:flex-row"
     >
-      <div className="flex flex-col md:flex-row max-w-[926px] h-full">
+      <div className="flex flex-col md:flex-row max-w-[57.875rem] h-full">
         <DzMedia
           type={MEDIA_TYPES.IMAGE}
           ImgElement={ImgElement}
