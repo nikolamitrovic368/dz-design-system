@@ -1,3 +1,15 @@
+# v0.0.182 (Mon Dec 04 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-XYZ: make DzLink clickable in Custom Promo Modal [#277](https://github.com/Zwirner/design-system/pull/277) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.181 (Mon Dec 04 2023)
 
 #### 🐛 Bug Fix
