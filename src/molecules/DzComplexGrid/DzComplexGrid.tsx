@@ -60,6 +60,7 @@ export type DzComplexGridProps = {
   cardStylesMap?: Record<string, string>;
   gridColumnsStyles?: any;
   LinkElement: any;
+  displayFilters?: Record<string, boolean | undefined>;
 };
 
 const MINIMUM_VALUE = 1;
@@ -134,6 +135,7 @@ export const DzComplexGrid: FC<DzComplexGridProps> = ({
   cardStylesMap,
   gridColumnsStyles,
   LinkElement = 'a',
+  displayFilters,
 }) => {
   const { width } = useWindowSize();
   const isMobile = useMemo(() => {
@@ -270,6 +272,7 @@ export const DzComplexGrid: FC<DzComplexGridProps> = ({
             <DzColumn key={`${cardData.id}-${key}`} span={columnsSpanPerRow}>
               <DzCard
                 type={cardDataType}
+                displayFilters={displayFilters}
                 data={{
                   ...cardData,
                   size: [CardSizes['12col'], columnsSpanPerRow],
