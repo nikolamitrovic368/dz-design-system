@@ -4,12 +4,11 @@ import {
   DzMedia,
   DzModalContainer,
   DzTitle,
-  DzButton,
   TITLE_SIZES,
   TITLE_TYPES,
-  BUTTON_SIZES,
-  BUTTON_VARIANTS,
   MEDIA_TYPES,
+  LINK_VARIANTS,
+  TEXT_LINK_SIZES,
 } from '../../atoms';
 import useLockedBodyScroll from '../../hooks/useLockedBodyScroll';
 import { BREAKPOINTS } from '../../layout/breakpoints';
@@ -98,15 +97,11 @@ export const DzPromoModal = ({
             href={url}
             openNewTab={openNewTab}
             LinkElement={LinkElement}
-            className="w-full mt-10 text-center"
+            variant={LINK_VARIANTS.BUTTON}
+            textLinkSize={TEXT_LINK_SIZES.MD}
+            className="w-full mt-10 text-center py-[0.8125rem] px-[1.5625rem]"
           >
-            <DzButton
-              size={BUTTON_SIZES.LARGE}
-              variant={BUTTON_VARIANTS.PRIMARY}
-              className="w-full"
-            >
-              {linkText}
-            </DzButton>
+            {linkText}
           </DzLink>
         </div>
       </div>
