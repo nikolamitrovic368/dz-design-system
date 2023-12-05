@@ -64,8 +64,8 @@ export const DzPortableText = ({
   const CUSTOM_COMPONENTS = {
     hardBreak: () => (
       <>
-        <br />
         &nbsp;
+        <br />
       </>
     ),
     types: {
