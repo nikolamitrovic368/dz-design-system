@@ -1,3 +1,15 @@
+# v0.0.187 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- add display filtering to CardArtwork [#273](https://github.com/Zwirner/design-system/pull/273) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.186 (Wed Dec 06 2023)
 
 #### 🐛 Bug Fix
