@@ -1,3 +1,15 @@
+# v0.0.189 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- fix image rendering in portable text [#259](https://github.com/Zwirner/design-system/pull/259) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.188 (Wed Dec 06 2023)
 
 #### ⚠️ Pushed to `main`
