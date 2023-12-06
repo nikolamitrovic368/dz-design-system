@@ -90,12 +90,20 @@ export const MEDIA_VIDEO_PLAY_ICON_TYPES_NAMES = [
   MEDIA_VIDEO_PLAY_ICON_TYPES.LARGE,
 ];
 
+const BG_COLORS_TO_TW_VALUES = {
+  transparent: 'bg-transparent',
+  lightGrey: 'bg-[#f7f7f7]',
+  darkGrey: 'bg-black-20',
+};
+
 export type VideoSource = typeof MEDIA_TYPES_NAMES[number];
 export type MediaType = typeof MEDIA_TYPES_NAMES[number];
 export type ObjectFitType = typeof MEDIA_MEDIA_OBJECT_FIT_NAMES[number];
 export type AspectRatioType = typeof MEDIA_ASPECT_RATIOS_NAMES[number];
 export type VideoType = typeof MEDIA_VIDEO_TYPES_NAMES[number];
 export type VideoPlayIconType = typeof MEDIA_VIDEO_PLAY_ICON_TYPES_NAMES[number];
+export type ImageBackgroundColor = 'transparent' | 'lightGrey' | 'darkGrey';
+
 export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   type: MediaType;
   url?: string;
@@ -116,6 +124,7 @@ export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   objectPosition?: ObjectPositionType;
   imageContainerClassName?: string;
   LinkElement: any;
+  backgroundColor?: ImageBackgroundColor;
 }
 
 const styles: any = {
@@ -179,6 +188,7 @@ export const DzMedia = ({
   videoPlayIconSize = MEDIA_VIDEO_PLAY_ICON_TYPES.SMALL,
   sourceSet = null,
   LinkElement = 'a',
+  backgroundColor,
 }: DzMediaProps) => {
   const playerRef = useRef<HTMLVmPlayerElement>(null);
   const isSmall = useIsSmallWindowSize();
@@ -210,7 +220,14 @@ export const DzMedia = ({
       );
     }
     return (
-      <ImgElement className={cn(mediaClasses, '!relative')} {...imgProps} />
+      <ImgElement
+        className={cn(
+          mediaClasses,
+          '!relative',
+          backgroundColor ? BG_COLORS_TO_TW_VALUES[backgroundColor] : ''
+        )}
+        {...imgProps}
+      />
     );
   }, [
     ImgElement,

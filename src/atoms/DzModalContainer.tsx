@@ -25,6 +25,8 @@ const styles: any = {
     flex
     items-center
     justify-center
+    overflow-scroll
+    overflow-x-hidden
   `,
   containerBackdrop: `
     bg-black-100
