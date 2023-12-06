@@ -11,6 +11,7 @@ export type DzCardProps = {
   onViewport?: (data: DataCardType) => void;
   imageStyles?: any;
   LinkElement: any;
+  displayFilters?: Record<string, boolean | undefined>;
 };
 
 export const DzCard = ({
@@ -20,6 +21,7 @@ export const DzCard = ({
   onViewport,
   imageStyles,
   LinkElement = 'a',
+  displayFilters,
 }: DzCardProps) => {
   if (type === CARD_TYPES.MEDIA) {
     return (
@@ -34,6 +36,7 @@ export const DzCard = ({
     return (
       <CardArtwork
         data={data as CardArtworkData}
+        displayFilters={displayFilters}
         onClickImage={onClickImage}
         imageStyles={imageStyles}
         LinkElement={LinkElement}
