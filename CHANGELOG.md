@@ -1,3 +1,27 @@
+# v0.0.184 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- add backgroundColor prop to DzMedia [#279](https://github.com/Zwirner/design-system/pull/279) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.183 (Tue Dec 05 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 1290 fix mobile modal [#278](https://github.com/Zwirner/design-system/pull/278) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.182 (Mon Dec 04 2023)
 
 #### 🐛 Bug Fix
