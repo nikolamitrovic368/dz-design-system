@@ -21,6 +21,7 @@ import { cn } from '../../utils/classnames';
 import { DzCard, CARD_TYPES, CardSizes } from '../DzCard';
 import { styles } from './styles';
 import { limitCharacterCount } from './limitCharacterCount';
+import { getVideoMedia, MediaTypes } from '../../utils/mappers/video.mapper';
 
 const generalSpacer = (children: any) => {
   if (
@@ -50,7 +51,6 @@ export const DzPortableText = ({
   portableProps,
   customStyles,
   containerStyles,
-  builder,
   ImgElement,
   charLimit,
   LinkElement = 'a',
@@ -70,8 +70,12 @@ export const DzPortableText = ({
     ),
     types: {
       bodyImage: ({ value }: PortableTextTypeComponentProps<any>) => {
-        const { _key, alt, asset, caption } = value?.media?.image ?? {};
-        const imgSrc = asset ? builder.image(asset).url() : '';
+        const { _key, alt, url, caption } = value?.image ?? {};
+        const mappedVideoData =
+          value?.type === MediaTypes.VIDEO_RECORD
+            ? getVideoMedia({ data: value })
+            : null;
+        const { videoSourceType, videoProps } = mappedVideoData?.media ?? {};
 
         return (
           <DzGridColumns
@@ -87,9 +91,14 @@ export const DzPortableText = ({
                   id: _key,
                   size: CardSizes['10col'],
                   media: {
-                    type: MEDIA_TYPES.IMAGE,
+                    type:
+                      value?.type === MediaTypes.VIDEO_RECORD
+                        ? MEDIA_TYPES.VIDEO
+                        : MEDIA_TYPES.IMAGE,
                     ImgElement,
-                    imgProps: { src: imgSrc, alt, fill: true },
+                    imgProps: { src: url, alt, fill: true },
+                    videoSourceType,
+                    videoProps,
                   },
                   description: caption ?? '',
                 }}
