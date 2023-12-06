@@ -62,6 +62,12 @@ export const DzPortableText = ({
     : portableProps;
 
   const CUSTOM_COMPONENTS = {
+    hardBreak: () => (
+      <>
+        &nbsp;
+        <br />
+      </>
+    ),
     types: {
       bodyImage: ({ value }: PortableTextTypeComponentProps<any>) => {
         const { _key, alt, asset, caption } = value?.media?.image ?? {};
