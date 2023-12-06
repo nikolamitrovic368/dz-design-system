@@ -1,3 +1,51 @@
+# v0.0.184 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- add backgroundColor prop to DzMedia [#279](https://github.com/Zwirner/design-system/pull/279) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.183 (Tue Dec 05 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 1290 fix mobile modal [#278](https://github.com/Zwirner/design-system/pull/278) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.182 (Mon Dec 04 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-XYZ: make DzLink clickable in Custom Promo Modal [#277](https://github.com/Zwirner/design-system/pull/277) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.181 (Mon Dec 04 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-960: promo modal mobile size [#276](https://github.com/Zwirner/design-system/pull/276) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.180 (Fri Dec 01 2023)
 
 #### 🐛 Bug Fix
