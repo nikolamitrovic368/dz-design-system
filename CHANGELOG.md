@@ -1,3 +1,15 @@
+# v0.0.186 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- disable carousel on sizes with few cards [#282](https://github.com/Zwirner/design-system/pull/282) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.185 (Wed Dec 06 2023)
 
 #### 🐛 Bug Fix
