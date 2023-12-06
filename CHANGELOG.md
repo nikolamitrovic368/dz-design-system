@@ -1,3 +1,15 @@
+# v0.0.188 (Wed Dec 06 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Delete pull_request_template.md ([@tabuchid](https://github.com/tabuchid))
+
+#### Authors: 1
+
+- Doug Tabuchi ([@tabuchid](https://github.com/tabuchid))
+
+---
+
 # v0.0.187 (Wed Dec 06 2023)
 
 #### 🐛 Bug Fix
