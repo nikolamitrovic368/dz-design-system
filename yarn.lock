@@ -32,6 +32,11 @@
   resolved "https://registry.yarnpkg.com/@auto-it/bot-list/-/bot-list-10.46.0.tgz#8e8c3d3bb68b8b4e13705fff373fbdab14869249"
   integrity sha512-QkkBgQVi1g/1Tpxcs3Hm3zTzaaM0xjiIRt5xEA6TRM/ULdgEqY+Jk/w1fJZe9GVF+53mwRfqGtQeJirilMBH6g==
 
+"@auto-it/bot-list@11.0.4":
+  version "11.0.4"
+  resolved "https://registry.yarnpkg.com/@auto-it/bot-list/-/bot-list-11.0.4.tgz#a247281531bc4ee4bde791515fd6ad98bc48afe0"
+  integrity sha512-f3w9UZ655MLiELUQP28K9Gceptf2vvKdKVRzh2b2ST+PG/srmoxCnHgE/TO9afW7NiuUA1h+hQVyIb0eQ9VSfQ==
+
 "@auto-it/core@10.46.0":
   version "10.46.0"
   resolved "https://registry.yarnpkg.com/@auto-it/core/-/core-10.46.0.tgz#f7445ab03478cd9819e6bb78b1e5a441240dbf5f"
@@ -78,12 +83,58 @@
     typescript-memoize "^1.0.0-alpha.3"
     url-join "^4.0.0"
 
-"@auto-it/jira@^10.46.0":
-  version "10.46.0"
-  resolved "https://registry.yarnpkg.com/@auto-it/jira/-/jira-10.46.0.tgz#ee5844e6b01b989defea7264c452958c63d23b3b"
-  integrity sha512-XP1gHCrXcvmoc7pXIauQyaD/RZE7ksTfn4tPqEku3OMNFPAltoP9JJJLCNxUROMXyl2CTVZ7kz7HSEf8klJcfA==
+"@auto-it/core@11.0.4":
+  version "11.0.4"
+  resolved "https://registry.yarnpkg.com/@auto-it/core/-/core-11.0.4.tgz#2a030c4eb58d70a8e74480e1d92b72b5cc824d9c"
+  integrity sha512-oYIByeGeuiM0MhWibbj3Y4Vj8p5Kt1n4g0hKL7Zu7oFlKmAjsZlwbH4z0wEjVTdK2+Eqg2/I1Dj/GgkiSriXgg==
   dependencies:
-    "@auto-it/core" "10.46.0"
+    "@auto-it/bot-list" "11.0.4"
+    "@endemolshinegroup/cosmiconfig-typescript-loader" "^3.0.2"
+    "@octokit/core" "^3.5.1"
+    "@octokit/plugin-enterprise-compatibility" "1.3.0"
+    "@octokit/plugin-retry" "^3.0.9"
+    "@octokit/plugin-throttling" "^3.6.2"
+    "@octokit/rest" "^18.12.0"
+    await-to-js "^3.0.0"
+    chalk "^4.0.0"
+    cosmiconfig "7.0.0"
+    deepmerge "^4.0.0"
+    dotenv "^8.0.0"
+    endent "^2.1.0"
+    enquirer "^2.3.4"
+    env-ci "^5.0.1"
+    fast-glob "^3.1.1"
+    fp-ts "^2.5.3"
+    fromentries "^1.2.0"
+    gitlog "^4.0.3"
+    https-proxy-agent "^5.0.0"
+    import-cwd "^3.0.0"
+    import-from "^3.0.0"
+    io-ts "^2.1.2"
+    lodash.chunk "^4.2.0"
+    log-symbols "^4.0.0"
+    node-fetch "2.6.7"
+    parse-author "^2.0.0"
+    parse-github-url "1.0.2"
+    pretty-ms "^7.0.0"
+    requireg "^0.2.2"
+    semver "^7.0.0"
+    signale "^1.4.0"
+    tapable "^2.2.0"
+    terminal-link "^2.1.1"
+    tinycolor2 "^1.4.1"
+    ts-node "^10.9.1"
+    tslib "2.1.0"
+    type-fest "^0.21.1"
+    typescript-memoize "^1.0.0-alpha.3"
+    url-join "^4.0.0"
+
+"@auto-it/jira@^11.0.4":
+  version "11.0.4"
+  resolved "https://registry.yarnpkg.com/@auto-it/jira/-/jira-11.0.4.tgz#2d0bcc79c69a5d8a9ea6b2c75ffce93d91a04dfb"
+  integrity sha512-09DDni3OllsKJVh7eZdg2TiavDqAHJBiByr2VqQSG5HldsVd1b+NG5gM6w0Q2su+mAmJNDnDu+0Lrn1BhnMT9w==
+  dependencies:
+    "@auto-it/core" "11.0.4"
     enquirer "^2.3.4"
     fp-ts "^2.5.3"
     io-ts "^2.1.2"

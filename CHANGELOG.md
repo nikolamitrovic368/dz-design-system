@@ -1,3 +1,192 @@
+# v0.0.187 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- add display filtering to CardArtwork [#273](https://github.com/Zwirner/design-system/pull/273) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.186 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- disable carousel on sizes with few cards [#282](https://github.com/Zwirner/design-system/pull/282) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.185 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 1124 fix h1 artwork title [#281](https://github.com/Zwirner/design-system/pull/281) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.184 (Wed Dec 06 2023)
+
+#### 🐛 Bug Fix
+
+- add backgroundColor prop to DzMedia [#279](https://github.com/Zwirner/design-system/pull/279) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.183 (Tue Dec 05 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 1290 fix mobile modal [#278](https://github.com/Zwirner/design-system/pull/278) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.182 (Mon Dec 04 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-XYZ: make DzLink clickable in Custom Promo Modal [#277](https://github.com/Zwirner/design-system/pull/277) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.181 (Mon Dec 04 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-960: promo modal mobile size [#276](https://github.com/Zwirner/design-system/pull/276) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.180 (Fri Dec 01 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-XYZ: update to use NextJS Image component [#274](https://github.com/Zwirner/design-system/pull/274) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.179 (Wed Nov 29 2023)
+
+#### 🐛 Bug Fix
+
+- export DzPromoModal [#272](https://github.com/Zwirner/design-system/pull/272) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.178 (Wed Nov 29 2023)
+
+#### 🐛 Bug Fix
+
+- fix DzSplit image fit to contain [#267](https://github.com/Zwirner/design-system/pull/267) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.177 (Wed Nov 29 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1055: The artwork's title in 3col artwork card does't match Figma [#270](https://github.com/Zwirner/design-system/pull/270) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
+# v0.0.176 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1025: FE: Custom promo popup [#252](https://github.com/Zwirner/design-system/pull/252) ([@grudev888](https://github.com/grudev888) [@MadaShindeInai](https://github.com/MadaShindeInai) [@inconduit](https://github.com/inconduit))
+
+#### Authors: 3
+
+- [@grudev888](https://github.com/grudev888)
+- adam ([@inconduit](https://github.com/inconduit))
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
+# v0.0.175 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- ensure DzMedia inside CardArtwork does not render nested <a> [#268](https://github.com/Zwirner/design-system/pull/268) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.174 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 71 fix adp subnav back [#266](https://github.com/Zwirner/design-system/pull/266) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
+# v0.0.173 (Tue Nov 28 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-960: image prop fixes + custom CTA text [#269](https://github.com/Zwirner/design-system/pull/269) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+- NWEB-1114: BUG: Currencies does not reflect on web [#262](https://github.com/Zwirner/design-system/pull/262) ([@grudev888](https://github.com/grudev888))
+
+#### 🔩 Dependency Updates
+
+- Bump @auto-it/jira from 10.46.0 to 11.0.4 [#254](https://github.com/Zwirner/design-system/pull/254) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@grudev888](https://github.com/grudev888)
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.172 (Fri Nov 24 2023)
 
 #### 🐛 Bug Fix

@@ -17,3 +17,4 @@ export * from './DzPortableText';
 export * from './DzFormModal';
 export * from './DzFormModal/DzFormModal';
 export * from './DzYearSelector/DzYearSelector';
+export * from './DzPromoModal/DzPromoModal';
