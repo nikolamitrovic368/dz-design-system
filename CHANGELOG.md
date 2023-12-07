@@ -1,3 +1,22 @@
+# v0.0.190 (Thu Dec 07 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Update .autorc ([@tabuchid](https://github.com/tabuchid))
+- Update chromatic.yml ([@tabuchid](https://github.com/tabuchid))
+
+#### 🔩 Dependency Updates
+
+- Update chromatic.yml [#275](https://github.com/Zwirner/design-system/pull/275) ([@tabuchid](https://github.com/tabuchid))
+- chore(deps): bump chromaui/action from 1 to 10 [#275](https://github.com/Zwirner/design-system/pull/275) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Doug Tabuchi ([@tabuchid](https://github.com/tabuchid))
+
+---
+
 # v0.0.189 (Wed Dec 06 2023)
 
 #### 🐛 Bug Fix
