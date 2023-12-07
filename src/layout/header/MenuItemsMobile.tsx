@@ -77,16 +77,6 @@ export const MenuItemsMobile = ({
 }: MenuItemsMobileProps) => {
   const [openMenu, setOpenMenu] = useState(false);
 
-  useEffect(() => {
-    function onChangeUrl() {
-      setOpenMenu(false);
-    }
-    detectUrlChange.on('change', onChangeUrl);
-    return () => {
-      detectUrlChange.off('change', onChangeUrl);
-    };
-  }, []);
-
   const { width, height } = useWindowSize();
   const containerHeight = useMemo(() => {
     if (typeof window != 'undefined' && window.document) {
