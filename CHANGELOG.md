@@ -1,3 +1,15 @@
+# v0.0.191 (Thu Dec 07 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1317-2: add overlay to interstitials [#280](https://github.com/Zwirner/design-system/pull/280) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.190 (Thu Dec 07 2023)
 
 #### ⚠️ Pushed to `main`
