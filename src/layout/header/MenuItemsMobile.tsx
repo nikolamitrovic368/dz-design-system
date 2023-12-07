@@ -77,7 +77,6 @@ export const MenuItemsMobile = ({
   linkProps,
 }: MenuItemsMobileProps) => {
   const [openMenu, setOpenMenu] = useState(false);
-  console.log(linkProps);
   
   const asPath = linkProps?.router?.asPath;
   const { width, height } = useWindowSize();
