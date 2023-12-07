@@ -78,7 +78,7 @@ export const MenuItemsMobile = ({
 }: MenuItemsMobileProps) => {
   const [openMenu, setOpenMenu] = useState(false);
 
-  const asPath = linkProps?.router?.asPath;
+  const router = linkProps?.router;
   const { width, height } = useWindowSize();
   const containerHeight = useMemo(() => {
     if (typeof window != 'undefined' && window.document) {
@@ -89,8 +89,14 @@ export const MenuItemsMobile = ({
   }, [width, height]);
 
   useEffect(() => {
-    setOpenMenu(false);
-  }, [asPath, setOpenMenu]);
+    const handleRouteChange = () => {
+      setOpenMenu(false);
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router.events, setOpenMenu]);
 
   return (
     <>
