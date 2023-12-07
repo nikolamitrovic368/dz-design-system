@@ -1,6 +1,4 @@
 import React, { Fragment, useState, useMemo, useEffect } from 'react';
-import detectUrlChange from 'detect-url-change';
-
 import { cn } from '../../utils/classnames';
 import MenuLogo from '../../svgIcons/menu';
 
@@ -9,12 +7,14 @@ import { Popover, Transition } from '@headlessui/react';
 import { MenuItems } from './MenuItems';
 import { DzFooter, FooterData } from '../footer/DzFooter';
 import useWindowSize from '../../hooks/useWindowSize';
+import { DzLinkProps, RouterProps } from '../../atoms';
 
 export type MenuItemsMobileProps = {
   items: any[];
   footerData: FooterData;
   newsletterAction: Function;
   LinkElement: any;
+  linkProps?: Omit<DzLinkProps, 'LinkElement'> | RouterProps;
 };
 
 const styles: any = {
@@ -74,9 +74,10 @@ export const MenuItemsMobile = ({
   footerData,
   newsletterAction = () => null,
   LinkElement = 'a',
+  linkProps,
 }: MenuItemsMobileProps) => {
   const [openMenu, setOpenMenu] = useState(false);
-
+  const asPath = linkProps?.router?.asPath;
   const { width, height } = useWindowSize();
   const containerHeight = useMemo(() => {
     if (typeof window != 'undefined' && window.document) {
@@ -85,6 +86,10 @@ export const MenuItemsMobile = ({
     return null;
     //eslint-disable-next-line
   }, [width, height]);
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [asPath, setOpenMenu]);
 
   return (
     <>
