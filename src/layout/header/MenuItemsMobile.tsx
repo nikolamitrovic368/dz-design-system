@@ -1,4 +1,6 @@
-import React, { Fragment, useState, useMemo } from 'react';
+import React, { Fragment, useState, useMemo, useEffect } from 'react';
+import detectUrlChange from 'detect-url-change';
+
 import { cn } from '../../utils/classnames';
 import MenuLogo from '../../svgIcons/menu';
 
@@ -83,6 +85,16 @@ export const MenuItemsMobile = ({
     return null;
     //eslint-disable-next-line
   }, [width, height]);
+
+  useEffect(() => {
+    function onChangeUrl() {
+      setOpenMenu(false);
+    }
+    detectUrlChange.on('change', onChangeUrl);
+    return () => {
+      detectUrlChange.off('change', onChangeUrl);
+    };
+  }, []);
 
   return (
     <>
