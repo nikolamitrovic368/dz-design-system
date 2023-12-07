@@ -50,7 +50,7 @@ const styles: any = {
     md:object-contain
     md:h-[auto]
     md:w-full
-    top-2/4
+    top-0
     object-center
     max-h-full
   `,
@@ -150,6 +150,7 @@ export const InterstitialFullWidth = ({
           imgClass={cn(styles.image)}
           {...media}
           LinkElement={LinkElement}
+          overlay
         />
       ) : null}
 

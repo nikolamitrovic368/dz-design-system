@@ -125,6 +125,7 @@ export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   imageContainerClassName?: string;
   LinkElement: any;
   backgroundColor?: ImageBackgroundColor;
+  overlay?: boolean;
 }
 
 const styles: any = {
@@ -189,6 +190,7 @@ export const DzMedia = ({
   sourceSet = null,
   LinkElement = 'a',
   backgroundColor,
+  overlay = false,
 }: DzMediaProps) => {
   const playerRef = useRef<HTMLVmPlayerElement>(null);
   const isSmall = useIsSmallWindowSize();
@@ -210,24 +212,34 @@ export const DzMedia = ({
       delete imgProps.fill;
 
       return (
-        <img
-          className={mediaClasses}
-          // Change this to eager on demand specially for header components
-          loading={'lazy'}
-          alt={imgProps?.alt}
-          {...imgProps}
-        />
+        <>
+          <img
+            className={mediaClasses}
+            // Change this to eager on demand specially for header components
+            loading={'lazy'}
+            alt={imgProps?.alt}
+            {...imgProps}
+          ></img>
+          {overlay ? (
+            <div className="absolute top-0 bg-black-100 bg-opacity-30 w-full h-full"></div>
+          ) : null}
+        </>
       );
     }
     return (
-      <ImgElement
-        className={cn(
-          mediaClasses,
-          '!relative',
-          backgroundColor ? BG_COLORS_TO_TW_VALUES[backgroundColor] : ''
-        )}
-        {...imgProps}
-      />
+      <>
+        <ImgElement
+          className={cn(
+            mediaClasses,
+            '!relative',
+            backgroundColor ? BG_COLORS_TO_TW_VALUES[backgroundColor] : ''
+          )}
+          {...imgProps}
+        ></ImgElement>
+        {overlay ? (
+          <div className="absolute top-0 bg-black-100 bg-opacity-30 w-full h-full"></div>
+        ) : null}
+      </>
     );
   }, [
     ImgElement,
@@ -237,6 +249,8 @@ export const DzMedia = ({
     objectFit,
     objectPosition,
     className,
+    overlay,
+    backgroundColor,
   ]);
 
   const LinkElem = url ? (
