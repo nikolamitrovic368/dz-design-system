@@ -1,6 +1,8 @@
 {
   "plugins": [
-    ["jira", {"url": "https://zwirner.atlassian.net/"}]
+    ["all-contributors",
+      {"exclude": ["dependabot"]}
+    ]
   ],
   "owner": "zwirner",
   "repo": "design-system",
