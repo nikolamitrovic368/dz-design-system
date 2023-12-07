@@ -9,6 +9,8 @@ jobs:
   test:
     # Operating System
     runs-on: ubuntu-latest
+    permissions: 
+      pull-requests: write
     # Job steps
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +32,6 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Add Chromatic URLs as a comment
-        permissions: 
-          pull-requests: write
         uses: thollander/actions-comment-pull-request@v2
         if: ${{ steps.pr.outputs.pull_request_number }}
         with:
