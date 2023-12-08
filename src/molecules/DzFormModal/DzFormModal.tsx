@@ -191,6 +191,7 @@ export const DzFormModal = ({
             onChange={onChange}
             onDirty={onDirty}
             showStepsCount={false}
+            isCustomModal
             recaptchaNode={recaptchaNode}
             containerClassName="bg-white-100 md:w-2/3 p-5"
             titleTextClassName={
