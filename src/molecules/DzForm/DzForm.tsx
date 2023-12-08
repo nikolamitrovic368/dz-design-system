@@ -39,6 +39,7 @@ export type DzFormProps = {
   onChange?: (fieldName: string, value: any) => void;
   onDirty?: () => void;
   LinkElement: any;
+  isCustomModal?: boolean;
 };
 
 const styles: any = {
@@ -93,6 +94,7 @@ export const DzForm = ({
   onChange,
   onDirty,
   LinkElement = 'a',
+  isCustomModal = false,
 }: DzFormProps) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formValues, setFormValues] = useState<Record<string, any>>(() => {
@@ -237,12 +239,14 @@ export const DzForm = ({
             name={stepFormData?.formName}
             autoComplete="off"
             onSubmit={handleFormSubmit}
+            className="h-full"
           >
             {recaptchaNode}
             <DzFormBuilder
               form={stepFormData}
               formAction={handleForwardAction}
               onFieldValidation={onFieldValidation}
+              isCustomModal={isCustomModal}
               isSubmitDisabled={
                 isSubmitDisabled ||
                 !areAllCurrentStepFieldsValid ||

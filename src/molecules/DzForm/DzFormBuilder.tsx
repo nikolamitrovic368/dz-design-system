@@ -26,6 +26,8 @@ export type DzFormBuilderProps = {
   subtitleTextClassName?: string;
   onFocusInput?: Function;
   formStepErrorMessage?: string;
+  //Ex.: newsletter form with image
+  isCustomModal?: boolean;
 };
 
 const styles: any = {
@@ -34,6 +36,7 @@ const styles: any = {
     flex-col
     gap-5
     md:gap-10
+    h-full
   `,
   titleText: `
     text-lg
@@ -96,6 +99,7 @@ export const DzFormBuilder = ({
   subtitleTextClassName,
   onFocusInput,
   formStepErrorMessage,
+  isCustomModal = false,
 }: DzFormBuilderProps) => {
   const {
     formName,
@@ -212,15 +216,19 @@ export const DzFormBuilder = ({
       <DzGridColumns
         className={cn(
           'mb-0 md:mb-[1.25rem] mt-[1rem]',
-          CTAProps.description ? '' : 'gap-y-0'
+          CTAProps.description ? '' : 'gap-y-0',
+          isCustomModal ? 'mt-auto' : ''
         )}
       >
-        <DzColumn span={[12, 6]} className="md:row-start-1 row-start-2">
+        <DzColumn
+          span={[12, isCustomModal ? 12 : 6]}
+          className={cn('row-start-2', isCustomModal ? '' : 'md:row-start-1')}
+        >
           {CTAProps.description && (
             <DzText text={CTAProps.description} className="flex-1" />
           )}
         </DzColumn>
-        <DzColumn span={[12, CTAProps.description ? 6 : 12]}>
+        <DzColumn span={[12, CTAProps.description && !isCustomModal ? 6 : 12]}>
           <DzButton
             {...CTAProps}
             type="button" // don't set this to "submit"; we do not want form submission on enter key press
