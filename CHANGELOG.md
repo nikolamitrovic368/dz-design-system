@@ -1,3 +1,15 @@
+# v0.0.192 (Fri Dec 08 2023)
+
+#### 🐛 Bug Fix
+
+- upgrade deps to match web dep versions [#285](https://github.com/Zwirner/design-system/pull/285) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.191 (Thu Dec 07 2023)
 
 #### 🐛 Bug Fix
