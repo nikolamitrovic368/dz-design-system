@@ -1,5 +1,5 @@
 {
-  "version": "0.0.191",
+  "version": "0.0.193",
   "license": "MIT",
   "main": "dist/design-system.esm.js",
   "typings": "dist/index.d.ts",
@@ -97,8 +97,8 @@
     "typescript-styled-plugin": "^0.18.2"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.10",
-    "@heroicons/react": "^2.0.15",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
     "@portabletext/react": "^3.0.11",
     "@seznam/compose-react-refs": "^1.0.6",
     "@vime/core": "^5.4.1",
