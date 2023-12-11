@@ -72,9 +72,12 @@ export const DzPromoModal = ({
           imgClass="h-full" // sync storybook img behaviour with NextImage behaviour
           imageContainerClassName="md:w-1/2 h-60 md:h-auto"
           imgProps={{
-            ...image,
+            src: image.src,
+            alt: image.alt,
             fill: true,
-            sizes: '(max-width: 768px) 725px, 463px',
+            sizes: '(max-width: 768px) 728px, 600px',
+            priority: true,
+            quality: 100,
           }}
         />
         <div className="p-5 flex flex-col md:justify-between md:w-1/2">
