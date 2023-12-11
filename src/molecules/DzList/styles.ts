@@ -6,6 +6,7 @@ export const styles: any = {
     md:gap-0
   `,
   menuList: `
+    md:hidden
     flex
     max-w-full
     overflow-x-auto

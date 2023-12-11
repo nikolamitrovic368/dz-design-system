@@ -5,12 +5,10 @@ import React, {
   useState,
   useRef,
 } from 'react';
-import { DzLink, LINK_VARIANTS, TEXT_LINK_SIZES } from '../../atoms';
+import { DzLink, LINK_VARIANTS } from '../../atoms';
 import { DzGridColumns, DzColumn, ColumnSpan } from '../../layout/DzGrid';
 import { styles } from './styles';
 import { cn } from '../../utils/classnames';
-import { BREAKPOINTS } from '../../layout/breakpoints';
-import useWindowSize from '../../hooks/useWindowSize';
 import {
   getStartingChars,
   ascLastNameThenFirstName,
@@ -47,11 +45,6 @@ export const DzList = ({
 
   const hoverRef = useRef<HTMLDivElement | null>(null);
   const isHover = useHover(hoverRef);
-
-  const { width } = useWindowSize();
-  const isMobile = useMemo(() => {
-    return width <= BREAKPOINTS.MD;
-  }, [width]);
 
   const alphabetItems = useMemo(() => {
     const startingChars = getStartingChars(list);
@@ -124,7 +117,7 @@ export const DzList = ({
 
   return (
     <div className={cn(styles.menu)}>
-      {isMobile && alphabetItems?.length ? (
+      {alphabetItems?.length && (
         <ul style={{ top: stickyOffset }} className={cn(styles.menuList)}>
           {alphabetItems.map((letter, key) => {
             const optionStyle =
@@ -154,7 +147,7 @@ export const DzList = ({
             );
           })}
         </ul>
-      ) : null}
+      )}
 
       <div ref={hoverRef} id="options-container">
         <DzGridColumns className="h-full w-full">
@@ -186,10 +179,10 @@ export const DzList = ({
                         <DzLink
                           href={url}
                           variant={LINK_VARIANTS.NAV}
-                          textLinkSize={
-                            isMobile ? TEXT_LINK_SIZES.LG : TEXT_LINK_SIZES.MD
-                          }
-                          className={isHover ? styles.linkDesktop : ''}
+                          className={cn(
+                            isHover ? styles.linkDesktop : '',
+                            '!text-lg md:!text-md'
+                          )}
                           LinkElement={LinkElement}
                         >
                           {text}
