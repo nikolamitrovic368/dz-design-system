@@ -90,12 +90,20 @@ export const MEDIA_VIDEO_PLAY_ICON_TYPES_NAMES = [
   MEDIA_VIDEO_PLAY_ICON_TYPES.LARGE,
 ];
 
+const BG_COLORS_TO_TW_VALUES = {
+  transparent: 'bg-transparent',
+  lightGrey: 'bg-[#f7f7f7]',
+  darkGrey: 'bg-black-20',
+};
+
 export type VideoSource = typeof MEDIA_TYPES_NAMES[number];
 export type MediaType = typeof MEDIA_TYPES_NAMES[number];
 export type ObjectFitType = typeof MEDIA_MEDIA_OBJECT_FIT_NAMES[number];
 export type AspectRatioType = typeof MEDIA_ASPECT_RATIOS_NAMES[number];
 export type VideoType = typeof MEDIA_VIDEO_TYPES_NAMES[number];
 export type VideoPlayIconType = typeof MEDIA_VIDEO_PLAY_ICON_TYPES_NAMES[number];
+export type ImageBackgroundColor = 'transparent' | 'lightGrey' | 'darkGrey';
+
 export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   type: MediaType;
   url?: string;
@@ -114,7 +122,10 @@ export interface DzMediaProps extends ImgHTMLAttributes<HTMLImageElement> {
   objectFit?: ObjectFitType;
   sourceSet?: ReactNode | null;
   objectPosition?: ObjectPositionType;
+  imageContainerClassName?: string;
   LinkElement: any;
+  backgroundColor?: ImageBackgroundColor;
+  overlay?: boolean;
 }
 
 const styles: any = {
@@ -171,12 +182,15 @@ export const DzMedia = ({
   videoProps = {},
   mobileVideoProps = {},
   videoSourceType,
+  imageContainerClassName = '',
   aspectRatio = MEDIA_ASPECT_RATIOS['16:9'],
   objectFit = MEDIA_OBJECT_FIT.COVER,
   objectPosition = ObjectPositionType.CENTER,
   videoPlayIconSize = MEDIA_VIDEO_PLAY_ICON_TYPES.SMALL,
   sourceSet = null,
   LinkElement = 'a',
+  backgroundColor,
+  overlay = false,
 }: DzMediaProps) => {
   const playerRef = useRef<HTMLVmPlayerElement>(null);
   const isSmall = useIsSmallWindowSize();
@@ -198,17 +212,34 @@ export const DzMedia = ({
       delete imgProps.fill;
 
       return (
-        <img
-          className={mediaClasses}
-          // Change this to eager on demand specially for header components
-          loading={'lazy'}
-          alt={imgProps?.alt}
-          {...imgProps}
-        />
+        <>
+          <img
+            className={mediaClasses}
+            // Change this to eager on demand specially for header components
+            loading={'lazy'}
+            alt={imgProps?.alt}
+            {...imgProps}
+          ></img>
+          {overlay ? (
+            <div className="absolute top-0 bg-black-100 bg-opacity-30 w-full h-full"></div>
+          ) : null}
+        </>
       );
     }
     return (
-      <ImgElement className={cn(mediaClasses, '!relative')} {...imgProps} />
+      <>
+        <ImgElement
+          className={cn(
+            mediaClasses,
+            '!relative',
+            backgroundColor ? BG_COLORS_TO_TW_VALUES[backgroundColor] : ''
+          )}
+          {...imgProps}
+        ></ImgElement>
+        {overlay ? (
+          <div className="absolute top-0 bg-black-100 bg-opacity-30 w-full h-full"></div>
+        ) : null}
+      </>
     );
   }, [
     ImgElement,
@@ -218,6 +249,8 @@ export const DzMedia = ({
     objectFit,
     objectPosition,
     className,
+    overlay,
+    backgroundColor,
   ]);
 
   const LinkElem = url ? (
@@ -230,7 +263,11 @@ export const DzMedia = ({
       {renderImage}
     </DzLink>
   ) : (
-    <div className={cn(styles.mediaContainer, className)}>{renderImage}</div>
+    <div
+      className={cn(styles.mediaContainer, className, imageContainerClassName)}
+    >
+      {renderImage}
+    </div>
   );
 
   if (type === MEDIA_TYPES.IMAGE) {

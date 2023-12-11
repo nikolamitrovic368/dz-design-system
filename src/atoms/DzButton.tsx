@@ -58,7 +58,7 @@ export interface DzButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   mode?: ButtonModes;
 }
 
-const styles: any = {
+export const styles: any = {
   btn: `
     disabled:pointer-events-none
     outline-transparent
@@ -73,7 +73,6 @@ const styles: any = {
     gap-2
     items-center
   `,
-
   primary_dark: `
     active:border-black-100
     active:text-black-100  

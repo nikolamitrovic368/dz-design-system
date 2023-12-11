@@ -18,7 +18,6 @@ export type DzSectionMenuProps = {
   prefix?: string;
   usePrefix?: boolean;
   sticky?: boolean;
-  useLinks?: boolean;
   linksProps?: Partial<Omit<DzLinkProps, 'LinkElement'>>;
   className?: string;
   LinkElement: any;
@@ -31,7 +30,6 @@ export const DzSectionMenu = ({
   prefix,
   usePrefix = false,
   sticky = false,
-  useLinks = false,
   linksProps = {},
   className,
   LinkElement = 'a',
@@ -51,15 +49,13 @@ export const DzSectionMenu = ({
   );
 
   const handleSelection = useCallback(
-    (id, value) => {
+    id => {
       setActiveEl(id);
 
       if (onSelection) onSelection(id);
       if (usePrefix) scrollToElement(`${prefix}${id}`);
-      if (window && !useLinks)
-        window.history.pushState('', value, `#${prefix}${id}`);
     },
-    [onSelection, prefix, scrollToElement, usePrefix, useLinks]
+    [onSelection, prefix, scrollToElement, usePrefix]
   );
 
   const scrollStickyTopStyle = useMemo(() => {
@@ -100,7 +96,7 @@ export const DzSectionMenu = ({
           {menuSections
             ?.filter(i => !i.hidden)
             ?.map(section => {
-              const { text, id, url } = section;
+              const { text, id } = section;
               return (
                 <li
                   key={`submenu-item-${id ?? slugify(text)}`}
@@ -111,19 +107,16 @@ export const DzSectionMenu = ({
                       ? styles.activeLink
                       : styles.grayLink
                   )}
-                  onClick={() => handleSelection(id, text)}
                 >
-                  {useLinks && url ? (
-                    <DzLink
-                      {...linksProps}
-                      href={url}
-                      LinkElement={LinkElement}
-                    >
-                      {text}
-                    </DzLink>
-                  ) : (
-                    text
-                  )}
+                  <DzLink
+                    onClick={() => handleSelection(id)}
+                    {...linksProps}
+                    className="focus:no-underline"
+                    href={`#${id}`}
+                    LinkElement={LinkElement}
+                  >
+                    {text}
+                  </DzLink>
                 </li>
               );
             })}

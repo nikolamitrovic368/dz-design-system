@@ -6,6 +6,7 @@ import {
   ReactNode,
   ForwardRefExoticComponent,
 } from 'react';
+import { styles as btnStyles } from './DzButton';
 
 const internalLinkFlags = [
   '.davidzwirner.com',
@@ -16,6 +17,7 @@ const internalLinkFlags = [
 export const LINK_VARIANTS = {
   NAV: 'nav',
   TEXT: 'text',
+  BUTTON: 'button',
 };
 
 export const TEXT_LINK_SIZES = {
@@ -37,6 +39,7 @@ export const TEXT_LINK_SIZES_NAMES = [
 export const LINK_VARIANTS_NAMES = [
   LINK_VARIANTS.NAV,
   LINK_VARIANTS.TEXT,
+  LINK_VARIANTS.BUTTON,
 ] as const;
 export type TextLinkSize = typeof TEXT_LINK_SIZES_NAMES[number];
 export type LinkVariants = typeof LINK_VARIANTS_NAMES[number];
@@ -76,6 +79,7 @@ const styles: any = {
     focus:decoration-current
     decoration-black-60 
   `,
+  button: btnStyles.primary_dark,
   text: `
     underline
     decoration-black-40 

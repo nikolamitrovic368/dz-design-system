@@ -23,14 +23,18 @@ const WE_ARE_SORRY = 'We are sorry, but something went wrong.';
 
 const styles = {
   container: `
-    bg-white-100     
-  `,
-  buttonsContainer: `
-    absolute 
+    bg-white-100 
+    h-full
     flex
-    bottom-0 
-    right-0 
-    w-full       
+    flex-col
+    justify-between
+    overflow-scroll
+    overflow-x-hidden    
+  `,
+  buttonsContainer: `        
+    w-full
+    flex
+    self-end
   `,
   button: `
     flex-auto
@@ -56,18 +60,20 @@ export const ResultOverlay = ({
 
   return (
     <div className={styles.container}>
-      <DzTitle
-        title={title}
-        classNameTitle={!isSuccess && 'text-red-100'}
-        titleType={TITLE_TYPES.H1}
-        titleSize={TITLE_SIZES.XL}
-      />
-      <DzText
-        text={subtitle}
-        textType={TEXT_TYPES.P}
-        textSize={TEXT_SIZES.SMALL}
-        className={cn('mt-[0.625rem]', !isSuccess ? 'text-red-100' : '')}
-      />
+      <div>
+        <DzTitle
+          title={title}
+          classNameTitle={!isSuccess && 'text-red-100'}
+          titleType={TITLE_TYPES.H1}
+          titleSize={TITLE_SIZES.XL}
+        />
+        <DzText
+          text={subtitle}
+          textType={TEXT_TYPES.P}
+          textSize={TEXT_SIZES.SMALL}
+          className={cn('mt-[0.625rem]', !isSuccess ? 'text-red-100' : '')}
+        />
+      </div>
       <div
         className={cn(
           styles.buttonsContainer,
