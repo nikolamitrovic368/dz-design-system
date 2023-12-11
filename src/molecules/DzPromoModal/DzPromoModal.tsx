@@ -78,6 +78,7 @@ export const DzPromoModal = ({
             sizes: '(max-width: 768px) 728px, 600px',
             priority: true,
             quality: 100,
+            unoptimized: true,
           }}
         />
         <div className="p-5 flex flex-col md:justify-between md:w-1/2">
