@@ -1,3 +1,15 @@
+# v0.0.194 (Mon Dec 11 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-650: Hide alphabetical list on artist list page upon initial page load [#286](https://github.com/Zwirner/design-system/pull/286) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.193 (Fri Dec 08 2023)
 
 #### 🐛 Bug Fix
