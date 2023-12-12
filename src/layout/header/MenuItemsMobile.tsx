@@ -96,7 +96,7 @@ export const MenuItemsMobile = ({
     return () => {
       router?.events?.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router?.events, setOpenMenu]);
+  }, [router, setOpenMenu]);
 
   return (
     <>
