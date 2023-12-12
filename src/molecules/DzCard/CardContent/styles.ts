@@ -101,6 +101,7 @@ export const stylesSizes: any = {
     },
     '6col': {
       title: `
+        md:text-xl
         text-lg
       `,
       secondaryTitle: `
@@ -265,7 +266,7 @@ export const stylesSizes: any = {
     },
     '6col': {
       title: `
-          md:text-xxl
+          md:text-xl
           text-lg
         `,
       secondaryTitle: `
