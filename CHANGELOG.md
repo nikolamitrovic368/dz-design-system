@@ -1,3 +1,18 @@
+# v0.0.195 (Tue Dec 12 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1373: update Newsletter Pop Up text [#296](https://github.com/Zwirner/design-system/pull/296) ([@JoanCTO](https://github.com/JoanCTO))
+- NWEB-1387: fix 6col title size for content cards [#295](https://github.com/Zwirner/design-system/pull/295) ([@JoanCTO](https://github.com/JoanCTO))
+- NWEB-1350: [QA Feedback] Regression: Inquiry and Newsletter form "Terms of Service" Direction [#289](https://github.com/Zwirner/design-system/pull/289) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 2
+
+- [@grudev888](https://github.com/grudev888)
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.194 (Mon Dec 11 2023)
 
 #### 🐛 Bug Fix
