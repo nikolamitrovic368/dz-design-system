@@ -181,6 +181,7 @@ export const DzFormModal = ({
               alt: image.alt,
               fill: true,
               sizes: '(max-width: 768px) 728px, 600px',
+              priority: true,
               unoptimized: true,
             }}
           />
