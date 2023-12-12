@@ -40,7 +40,7 @@ export const newsletterFormSteps: Array<FormStep> = [
             span: 12,
             initialValue: true,
             data: {
-              title: 'Updates on Artists, Exhibitions and Gallery News',
+              title: 'News, Stories, Podcast, and Exhibition Updates',
               type: FORM_FIELD_TYPES.CHECKBOX,
             },
           },
@@ -50,8 +50,7 @@ export const newsletterFormSteps: Array<FormStep> = [
             span: 12,
             initialValue: true,
             data: {
-              title:
-                'First access to Available Works, Online Viewing Rooms and Fairs',
+              title: 'Online Viewing Rooms, Fairs, and Available Works',
               type: FORM_FIELD_TYPES.CHECKBOX,
             },
           },
@@ -61,7 +60,7 @@ export const newsletterFormSteps: Array<FormStep> = [
             span: 12,
             initialValue: true,
             data: {
-              title: 'David Zwirner Books Releases and Events',
+              title: 'David Zwirner Books, News, and Events',
               type: FORM_FIELD_TYPES.CHECKBOX,
               errorMsg: 'Please enter a valid email address.',
             },
