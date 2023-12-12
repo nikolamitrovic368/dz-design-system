@@ -31,7 +31,7 @@ export const termsAndConditions = (
     </a>{' '}
     and{' '}
     <a
-      href="https://www.davidzwirner.com/privacy-policy"
+      href="https://policies.google.com/terms"
       className="underline"
       target="_blank"
       rel="noreferrer"
