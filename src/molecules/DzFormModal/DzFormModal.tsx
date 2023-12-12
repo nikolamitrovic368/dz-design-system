@@ -183,6 +183,7 @@ export const DzFormModal = ({
               sizes: '(max-width: 768px) 728px, 600px',
               priority: true,
               quality: 100,
+              unoptimized: true,
             }}
           />
           <DzForm
