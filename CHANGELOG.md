@@ -1,3 +1,16 @@
+# v0.0.196 (Wed Dec 13 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1291: Popup image fixes [#290](https://github.com/Zwirner/design-system/pull/290) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+- chore: set NextImage as unoptimised [#297](https://github.com/Zwirner/design-system/pull/297) ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+#### Authors: 1
+
+- Sergei ([@MadaShindeInai](https://github.com/MadaShindeInai))
+
+---
+
 # v0.0.195 (Tue Dec 12 2023)
 
 #### 🐛 Bug Fix
