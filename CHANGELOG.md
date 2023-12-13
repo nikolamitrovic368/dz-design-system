@@ -1,3 +1,16 @@
+# v0.0.200 (Wed Dec 13 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-875: add regex validation for internal links [#291](https://github.com/Zwirner/design-system/pull/291) ([@JoanCTO](https://github.com/JoanCTO) [@tabuchid](https://github.com/tabuchid))
+
+#### Authors: 2
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+- Doug Tabuchi ([@tabuchid](https://github.com/tabuchid))
+
+---
+
 # v0.0.199 (Wed Dec 13 2023)
 
 #### 🐛 Bug Fix
