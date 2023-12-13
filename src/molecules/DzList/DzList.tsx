@@ -15,7 +15,6 @@ import {
   groupItemsByColumn,
   alphabet,
 } from './utils';
-import useHover from '../../hooks/useHover';
 import { DzListItem } from './types';
 
 const DISABLE_SCROLL_SELECTION = true;
@@ -42,9 +41,7 @@ export const DzList = ({
   const keyOfFirstElement = useRef(1);
   const prevChar = useRef('');
   const [notMatchingLetters, setNotMatchingLetters] = useState<string[]>([]);
-
-  const hoverRef = useRef<HTMLDivElement | null>(null);
-  const isHover = useHover(hoverRef);
+  const [currentHoveredItem, setCurrentHoveredItem] = useState<string>();
 
   const alphabetItems = useMemo(() => {
     const startingChars = getStartingChars(list);
@@ -76,6 +73,13 @@ export const DzList = ({
   const itemsByColumn = useMemo(() => {
     return groupItemsByColumn(sortedList);
   }, [sortedList]);
+
+  const onHoverItem = (colIndex: number, rowIndex: number) => {
+    setCurrentHoveredItem(`${colIndex}-${rowIndex}`);
+  };
+  const onHoverOffItem = () => {
+    setCurrentHoveredItem(undefined);
+  };
 
   useEffect(() => {
     const hasIOSupport = !!window.IntersectionObserver;
@@ -149,7 +153,7 @@ export const DzList = ({
         </ul>
       )}
 
-      <div ref={hoverRef} id="options-container">
+      <div id="options-container">
         <DzGridColumns className="h-full w-full">
           {itemsByColumn.map((columnItems, i) => {
             return (
@@ -180,10 +184,16 @@ export const DzList = ({
                           href={url}
                           variant={LINK_VARIANTS.NAV}
                           className={cn(
-                            isHover ? styles.linkDesktop : '',
-                            '!text-lg md:!text-md'
+                            styles.linkDesktop,
+                            '!text-lg md:!text-md',
+                            currentHoveredItem &&
+                              currentHoveredItem !== `${i}-${k}`
+                              ? '!text-black-60'
+                              : ''
                           )}
                           LinkElement={LinkElement}
+                          onMouseEnter={() => onHoverItem(i, k)}
+                          onMouseLeave={onHoverOffItem}
                         >
                           {text}
                         </DzLink>
