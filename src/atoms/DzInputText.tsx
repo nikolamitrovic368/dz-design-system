@@ -240,6 +240,7 @@ export const DzInputText = forwardRef<HTMLInputElement, InputTextProps>(
             placeholder={placeholder}
             onChange={handleChange}
             onBlur={handleBlur}
+            required={required}
             {...rest}
           />
           <div
