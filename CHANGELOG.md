@@ -1,3 +1,15 @@
+# v0.0.198 (Wed Dec 13 2023)
+
+#### 🐛 Bug Fix
+
+- First form component test [#294](https://github.com/Zwirner/design-system/pull/294) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.197 (Wed Dec 13 2023)
 
 #### 🐛 Bug Fix
