@@ -104,11 +104,20 @@ const styles: any = {
   `,
 };
 
+function isValidUrl(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
 export function matchInternalPath(url: string): boolean {
   if (!url) return false;
 
   const path =
-    url.startsWith('http') || url.startsWith('https')
+    (url.startsWith('http') || url.startsWith('https')) && isValidUrl(url)
       ? new URL(url).pathname
       : url;
 
@@ -147,7 +156,6 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
     const href = hrefFromProps || '/404';
     const isActive = router?.asPath === href;
     const inactiveStyle = !isActive ? styles.inactive : '';
-
     const isExternalLink = !matchInternalPath(href);
     const parsedHref = href;
 
