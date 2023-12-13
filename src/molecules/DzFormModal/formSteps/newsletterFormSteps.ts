@@ -23,7 +23,7 @@ export const newsletterFormSteps: Array<FormStep> = [
         fields: [
           {
             name: 'email',
-            placeholder: 'Enter your Email Address here',
+            placeholder: 'Enter Your Email Address Here',
             required: true,
             type: FORM_FIELD_TYPES.INPUT,
             span: 12,
