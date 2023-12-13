@@ -149,6 +149,7 @@ export const DzHeader = ({
             footerData={footerData}
             newsletterAction={newsletterAction}
             LinkElement={LinkElement}
+            linkProps={linkProps}
           />
         </nav>
       ) : (
