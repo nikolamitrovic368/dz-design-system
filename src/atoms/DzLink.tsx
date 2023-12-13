@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { cn } from '../utils/classnames';
 import {
   ComponentPropsWithRef,

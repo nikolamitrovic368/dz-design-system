@@ -59,8 +59,7 @@ export const styles: any = {
     after:bg-black-20
   `,
   linkDesktop: `
-    md:text-black-60
-    md:hover:text-black-100
-    md:py-2.5
+    md:text-black-100    
+    md:py-[0.6875rem]
   `,
 };
