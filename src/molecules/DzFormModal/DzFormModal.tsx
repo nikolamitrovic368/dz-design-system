@@ -180,7 +180,9 @@ export const DzFormModal = ({
               src: image.src,
               alt: image.alt,
               fill: true,
-              sizes: '(max-width: 768px) 728px, 308px',
+              sizes: '(max-width: 768px) 728px, 600px',
+              priority: true,
+              unoptimized: true,
             }}
           />
           <DzForm
