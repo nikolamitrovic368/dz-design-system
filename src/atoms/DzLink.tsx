@@ -8,12 +8,6 @@ import {
 } from 'react';
 import { styles as btnStyles } from './DzButton';
 
-const internalLinkFlags = [
-  '.davidzwirner.com',
-  '.zwirner.dev',
-  '.zwirner.tech',
-];
-
 export const LINK_VARIANTS = {
   NAV: 'nav',
   TEXT: 'text',
@@ -110,6 +104,28 @@ const styles: any = {
   `,
 };
 
+export function matchInternalPath(url: string): boolean {
+  if (!url) return false;
+
+  const path =
+    url.startsWith('http') || url.startsWith('https')
+      ? new URL(url).pathname
+      : url;
+
+  return [
+    /^\/artists$/, // Matches "/artists"
+    /^\/artists\/[a-zA-Z0-9_-]+$/, // Matches "/artists/[slug]"
+    /^\/artworks\/[a-zA-Z.0-9_-]+$/, // Matches "/artworks/[slug]"
+    /^\/news\/\d{4}\/[a-zA-Z.0-9_-]+$/, // Matches "/news/[year]/[slug]"
+    /^\/artists\/[a-zA-Z0-9_-]+\/survey$/, // Matches "/artists/[slug]/survey"
+    /^\/artists\/[a-zA-Z0-9_-]+\/guide$/, // Matches "/artists/[slug]/survey"
+    /^\/artists\/[a-zA-Z0-9_-]+\/press$/, // Matches "/artists/[slug]/press"
+    /^\/artists\/[a-zA-Z0-9_-]+\/exhibitions$/, // Matches "/artists/[slug]/exhibitions"
+    /^\/artists\/[a-zA-Z0-9_-]+\/available-artworks$/, // Matches "/artists/[slug]/available-works"
+    /^\/artists\/thomas-ruff\/survey\/[a-zA-Z.0-9_-]+$/, // Matches/artists/thomas-ruff/survey/[slug]
+  ].some(regex => regex.test(path));
+}
+
 export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
   (
     {
@@ -131,14 +147,9 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
     const href = hrefFromProps || '/404';
     const isActive = router?.asPath === href;
     const inactiveStyle = !isActive ? styles.inactive : '';
-    const localFlagThatHrefIncludes = internalLinkFlags.find(flag =>
-      href.includes(flag)
-    );
-    const isExternalLink =
-      href.startsWith('http') && !localFlagThatHrefIncludes;
-    const parsedHref = localFlagThatHrefIncludes
-      ? href.split(localFlagThatHrefIncludes).at(1) ?? '/'
-      : href;
+
+    const isExternalLink = !matchInternalPath(href);
+    const parsedHref = href;
 
     const linkStyle = !withoutStyle
       ? cn(
