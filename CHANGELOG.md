@@ -1,3 +1,15 @@
+# v0.0.201 (Wed Dec 13 2023)
+
+#### 🐛 Bug Fix
+
+- Nweb 850 fix artist list hover style [#303](https://github.com/Zwirner/design-system/pull/303) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.200 (Wed Dec 13 2023)
 
 #### 🐛 Bug Fix
