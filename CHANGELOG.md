@@ -1,3 +1,15 @@
+# v0.0.197 (Wed Dec 13 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-931: Regression: Navigation Behavior is broken [#284](https://github.com/Zwirner/design-system/pull/284) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.196 (Wed Dec 13 2023)
 
 #### 🐛 Bug Fix
