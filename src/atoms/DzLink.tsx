@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { cn } from '../utils/classnames';
 import {
   ComponentPropsWithRef,
@@ -56,6 +56,8 @@ export type DzLinkProps = {
   linkProps?: any;
   textLinkSize?: TextLinkSize;
   withoutStyle?: boolean;
+  onMouseEnter?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  onMouseLeave?: (event: MouseEvent<HTMLAnchorElement>) => void;
 } & ComponentPropsWithRef<'a'>;
 
 export type RouterProps = {
@@ -124,6 +126,8 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
       LinkElement = 'a',
       textLinkSize = TEXT_LINK_SIZES.SM,
       withoutStyle = false,
+      onMouseLeave,
+      onMouseEnter,
       ...rest
     },
     ref
@@ -181,6 +185,8 @@ export const DzLink: ForwardRefExoticComponent<DzLinkProps> = forwardRef(
         href={parsedHref}
         target={openNewTab ? '_blank' : '_self'}
         rel="noopener noreferrer"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         ref={ref}
         className={linkStyle}
         {...rest}
