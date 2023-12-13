@@ -1,3 +1,15 @@
+# v0.0.199 (Wed Dec 13 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1447: capitalize text on form input [#301](https://github.com/Zwirner/design-system/pull/301) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.198 (Wed Dec 13 2023)
 
 #### 🐛 Bug Fix
