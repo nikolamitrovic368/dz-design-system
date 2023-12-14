@@ -1,3 +1,15 @@
+# v0.0.202 (Thu Dec 14 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-XYZ: Validate URL's on dzLinks [#304](https://github.com/Zwirner/design-system/pull/304) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.201 (Wed Dec 13 2023)
 
 #### 🐛 Bug Fix
