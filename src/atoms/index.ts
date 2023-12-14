@@ -27,3 +27,4 @@ export * from './DzRange';
 export * from './DzMedia';
 export * from './DzFileUploader';
 export * from './DzSection';
+export * from './DzSpinner';

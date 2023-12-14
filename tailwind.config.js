@@ -40,7 +40,7 @@ module.exports = {
           100: '#FFFFFF',
           '100-op-80': '#FFFFFFCC',
           '100-op-60': '#FFFFFF99',
-          '100-op-92': '#FFFFFFEB'
+          '100-op-92': '#FFFFFFEB',
         },
         yellow: {
           10: 'rgba(255, 209, 23, 0.1)',
@@ -134,11 +134,37 @@ module.exports = {
       dropShadow: {
         100: '0px 2px 18px rgba(0, 0, 0, 0.06)',
         150: '0px 2px 18px rgba(0, 0, 0, 0.08)',
-        200: '0px 0px 8px rgba(0, 0, 0, 0.16)'
+        200: '0px 0px 8px rgba(0, 0, 0, 0.16)',
       },
       textDecorationColor: {
         'black-60': '#757575',
         'black-100': '#000',
+      },
+      animation: {
+        'puls-in': 'puls-in 1.8s ease-in-out infinite',
+        'puls-out': 'puls-out 1.8s ease-in-out infinite',
+      },
+      keyframes: {
+        'puls-in': {
+          '0%': {
+            boxShadow: 'inset 0 0 0 1rem #f5f5f5',
+            opacity: 1,
+          },
+          '50%, 100%': {
+            boxShadow: 'inset 0 0 0 0 #f5f5f5',
+            opacity: 0,
+          },
+        },
+        'puls-out': {
+          '0%, 50%': {
+            boxShadow: '0 0 0 0 #f5f5f5',
+            opacity: 0,
+          },
+          '100%': {
+            boxShadow: '0 0 0 1rem #f5f5f5',
+            opacity: 1,
+          },
+        },
       },
     },
   },
