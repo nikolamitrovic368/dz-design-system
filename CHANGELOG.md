@@ -1,3 +1,15 @@
+# v0.0.204 (Thu Dec 14 2023)
+
+#### 🐛 Bug Fix
+
+- Typecheck tests, fix DzFrom.test typechecking, remove broken include [#306](https://github.com/Zwirner/design-system/pull/306) ([@tabuchid](https://github.com/tabuchid))
+
+#### Authors: 1
+
+- Doug Tabuchi ([@tabuchid](https://github.com/tabuchid))
+
+---
+
 # v0.0.203 (Thu Dec 14 2023)
 
 #### 🐛 Bug Fix
