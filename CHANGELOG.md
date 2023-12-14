@@ -1,3 +1,15 @@
+# v0.0.205 (Thu Dec 14 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-160: Revise Loading State - Simple Version [#298](https://github.com/Zwirner/design-system/pull/298) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.204 (Thu Dec 14 2023)
 
 #### 🐛 Bug Fix
