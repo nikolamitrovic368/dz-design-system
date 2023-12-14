@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import DzForm from '../DzForm';
 import { inquireFormSteps } from '../../DzFormModal/formSteps/inquireFormSteps';
 
@@ -17,7 +18,6 @@ const lastNamePH = fields[1].placeholder;
 const emailPH = fields[2].placeholder;
 const phonePH = fields[3].placeholder;
 const commentsPH = fields[4].placeholder;
-const inquireButtonText = inquireFormSteps[0].CTAProps.text;
 
 describe('DzForm', () => {
   describe('Inquiry Form', () => {
@@ -26,7 +26,9 @@ describe('DzForm', () => {
     });
 
     test('validates required fields', () => {
-      expect(screen.getByPlaceholderText(firstNamePH)).toBeRequired();
+      expect(screen.getByPlaceholderText(firstNamePH)).toHaveAttribute(
+        'required'
+      );
       expect(screen.getByPlaceholderText(lastNamePH)).toBeRequired();
       expect(screen.getByPlaceholderText(emailPH)).toBeRequired();
       expect(screen.getByPlaceholderText(phonePH)).not.toBeRequired();
