@@ -1,3 +1,15 @@
+# v0.0.203 (Thu Dec 14 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-1343: add portable text edition to artwork card [#305](https://github.com/Zwirner/design-system/pull/305) ([@JoanCTO](https://github.com/JoanCTO))
+
+#### Authors: 1
+
+- David T ([@JoanCTO](https://github.com/JoanCTO))
+
+---
+
 # v0.0.202 (Thu Dec 14 2023)
 
 #### 🐛 Bug Fix
