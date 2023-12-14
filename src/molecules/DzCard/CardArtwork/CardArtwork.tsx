@@ -56,6 +56,7 @@ export const CardArtwork = ({
     medium,
     dimensions,
     portableTextDimensions,
+    portableTextEdition,
     edition,
     price,
     currency = 'USD',
@@ -212,6 +213,11 @@ export const CardArtwork = ({
                 textType={TEXT_TYPES.P}
               />
             ) : null}
+
+            {portableTextEdition &&
+            shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.EDITION)
+              ? portableTextEdition
+              : null}
             {portableTextAdditionalInformation &&
             shouldDisplayProp(ARTWORK_DISPLAY_FILTERS.ADDITIONAL_INFORMATION)
               ? portableTextAdditionalInformation
