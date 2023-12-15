@@ -1,3 +1,15 @@
+# v0.0.207 (Fri Dec 15 2023)
+
+#### 🐛 Bug Fix
+
+- NWEB-394: Add onClickCTA event to DzPromoModal [#302](https://github.com/Zwirner/design-system/pull/302) ([@grudev888](https://github.com/grudev888))
+
+#### Authors: 1
+
+- [@grudev888](https://github.com/grudev888)
+
+---
+
 # v0.0.206 (Fri Dec 15 2023)
 
 #### 🐛 Bug Fix
