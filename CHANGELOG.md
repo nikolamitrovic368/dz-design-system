@@ -1,3 +1,15 @@
+# v0.0.208 (Fri Dec 15 2023)
+
+#### 🐛 Bug Fix
+
+- animate opacity to show/hide modals [#299](https://github.com/Zwirner/design-system/pull/299) ([@inconduit](https://github.com/inconduit))
+
+#### Authors: 1
+
+- adam ([@inconduit](https://github.com/inconduit))
+
+---
+
 # v0.0.207 (Fri Dec 15 2023)
 
 #### 🐛 Bug Fix
