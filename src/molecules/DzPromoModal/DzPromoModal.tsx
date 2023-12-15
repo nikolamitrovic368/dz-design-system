@@ -29,11 +29,13 @@ type Props = {
   ImgElement: any;
   url: string;
   openNewTab: boolean;
+  onClickCTA: (url: string) => void;
 };
 
 export const DzPromoModal = ({
   isOpen,
   onClose,
+  onClickCTA,
   title,
   subtitle,
   linkText = 'Explore',
@@ -97,6 +99,7 @@ export const DzPromoModal = ({
           </div>
 
           <DzLink
+            onClick={() => onClickCTA(url)}
             href={url}
             openNewTab={openNewTab}
             LinkElement={LinkElement}
