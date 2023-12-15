@@ -104,7 +104,7 @@ const styles: any = {
   `,
 };
 
-function isValidUrl(string) {
+export function isValidUrl(string) {
   try {
     new URL(string);
     return true;
