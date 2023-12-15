@@ -79,6 +79,7 @@ export const DzFormModal = ({
   >();
   const [, setIsBodyScrollLocked] = useLockedBodyScroll(false, 'root');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [keyIndex, setKeyIndex] = useState(1);
   const onSubmitForm = (formValues: Record<string, any>) => {
     setSubmittedFormValues(formValues);
     doSubmit(formValues);
@@ -117,6 +118,8 @@ export const DzFormModal = ({
       setIsSubmitSuccessful(undefined);
       setSubmittedFormValues(undefined);
     }
+    // keyIndex is used to force a re-render of <DzForm> when the modal re-opens, which clears the form values
+    setKeyIndex(currentIndex => currentIndex + 1);
   }, [isOpen]);
 
   // TODO set title/subtitle/description for all steps
@@ -141,6 +144,7 @@ export const DzFormModal = ({
     >
       {!image ? (
         <DzForm
+          key={`form-key-${keyIndex}`}
           LinkElement={LinkElement}
           steps={formSteps}
           onSubmit={onSubmitForm}

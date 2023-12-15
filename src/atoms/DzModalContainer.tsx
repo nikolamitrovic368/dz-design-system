@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import { Close } from '../svgIcons';
 import { useKeyDownCallback } from '../hooks/useKeyDownCallback';
 import { cn } from '../utils/classnames';
@@ -29,9 +29,14 @@ const styles: any = {
     overflow-x-hidden
   `,
   containerBackdrop: `
+    absolute
+    top-0
+    left-0
+    w-full
+    h-full
     bg-black-100
-    bg-opacity-50
-    backdrop-blur-[6px]  
+    bg-opacity-30
+    backdrop-blur-[5px]
   `,
   contentContainer: `
     bg-white-100
@@ -69,16 +74,22 @@ export const DzModalContainer = ({
   disableBackdrop = false,
 }: DzModalContainerProps) => {
   const [isModalOpen, setIsModalOpen] = useState(disableBackdrop || isOpen);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isShowingBackdrop, setIsShowingBackdrop] = useState(false);
+  const containerBackdropRef = useRef<HTMLDivElement>(null);
   const onClickClose = () => {
     if (disableBackdrop) {
       return;
     }
-    setIsModalOpen(false);
-    onClose?.();
+    setIsShowingBackdrop(false);
   };
-  const onClickContainer = event => {
-    if (event.target === containerRef.current) {
+  const onContainerTransitionEnd = () => {
+    if (!isShowingBackdrop) {
+      setIsModalOpen(false);
+      onClose?.();
+    }
+  };
+  const onClickContainerBackdrop = event => {
+    if (event.target === containerBackdropRef.current) {
       onClickClose();
     }
   };
@@ -87,18 +98,45 @@ export const DzModalContainer = ({
     setIsModalOpen(isOpen);
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      setIsShowingBackdrop(true);
+    }
+  }, [isModalOpen]);
+
   useKeyDownCallback('Escape', onClose ? onClose : () => {});
 
-  return isModalOpen ? (
+  return (
     <div
-      className={cn(
-        styles.container,
-        disableBackdrop ? '' : styles.containerBackdrop
-      )}
-      onClick={onClickContainer}
-      ref={containerRef}
+      className={cn(styles.container, isModalOpen ? 'visible' : 'invisible')}
     >
-      <div className={cn(styles.contentContainer, className || '')}>
+      {!disableBackdrop && (
+        <div
+          className={cn(
+            styles.containerBackdrop,
+            `transition-opacity ease-in duration-100 ${
+              isShowingBackdrop ? 'opacity-100' : 'opacity-0'
+            }`
+          )}
+          onClick={onClickContainerBackdrop}
+          ref={containerBackdropRef}
+        />
+      )}
+
+      <div
+        className={cn(
+          styles.contentContainer,
+          className || '',
+          disableBackdrop
+            ? ''
+            : `transition-opacity ease-in delay-[20ms] ${
+                isShowingBackdrop
+                  ? 'duration-200 opacity-100'
+                  : 'duration-100 opacity-0'
+              }`
+        )}
+        onTransitionEnd={onContainerTransitionEnd}
+      >
         {!disableBackdrop && (
           <div className={styles.closeContainer} onClick={onClickClose}>
             <Close fill="white" className={styles.closeIcon} />
@@ -108,7 +146,7 @@ export const DzModalContainer = ({
         {children}
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default DzModalContainer;
