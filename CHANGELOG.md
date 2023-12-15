@@ -1,3 +1,15 @@
+# v0.0.206 (Fri Dec 15 2023)
+
+#### 🐛 Bug Fix
+
+- Add unit tests for DzLink component [#307](https://github.com/Zwirner/design-system/pull/307) ([@tabuchid](https://github.com/tabuchid))
+
+#### Authors: 1
+
+- Doug Tabuchi ([@tabuchid](https://github.com/tabuchid))
+
+---
+
 # v0.0.205 (Thu Dec 14 2023)
 
 #### 🐛 Bug Fix
