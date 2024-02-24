@@ -105,7 +105,7 @@
     "@vime/react": "^5.4.1",
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
-    "plyr-react": "^5.1.2",
+    "plyr-react": "^5.3.0",
     "react-drag-drop-files": "^2.3.10",
     "react-zoom-pan-pinch": "^3.3.0",
     "swiper": "9.3.1",
