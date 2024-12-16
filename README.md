@@ -17,10 +17,6 @@ Accessing the latest changes in this repository from external repos before publi
 
 First of all, you need to clone this repo. (Preferrable if it is in the same folder than the external repo)
 
-```bash
-git clone https://github.com/Zwirner/design-system.git
-```
-
 Now you have to create a symbolic link to your repo:
 
 ```bash
